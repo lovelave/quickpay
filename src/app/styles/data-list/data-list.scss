@@ -1,0 +1,132 @@
+/*
+* Data list styles
+*/
+@import "~breakpoint-sass/stylesheets/breakpoint";
+@import "../../styles/base/variables";
+@import "../../styles/base/mixins";
+
+.data-list {
+  width: 100%;
+  max-width: 312px;
+
+  @include breakpoint($mobile-p) {
+
+    max-width: none;
+  }
+
+  &.wider {
+    max-width: 414px;
+
+    @include breakpoint($mobile-l) {
+
+      padding-right: (34em/16);
+    }
+  }
+
+  &__title {
+    margin-bottom: (8em/18);
+
+    font-size: (18em/16);
+    font-weight: $bold;
+  }
+
+  > li {
+    @include justify-content;
+    @include valign-center;
+
+    padding: (8em/16) 0;
+
+    &:not(:last-of-type) {
+
+      border-bottom: 1px solid rgba(28,83,119,.12);
+    }
+
+    &.unbordered {
+
+      span {
+
+        font-size: (15em/16);
+      }
+    }
+
+    &.bolder {
+
+      border-bottom: 1px solid rgba(255,255,255,.65);
+    }
+
+    &.indented {
+      margin-top: (13em/16);
+      margin-bottom: (22em/16);
+      padding: 0;
+
+      @include breakpoint ($mobile-p) {
+
+        margin-bottom: (10em/16);
+      }
+    }
+
+    &.data-list__title {
+
+        padding: 0;
+    }
+
+    span {
+      font-size: (14em/16);
+
+      &.increased {
+        font-size: (20em/16);
+
+        @include breakpoint($tablet-p) {
+
+          font-size: (19em/16);
+        }
+
+        @include breakpoint($mobile) {
+
+          font-size: (19em/16);
+        }
+
+        &:first-of-type {
+
+          @include breakpoint($mobile) {
+            padding-right: (20em/20);
+
+            text-align: left;
+          }
+
+          @include breakpoint($tablet-p) {
+
+            padding-right: (30em/16);
+          }
+        }
+
+        &:last-child {
+
+          @include breakpoint($mobile) {
+
+            text-align: right;
+          }
+
+          @include breakpoint($tablet-p) {
+
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+
+    a {
+
+      span {
+
+        font-size: (15em/18);
+      }
+    }
+  }
+
+  p {
+    line-height: (23em/15);
+    font-size: (15em/16);
+    font-weight: $regular;
+  }
+}

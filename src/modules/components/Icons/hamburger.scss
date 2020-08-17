@@ -1,0 +1,82 @@
+/*
+* Hamburger styles
+ */
+@import "../../../app/styles/base/variables";
+
+.active .hamburger,
+.hamburger.active {
+  animation: hamburger-rotate .4s linear forwards;
+
+  .top {
+    animation: top-line-translate .4s linear forwards;
+  }
+
+  .bottom {
+    animation: bottom-line-translate .4s linear forwards;
+  }
+}
+
+.hamburger {
+  width: 41px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  transition: transform .4s linear;
+
+  .top {
+
+    stroke-dasharray: 40 121;
+  }
+
+  .bottom {
+    stroke-dasharray: 40 121;
+  }
+
+  .line {
+    fill: none;
+    stroke: #fff;
+    stroke-width: 5;
+    stroke-linecap: round;
+    border-radius: 20px;
+    transition: stroke-dasharray .4s linear, stroke-dashoffset .4s linear;
+  }
+
+  &-primary {
+
+    .line {
+
+      stroke: $color-primary;
+    }
+  }
+}
+
+
+@keyframes hamburger-rotate {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(45deg);
+  }
+}
+
+@keyframes top-line-translate {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -68px;
+  }
+}
+
+@keyframes bottom-line-translate {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -68px;
+  }
+}

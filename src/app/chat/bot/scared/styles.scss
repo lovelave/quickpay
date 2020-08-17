@@ -1,0 +1,26 @@
+/*
+Bot scared styles
+ */
+
+.animation-container {
+
+  .bot_scared {
+    animation: bot-up-down 3s ease-in-out infinite;
+  }
+}
+
+@keyframes bot-up-down {
+  0% {
+    transform: translateY(0px);
+    transition-property: transform;
+    transition-timing-function: cubic-bezier(0.57, 0.01, 0.69, 0.82);
+  }
+  50% {
+    transform: translateY(10px);
+    transition-timing-function: ease-in;
+  }
+  100% {
+    transform: translateY(0px);
+    transition-timing-function: ease-in;
+  }
+}

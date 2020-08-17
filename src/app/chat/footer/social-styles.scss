@@ -1,0 +1,135 @@
+/*
+* Social styles
+ */
+@import "../../../app/styles/base/variables";
+@import "../../../app/styles/base/mixins";
+
+body {
+
+  &[data-theme="dashboard-home"] {
+
+    .social-list {
+
+      .icon-fill {
+
+        fill: $color-secondary;
+      }
+    }
+  }
+}
+
+.social-list {
+  margin-top: (16em/16);
+  
+  a {
+    display: inline-block;
+
+    vertical-align: middle;
+
+    & + a {
+      
+      margin-left: (10em/16);
+    }
+
+    & + .button_instagram {
+
+      margin-left: (4em/16);
+    }
+  }
+
+  .button {
+    display: inline-block;
+
+    height: 35px;
+    width: 35px;
+
+    position: relative;
+
+    border-radius: 50%;
+
+    text-align: center;
+
+    &:hover {
+
+      span {
+        width: 110%;
+        height: 110%;
+      }
+
+      path {
+
+        fill: #fff;
+      }
+
+      circle {
+
+        fill: #fff;
+      }
+    }
+
+    span {
+      display: block;
+
+      position: absolute;
+
+      width: 0;
+      height: 0;
+
+      top: 50%;
+      left: 50%;
+
+      transform: translate(-50%, -50%);
+
+      border-radius: 50%;
+
+      transition: width .3s, height .3s;
+    }
+
+    svg {
+      width: 35px;
+      height: 35px;
+
+      left: 50%;
+      top: 50%;
+
+      transform: translate(-50%, -50%);
+
+      position: absolute;
+
+      z-index: 10;
+    }
+
+    &_facebook {
+
+      &:hover {
+
+        span {
+
+          background: #0e8fff;
+        }
+      }
+    }
+
+    &_instagram {
+
+      &:hover {
+
+        span {
+
+          background: #d94f5a;
+        }
+      }
+    }
+
+    &_youtube {
+
+      &:hover {
+
+        span {
+
+          background: #d90800;
+        }
+      }
+    }
+  }
+}

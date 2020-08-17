@@ -1,0 +1,163 @@
+/*
+* Form control styles
+ */
+@import "~breakpoint-sass/stylesheets/breakpoint";
+@import "../../styles/base/variables";
+@import "../../styles/base/mixins";
+
+$btn-action-size: 42px;
+$btn-action-size-editing: 54px;
+$password-group-border-radius: 15px;
+
+input,
+input[type=text],
+input[type=email],
+input[type=password],
+input[type=number],
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+input {
+  border: none;
+  outline: none !important;
+}
+
+.form__control {
+  border: none;
+
+  background-color: #fff;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: $color-primary;
+
+  transition: box-shadow .2s ease-in-out, color .2s ease-in-out;
+}
+
+.input-group,
+.form-group {
+  display: inline-block;
+
+  position: relative;
+}
+
+.form-group {
+
+  &.password {
+    width: 100%;
+    max-width: 353px;
+
+    border-radius: $password-group-border-radius;
+
+    box-shadow: 0 3px 10px #2699FB60;
+
+    .wrap {
+
+      position: relative;
+    }
+
+    .form__control {
+      width: 100%;
+      padding: (22em/23) (76em/23) (22em/23) (27em/23);
+
+      border-radius: 15px 15px 0 0;
+
+      background-color: #fff;
+
+      font-size: (23em/16);
+      font-weight: $regular;
+      color: #BCE0FD;
+    }
+
+    .btn_action {
+      padding: (15em/16) (11em/16);
+
+      border-radius: 26px 0 0 26px;
+
+      box-shadow: -3px 0 3px #0075D826;
+    }
+
+    .icon_eye {
+      display: inline-block;
+
+      width: 24px;
+      height: 15px;
+    }
+  }
+}
+
+.btn-container {
+
+  &.v-align {
+    position: absolute;
+
+    top: 50%;
+    right: 7px;
+    transform: translateY(-50%);
+
+    margin: auto;
+  }
+}
+
+.difficulty-indicators {
+  @include justify-content;
+
+  border-radius: 0 0 $password-group-border-radius $password-group-border-radius;
+  border: 1px solid #EDF8FF;
+
+  .label {
+    width: 100%;
+
+    padding: (3.5em/14) 0;
+
+    text-align: center;
+
+    font-size: (14em/16);
+    color: #2699FB;
+
+    cursor: auto;
+
+    transition: background-color .2s ease-in-out, color .2s ease-in-out;
+
+    &.active {
+      margin-top: -1px;
+      margin-bottom: -1px;
+
+      background-color: #2699FB;
+
+      color: $color-secondary;
+
+      &:first-child {
+
+        margin-left: -1px;
+      }
+
+      &:last-child {
+
+        margin-right: -1px;
+      }
+    }
+
+    &:first-child {
+
+      border-bottom-left-radius: $password-group-border-radius;
+    }
+
+    &:nth-child(2) {
+      border-width: 0 1px;
+      border-style: solid;
+      border-color: #EDF8FF;
+    }
+
+    &:last-child {
+
+      border-bottom-right-radius: $password-group-border-radius;
+    }
+  }
+}

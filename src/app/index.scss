@@ -1,0 +1,25 @@
+// font
+@import url("https://fonts.googleapis.com/css?family=Ubuntu:300,500,700&display=swap&subset=cyrillic");
+
+// dependencies
+@import "~compass-mixins/lib/compass/css3";
+@import "~breakpoint-sass/stylesheets/breakpoint";
+
+//// base
+@import "./styles/base/variables";
+@import "./styles/base/mixins";
+@import "./styles/base/global";
+//
+//// buttons
+//@import "./styles/buttons";
+//
+//// layout
+//@import "./styles/layout/icons";
+//@import "./styles/layout/typography";
+//
+//// form-control
+//@import "./styles/form-control/form-control";
+//
+//// data-list
+//@import "./styles/data-list/data-list";
+

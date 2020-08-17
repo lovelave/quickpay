@@ -1,0 +1,18 @@
+/*
+* Icons connection
+*/
+.icon {
+  display: inline-block;
+
+  background-repeat: no-repeat;
+
+  &_dropdown-arrow {
+    width: 12px;
+    height: 9px;
+  }
+
+  &_human {
+    width: 14px;
+    height: 16px;
+  }
+}
