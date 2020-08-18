@@ -1,18 +1,12 @@
 import * as React from "react";
-import { MobileLayout } from "./mobileLayout";
 import { useIsMobile } from "../../utils/use-is-mobile";
-import IconSho from "../svg/icon-sho.svg";
 import IconVisa from "../svg/icon-visa.svg";
-import IconBobra from "../svg/icon-bobra.svg";
 import IconPrivat from "../svg/icon-privat.svg";
 import IconMastercard from "../svg/icon-mastercard.svg";
-import IconFacebook from "../svg/icon-facebook.svg";
-import IconInstagram from "../svg/icon-instagram.svg";
 import IconKyivstar from "../svg/icon-kyivstar.svg";
 import IconVodafone from "../svg/icon-vodafone.svg";
-
-import "./styles.scss";
-import "./social-styles.scss";
+import {Social} from "./social";
+import {Author} from "./author";
 
 export const Footer = () => {
     const isMobile = useIsMobile();
@@ -24,7 +18,11 @@ export const Footer = () => {
     const year = new Date().getFullYear().toString();
 
     if (isMobile) {
-        return <MobileLayout />;
+        return <footer className="footer mobile">
+            <div className="footer-below">
+                <Author />
+            </div>
+        </footer>
     }
 
     return (
@@ -69,46 +67,13 @@ export const Footer = () => {
                         </div>
                         <div className="wrap">
                             <span className="sub-title">Тут скидки и подарки</span>
-                            <div className="social-list">
-                                <a
-                                    href="https://www.facebook.com/LoviLave-106735147784134/?modal=admin_todo_tour"
-                                    className="button button_facebook"
-                                    target="_blank"
-                                >
-                                    <img src={IconFacebook} alt="Facebook"/>
-                                    <span />
-                                </a>
-                                <a
-                                    href="https://www.instagram.com/lovilave.ukraine/?hl=ru"
-                                    className="button button_instagram"
-                                    target="_blank"
-                                >
-                                    <img src={IconInstagram} alt="Instagram"/>
-                                    <span />
-                                </a>
-                            </div>
+                            <Social />
                         </div>
                     </div>
                 </div>
             </div>
             <div className="footer-below">
-                <div className="container">
-                    <p>
-                        Все права защищены! ООО «ФК «КИФ», лицензия выдана НАЦКОМФИНУСЛУГ от 10.10.2019, бессрочная.
-                        Свидетельство регистрации ФК №1255. Лицензия видана на основании распоряжения НКРРФП №2014 от 10.10.2019.
-                        APR, без учета акций и скидок: 722,7%. Пример расчета стоимости кредита: сумма кредита 1000 грн,
-                        срок 30 дней, общая сумма к возврату — 1594 грн.
-                    </p>
-                    <div className="author">
-                        <a href="https://wearesho.com/" className="icon_sho" target="_blank">
-                            <img src={IconSho} alt="Sho company icon"/>
-                        </a>
-                        <span className="line"/>
-                        <a href="https://wearesho.com/bobra-cs" className="icon_bobra" target="_blank">
-                            <img src={IconBobra} alt="Bobra icon"/>
-                        </a>
-                    </div>
-                </div>
+                <Author />
             </div>
         </footer>
     )

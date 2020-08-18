@@ -1,9 +1,6 @@
 /*
 * Global styles
  */
-@import "~breakpoint-sass/stylesheets/breakpoint";
-@import './variables';
-@import './mixins';
 
 html,
 body,
@@ -92,7 +89,7 @@ body {
   }
 }
 
-bobra-site {
+bobra-quickpay {
   @include flex;
   -webkit-box-direction: normal;
   -moz-box-direction: normal;

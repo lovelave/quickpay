@@ -1,24 +1,26 @@
 import * as React from "react";
 import {Footer} from "./footer/layout";
-import {Header} from "./header";
-import {BotOverlay} from "./bot/overlay";
+import {Header} from "./header/layout";
 import {Section} from "./section";
-
-import "./styles.scss";
+import * as TurnedBot from "./bot/turned";
+import {Provider} from "./provider";
 
 export const Layout: React.FC<{}> = () => {
     return (
         <>
-            {/*<Header />*/}
-            {/*<BotOverlay/>*/}
-            {/*<main className="main">*/}
-            {/*    <Section>*/}
-            {/*        <div className="chat-stream">*/}
-            {/*            <div className="chat-list">*/}
-            {/*            </div>*/}
-            {/*        </div>*/}
-            {/*    </Section>*/}
-            {/*</main>*/}
+            <Header />
+            <div className="bot__overlay">
+                <TurnedBot.Layout/>
+            </div>
+            <main className="main">
+                <Section>
+                    <div className="chat-stream">
+                        <div className="chat-list">
+                            <Provider />
+                        </div>
+                    </div>
+                </Section>
+            </main>
             <Footer />
         </>
     );

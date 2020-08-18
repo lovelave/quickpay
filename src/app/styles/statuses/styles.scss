@@ -7,61 +7,12 @@
 
 body {
 
-  &[data-theme="dashboard-wait"] {
-    overflow: hidden;
-
-    background: linear-gradient(180deg, #38B2FF, #0073D6) no-repeat;
-
-    color: $color-secondary;
-
-    @include breakpoint($mobile) {
-      width: 100%;
-
-      position: fixed;
-    }
-
-    @include breakpoint($tablet-l) {
-      width: 100%;
-
-      position: fixed;
-    }
-
-    footer {
-
-      display: none!important;
-    }
-
-    h2 {
-
-      color: $color-secondary;
-    }
-
-    .nav-dashboard {
-
-      .nav-body {
-
-        .accordion-item {
-
-          &:first-of-type {
-
-            a {
-              pointer-events: none;
-
-              opacity: .65;
-            }
-          }
-        }
-      }
-    }
-  }
-
   &.forbidden {
 
     filter: hue-rotate(160deg);
   }
 
-  &[data-theme="chat"],
-  &[data-theme="dashboard"] {
+  &[data-theme="chat"] {
 
     .status-wrap {
 
@@ -83,40 +34,6 @@ body {
           &:after {
 
             background: radial-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0) 55%);
-          }
-        }
-      }
-    }
-  }
-
-  &[data-theme="dashboard-home"],
-  &[data-theme="internal"] {
-
-    bobra-site {
-
-      @include breakpoint($mobile) {
-
-        overflow-x: hidden;
-      }
-    }
-
-    .status-wrap {
-
-      .status {
-
-        > h2, p {
-
-          color: $color-secondary;
-        }
-
-        .animation-container {
-
-          z-index: -1;
-
-          &:after {
-
-            background: radial-gradient(hsla(0,0%,100%,.4),hsla(0,0%,100%,.1) 45%,hsla(0, 0%, 100%, 0) 70%);
-
           }
         }
       }

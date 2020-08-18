@@ -1,8 +1,3 @@
-import * as SignUp from "./sign-up";
-import * as Registration from "./registration";
-import * as Calculator from "./calculator";
-import * as Card from "./card";
-import * as Agreement from "./agreement";
 import * as Client from "../client";
 
 export type InfoMessageType = "info:load" | "info:failure" | "info:service" | "info:return";
@@ -73,13 +68,8 @@ export type MessageSource = "bot" | "user";
 export type Message = InfoMessage
     | DebugMessage
     | TextMessage
-    | Calculator.Message
-    | SignUp.Message
-    | Registration.Message
     | FailureMessage
     | DelayMessage
     | TimeoutMessage
-    | Card.Message
-    | Agreement.Message
     | RedirectMessage
     | TextMessageEditable;

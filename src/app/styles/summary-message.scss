@@ -1,0 +1,118 @@
+/*
+* Data panel styles
+ */
+
+.data-panel {
+  width: 100%;
+
+  .panel-heading {
+
+    & + .panel-body {
+
+      margin-top: (14em/16);
+    }
+
+    .overlay,
+    h4 {
+      display: inline-block;
+
+      vertical-align: middle;
+    }
+
+    .overlay {
+      width: 31px;
+      height: 31px;
+
+      position: relative;
+
+      border-radius: 50%;
+
+      background-color: rgba(38,153,251,.31);
+    }
+
+    h4 {
+      margin-left: (17em/23);
+
+      font-size: (19em/16);
+      color: rgba(38,153,251,.46);
+    }
+  }
+
+  .panel-body {
+    padding: 0 (43em/16);
+
+    @include breakpoint($mobile) {
+
+      padding: 0;
+    }
+
+    .form-group {
+
+      align-items: center;
+    }
+
+    .form-group,
+    .input-group {
+      @include flex;
+
+      width: 100%;
+
+      .btn_edit {
+        padding: 0;
+        
+        .icon {
+          position: initial;
+
+          transition: opacity .2s linear;
+
+          opacity: .58;
+        }
+      }
+    }
+
+    .total {
+      margin-top: (10em/16);
+
+      span {
+        font-weight: $bold;
+
+        &:last-child {
+          padding-left: (10em/24);
+
+          font-size: (24em/16);
+        }
+      }
+    }
+  }
+
+  .form-group {
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+
+    padding-bottom: (9em/16);
+
+    border-bottom: 1px solid rgba(97,180,252,.25);
+
+    & + .form-group {
+
+      margin-top: (9em/16);
+    }
+
+    .label {
+      display: inline-block;
+
+      min-width: 238px;
+
+      font-size: (17em/16);
+      font-weight: $bold;
+      color: $color-primary;
+    }
+
+    .value {
+      width: 100%;
+
+      font-size: (17em/16);
+    }
+  }
+}
