@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "parcel ./src/index.html ./src/index.tsx",
+    "start": "parcel ./src/index.html ./src/index.tsx",
     "build": "parcel build ./src/index.html"
   },
   "repository": {
@@ -26,32 +26,19 @@
   "homepage": "https://github.com/lovelave/quickpay#readme",
   "dependencies": {
     "@horat1us/react-hooks": "^1.11.0",
-    "@types/axios": "^0.14.0",
     "@types/classnames": "^2.2.10",
-    "@types/js-cookie": "^2.2.6",
-    "@types/lodash": "^4.14.159",
     "@types/node": "^14.0.27",
     "@types/react": "^16.9.46",
     "@types/react-dom": "^16.9.8",
-    "@types/react-router-dom": "^5.1.5",
-    "app": "^0.1.0",
-    "axios": "^0.19.2",
     "breakpoint-sass": "^2.7.1",
     "classnames": "^2.2.6",
     "compass-mixins": "^0.12.10",
-    "dayjs": "^1.8.33",
-    "js-cookie": "^2.2.1",
-    "json-schema-typed": "^7.0.3",
     "loadsh": "0.0.4",
-    "modules": "^0.4.0",
     "normalize.css": "^8.0.1",
     "parcel-bundler": "^1.12.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-router-dom": "^5.2.0",
-    "react-select": "^3.1.0",
-    "resets.css": "^1.1.0",
-    "snarkdown": "^1.2.2"
+    "resets.css": "^1.1.0"
   },
   "devDependencies": {
     "sass": "^1.26.10",

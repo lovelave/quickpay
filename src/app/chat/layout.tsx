@@ -4,8 +4,10 @@ import {Header} from "./header/layout";
 import {Section} from "./section";
 import * as TurnedBot from "./bot/turned";
 import {Provider} from "./provider";
+import {useTheme} from "../hooks/use-theme";
 
 export const Layout: React.FC<{}> = () => {
+    useTheme("chat");
     return (
         <>
             <Header />

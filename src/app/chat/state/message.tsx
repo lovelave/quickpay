@@ -16,14 +16,6 @@ export type Message<P extends MessageProps = MessageProps> =
 
 export const Message: Message = ({value}) => {
     switch (value.type) {
-        case "text":
-            const message = value as Chat.TextMessage;
-            return <Base.MarkdownMessage
-                source={message.author}
-                at={message.time}
-                content={message.markdown}
-                isDebug={("isDebug" in message) && message.isDebug}
-            />;
         case "delay":
             return <DelayMessage value={value}/>;
         case "redirect":

@@ -1,29 +1,28 @@
 import * as React from "react";
 import * as Chat from "modules/chat";
-import * as Client from "modules/client";
-import axios from "axios";
 import { LoadMessage } from "./load-message";
 
-export interface SubmitMessageProps<V = any, D = any> {
+export interface SubmitMessageProps<V = any> {
     value?: V;
-    onRequest: (api: Client.Api.Instance, value: V) => | Promise<D>;
-    onFinish: (response: Promise<D>) => Promise<Chat.Action | void> | void;
+    onRequest: (value: V, signal: AbortSignal) => | Promise<Response>;
+    onFinish: (response: Response) => Promise<Chat.Action | void> | void;
 }
 
-export const SubmitMessage = Client.withApi<SubmitMessageProps>(
-    ({ api, value, onRequest, onFinish }) => {
+export const SubmitMessage: React.FC<SubmitMessageProps> = (({ value, onRequest, onFinish }) => {
         const dispatch = Chat.useDispatchContext();
         React.useEffect(() => {
-            const cancelToken = axios.CancelToken.source();
-            onRequest(api.with({ cancelToken: cancelToken.token }), value)
+            let controller: AbortController | undefined = new AbortController();
+            onRequest(value, controller.signal)
                 .then(async (response) => {
+                    controller = undefined;
                     const action = await onFinish(response);
                     if (action === undefined) {
                         return;
                     }
                     dispatch(action);
                 });
-        }, [api, value, onRequest, onFinish]);
+            return () => controller && controller.abort();
+        }, [value, onRequest, onFinish]);
         return <LoadMessage/>;
     }
 );

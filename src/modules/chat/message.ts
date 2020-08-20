@@ -1,29 +1,3 @@
-export type InfoMessageType = "info:load" | "info:failure" | "info:service" | "info:return";
-
-export class InfoMessage {
-    constructor(public readonly type: InfoMessageType) {
-        Object.freeze(this);
-    }
-}
-
-export const LoadMessage = new InfoMessage("info:load");
-
-export class TextMessage {
-    public readonly type = "text";
-
-    constructor(
-        public readonly markdown: string | string[],
-        public readonly author: MessageSource = "bot",
-        public readonly isDebug?: boolean,
-        public readonly time: string = new Date().toISOString()
-    ) {
-    }
-}
-
-export class DebugMessage extends TextMessage {
-    public readonly isDebug = true;
-}
-
 export class FailureMessage {
     public readonly type = "info:failure";
 }
@@ -43,19 +17,8 @@ export class DelayMessage {
     }
 }
 
-export class RedirectMessage {
-    public readonly type = "redirect";
-
-    constructor(public readonly to: string) {
-    }
-}
-
 export type MessageSource = "bot" | "user";
 
-export type Message = InfoMessage
-    | DebugMessage
-    | TextMessage
-    | FailureMessage
+export type Message = FailureMessage
     | DelayMessage
-    | TimeoutMessage
-    | RedirectMessage;
+    | TimeoutMessage;

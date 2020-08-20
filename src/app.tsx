@@ -6,9 +6,7 @@ import "resets.css/resets.min.css";
 import "./index.scss";
 
 export const App = () => {
-    React.useEffect(() => {document.body.dataset["theme"] = "chat"});
-
     return (
-        <Layout />
+        <Layout/>
     )
 }

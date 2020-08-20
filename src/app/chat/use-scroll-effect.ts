@@ -2,7 +2,7 @@ import {useMutationObserver, useWindowSize} from "@horat1us/react-hooks";
 import {useIsMobile} from "../utils/use-is-mobile";
 
 export function useScrollEffect() {
-    const [width, height] = useWindowSize();
+    const [, height] = useWindowSize();
     const [ref, setRef] = useMutationObserver(() => {
         const bodyHeight = document.documentElement.scrollHeight;
         if (height === undefined) {

@@ -1,17 +1,12 @@
 import * as React from "react";
 import { Action, FlushAction } from "./action";
 import { State } from "./state";
-import * as Client from "../client";
-import * as Chat from "./index";
-import { useEndpointEffect } from "./use-endpoint-effect";
-import {useLocation} from "react-router";
 
 export type Reducer = React.Reducer<State, Action>;
 export const Reducer: Reducer = (state, action): State => {
     if (Array.isArray(action)) {
         return action.reduce(Reducer, state);
     }
-    console.log(`CHAT DISPATCH`, action, state);
     switch (action.type) {
         case "message:push":
             if (action.messages.length === 0) {
@@ -49,34 +44,13 @@ export const Reducer: Reducer = (state, action): State => {
                 ...state,
                 messages: action.messages,
             };
-        case "api:response":
-            if (("object" !== typeof action.response.data) || !('__message' in action.response.data)) {
-                return state;
-            }
-            const messages = [
-                ...state.messages,
-                ...action.response.data[ '__message' ].map((text: string) => new Chat.DebugMessage(text)),
-            ];
-            return {
-                ...state,
-                messages,
-            };
     }
     return state;
 };
 
-export type ClientStatus = Client.Api.UserStatus | "login" | false | null | undefined;
 
-export function useReducer(status: ClientStatus, api: Client.Api.Instance): [State, Dispatch] {
+export function useReducer(): [State, Dispatch] {
     const [state, dispatch] = React.useReducer<Reducer>(Reducer, new State([]));
-    const location = useLocation();
-    console.log(location.state);
-
-    useEndpointEffect(api.endpoint, dispatch);
-
-    React.useEffect(() => {
-        dispatch(new FlushAction(State.getInitialMessages(status, location.state)));
-    }, [status, dispatch, location.state,]);
 
     return [state, dispatch];
 }

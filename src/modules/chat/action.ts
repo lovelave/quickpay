@@ -46,18 +46,10 @@ export class FlushAction {
     }
 }
 
-export class ApiResponseAction {
-    public readonly type = "api:response";
-
-    constructor(public readonly response: AxiosResponse) {
-    }
-}
-
 export type Action = PushAction
     | ValidationErrorAction
     | RemoveAction
     | DeleteAction
     | ReplaceAction
     | FlushAction
-    | ApiResponseAction
     | Array<Action>;
