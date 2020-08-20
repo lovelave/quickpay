@@ -1,8 +1,8 @@
 node_modules/
 build/
 .idea/
-.cache
-dist
+.cache/
+dist/
 .DS_Store
 deploy.json
 commit.json

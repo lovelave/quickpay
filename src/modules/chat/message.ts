@@ -1,5 +1,3 @@
-import * as Client from "../client";
-
 export type InfoMessageType = "info:load" | "info:failure" | "info:service" | "info:return";
 
 export class InfoMessage {
@@ -18,17 +16,6 @@ export class TextMessage {
         public readonly author: MessageSource = "bot",
         public readonly isDebug?: boolean,
         public readonly time: string = new Date().toISOString()
-    ) {
-    }
-}
-
-export class TextMessageEditable<S extends Client.Api.DataAttributeRecord<any> = Client.Api.DataAttributeRecord<any>> {
-    public readonly type = "editable";
-
-    constructor(
-        public readonly record: S,
-        public readonly time: string = new Date().toISOString(),
-        public readonly hasError?: boolean
     ) {
     }
 }
@@ -71,5 +58,4 @@ export type Message = InfoMessage
     | FailureMessage
     | DelayMessage
     | TimeoutMessage
-    | RedirectMessage
-    | TextMessageEditable;
+    | RedirectMessage;
