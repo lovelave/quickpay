@@ -1,6 +1,6 @@
 import * as React from "react";
-import IconSho from "../svg/icon-sho.svg";
-import IconBobra from "../svg/icon-bobra.svg";
+const IconSho = require("../svg/icon-sho.svg");
+const IconBobra = require("../svg/icon-bobra.svg");
 import {useIsMobile} from "../../utils/use-is-mobile";
 
 export const Author = () => {

@@ -5,66 +5,37 @@
 $message-appear-time: .4s;
 
 body {
+  background-color: $home-chat-bg-color;
 
-  &[data-theme="chat"] {
-    background-color: $home-chat-bg-color;
+  @include breakpoint($mobile) {
+
+    height: 100%;
+  }
+
+  &:not(.show-footer) {
+
+    bobra-quickpay {
+
+      @include breakpoint($mobile) {
+
+        min-height: 100%;
+      }
+    }
+  }
+
+  bobra-quickpay {
 
     @include breakpoint($mobile) {
 
       height: 100%;
     }
-
-    &:not(.show-footer) {
-
-      bobra-quickpay {
-
-        @include breakpoint($mobile) {
-
-          min-height: 100%;
-        }
-      }
-    }
-
-    bobra-quickpay {
-
-      @include breakpoint($mobile) {
-
-        height: 100%;
-      }
-    }
-
-    .main {
-
-      @include breakpoint($mobile) {
-
-        min-height: auto;
-      }
-    }
   }
 
-  &.show-footer {
+  .main {
 
     @include breakpoint($mobile) {
 
-      position: fixed;
-    }
-
-    @include breakpoint($tablet-l) {
-
-      position: fixed;
-    }
-
-    bobra-quickpay {
-
-      @include breakpoint($mobile) {
-
-        overflow-y: auto;
-      }
-
-      @include breakpoint($tablet-l) {
-
-        overflow-y: auto;
-      }
+      min-height: auto;
     }
   }
 }
@@ -188,14 +159,6 @@ div:focus {
 
   .form-group {
 
-    &.sms {
-
-      .form__control {
-
-        padding-left: (66em/24);
-      }
-    }
-
     .btn-container {
 
       &.v-align {
@@ -247,129 +210,6 @@ div:focus {
     vertical-align: middle;
   }
 
-  .btn_location {
-
-    &:hover {
-
-      .icon {
-
-        path {
-
-          fill: #0DA4FF;
-        }
-      }
-
-      .tooltip {
-        cursor: pointer;
-
-        transform: translate3d(-50%, -18%, 0);
-
-        opacity: 1;
-      }
-    }
-
-    .tooltip {
-      display: block;
-
-      left: 50%;
-
-      bottom: 100%;
-      padding: 10px;
-
-      box-shadow: 0 6px 30px -12px rgba(137, 191, 241, .93);
-
-      position: absolute;
-
-      border-radius: 8px;
-
-      transition: transform 200ms ease;
-      transform: translate3d(-50%, 0%, 0);
-      transform-origin: 0 10px;
-
-      background-color: #fff;
-      color: rgba(28, 83, 119, 0.9);
-
-      font-size: (14em/16);
-      font-weight: normal;
-      text-align: left;
-
-      opacity: 0;
-
-      pointer-events: none;
-
-      @include breakpoint($mobile) {
-
-        display: none;
-      }
-
-      @include breakpoint($tablet-laptop-sm) {
-
-        display: none;
-      }
-
-      &:before {
-        content: ' ';
-
-        display: block;
-
-        left: 50%;
-        bottom: -20px;
-
-        width: 0;
-        height: 0;
-
-        margin-left: -10px;
-
-        position: absolute;
-
-        border-color: transparent;
-        border-top-color: #fff;
-        border-style: solid;
-        border-width: 10px;
-      }
-
-      &:after {
-        content: ' ';
-
-        display: block;
-
-        position: absolute;
-
-        bottom: -20px;
-        left: 0;
-
-        width: 100%;
-        height: 20px;
-      }
-    }
-
-    .icon {
-      position: absolute;
-
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      margin: auto;
-
-      &_location {
-        width: 33px;
-        height: 39px;
-
-        @include breakpoint($mobile) {
-          width: 28px;
-          height: 33px;
-        }
-
-        path {
-          fill: #0E8FFF;
-
-          transition: fill .2s ease;
-        }
-      }
-    }
-  }
-
   .icon_lock {
     width: 20px;
     height: 24px;
@@ -393,20 +233,6 @@ div:focus {
     }
   }
 
-  .id-card {
-    width: 402px;
-    height: 252px;
-
-    border-radius: 18px;
-
-    box-shadow: 0 5px 18px #1478CE53;
-
-    @include breakpoint($mobile) {
-
-      height: auto;
-    }
-  }
-
   .btn_outline {
     border-color: $color-primary;
 
@@ -419,6 +245,8 @@ div:focus {
   }
 }
 .message {
+  display: table;
+
   width: 100%;
 
   position: relative;
@@ -460,22 +288,9 @@ div:focus {
     }
   }
 
-  &:not(.calc-message) {
-
-    display: table;
-  }
-
   & + .message,
   & + form {
     margin-top: (30em/16);
-
-    &.calculator-menu {
-
-      @include breakpoint($mobile) {
-
-        margin-top: (20em/16);
-      }
-    }
   }
 
   &.calc-message {
@@ -486,55 +301,6 @@ div:focus {
       @include breakpoint($mobile-l) {
 
         max-width: 592px;
-      }
-    }
-  }
-
-  &.calculator-menu {
-    animation: contentAppear 1s ease-in-out forwards;
-
-    @include breakpoint($mobile-p) {
-
-      width: 100%;
-    }
-
-    .btn-container {
-
-      @include breakpoint($mobile) {
-
-        width: 100%;
-      }
-    }
-
-    .btn {
-
-      &:not(:last-child) {
-        margin-left: (15em/20);
-
-        @include breakpoint($mobile-p) {
-
-          margin-left: 0;
-        }
-      }
-
-      &.calculator-submit {
-        padding: (16em/21) (30em/21) (15em/21);
-
-        float: right;
-
-        font-size: (21em/16);
-
-        @include breakpoint($mobile-p) {
-          width: 100%;
-
-          margin-bottom: (15em/23);
-
-          padding: (15em/23) (30em/23);
-
-          float: initial;
-
-          font-size: (23em/16);
-        }
       }
     }
   }
@@ -1704,14 +1470,6 @@ div:focus {
         @include breakpoint($mobile) {
 
           padding: (14em/18) (25em/18);
-        }
-      }
-
-      &_location {
-
-        @include breakpoint($mobile) {
-          width: 48px;
-          height: 48px;
         }
       }
     }

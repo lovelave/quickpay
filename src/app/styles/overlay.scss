@@ -2,34 +2,6 @@
 * Chat bot styles
  */
 
-body {
-
-  &[data-theme="chat"],
-  &[data-theme="dashboard"] {
-
-    .bot__overlay {
-
-      &:after {
-
-        background: radial-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0) 55%);
-      }
-    }
-  }
-
-  &[data-theme="dashboard-home"] {
-
-    .bot__overlay {
-
-      &:after {
-        width: 700px;
-        height: 700px;
-
-        background: radial-gradient(#ffffff1c,hsla(0,0%,100%,.1) 45%,hsla(0,0%,100%,0) 70%);
-      }
-    }
-  }
-}
-
 .bot__overlay {
   width: 100%;
   max-width: 750px;
@@ -63,6 +35,8 @@ body {
     border-radius: 50%;
 
     pointer-events: none;
+
+    background: radial-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0) 55%);
 
     z-index: -1;
 

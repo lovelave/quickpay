@@ -1,5 +1,4 @@
 import { Message } from "./message";
-import { AxiosResponse } from "axios";
 
 export class PushAction {
     public readonly type = "message:push";

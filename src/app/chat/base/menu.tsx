@@ -1,7 +1,6 @@
 import * as React from "react";
 
 import classNames from "classnames";
-import { Markdown } from "./markdown";
 import { ButtonMessage } from "./button-message";
 
 export interface Item<O> {
@@ -26,15 +25,18 @@ const getClassNameByType = (type: ButtonProps["type"]): string => {
 export const Button: React.FC<ButtonProps> = (
     { content, type, onClick, option }
 ) => {
-    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-        onClick(option, content,)
+
+    const handleClick = () => {
+        onClick(option, content)
     };
+
     return (
         <button type="button" className={classNames("btn", getClassNameByType(type))} onClick={handleClick}>
-            <Markdown content={content}/>
+            {content}
         </button>
     );
 };
+
 Button.displayName = "Chat.Menu.Button";
 
 export interface MessageProps<O = any> {

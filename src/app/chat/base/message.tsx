@@ -1,5 +1,5 @@
 import * as React from "react";
-import * as Chat from "modules/chat";
+import * as Chat from "app/chat/reducer";
 import classNames from "classnames";
 import { ClassValue } from "classnames/types";
 import { Time } from "./time";

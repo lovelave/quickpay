@@ -1,10 +1,10 @@
 import * as React from "react";
 import { useIsMobile } from "../../utils/use-is-mobile";
-import IconVisa from "../svg/icon-visa.svg";
-import IconPrivat from "../svg/icon-privat.svg";
-import IconMastercard from "../svg/icon-mastercard.svg";
-import IconKyivstar from "../svg/icon-kyivstar.svg";
-import IconVodafone from "../svg/icon-vodafone.svg";
+const IconVisa = require("../svg/icon-visa.svg");
+const IconPrivat = require("../svg/icon-privat.svg");
+const IconMastercard = require("../svg/icon-mastercard.svg");
+const IconKyivstar = require("../svg/icon-kyivstar.svg");
+const IconVodafone = require("../svg/icon-vodafone.svg");
 import {Social} from "./social";
 import {Author} from "./author";
 
@@ -20,7 +20,7 @@ export const Footer = () => {
     if (isMobile) {
         return <footer className="footer mobile">
             <div className="footer-below">
-                <Author />
+                {/*<Author />*/}
             </div>
         </footer>
     }

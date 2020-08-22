@@ -1,5 +1,5 @@
 import * as React from "react";
-import * as Chat from "modules/chat";
+import * as Chat from "app/chat/reducer";
 import * as Client from "modules/client";
 import { LabelMessage } from "./label-message";
 import { ControlMessage } from "./control-message";

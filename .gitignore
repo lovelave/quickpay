@@ -2,6 +2,7 @@ node_modules/
 build/
 .idea/
 .cache/
+.cache
 dist/
 .DS_Store
 deploy.json

@@ -100,17 +100,6 @@ button {
     }
   }
 
-  &_cropped {
-    border-radius: 26px 0 0 26px;
-
-    &.btn_blue,
-    &.btn_white {
-      border: none;
-
-      box-shadow: -5px 0 3px #0075D826;
-    }
-  }
-
   &_white {
     border-bottom: 1px solid #bad9f5e0;
 
@@ -179,37 +168,6 @@ button {
       border-top: 2px solid #53b5ff;
 
       transition: border .4s linear;
-    }
-  }
-
-  &_view {
-    width: 21px;
-    height: 13px;
-
-    padding: 0;
-  }
-
-  &_location {
-    width: 66px;
-    height: 66px;
-
-    position: relative;
-
-    vertical-align: middle;
-
-    background-color: #fff;
-
-    border-bottom: 1px solid #c4dff7;
-    border-radius: 50%;
-
-    box-shadow: 0 9px 24px -8px rgba(137,191,241,.8);
-
-    transition: background-color .2s ease-out, box-shadow .2s ease-out;
-
-    &:hover {
-      border-color: transparent transparent #add3f5;
-
-      box-shadow: 0 8px 30px -13px #89bff1;
     }
   }
 

@@ -4,70 +4,21 @@
 
 body {
 
-  &.overdue {
+  .menu-hamburger {
 
-    .menu-hamburger {
-      background: #F083A5;
+    @include breakpoint($mobile) {
+      border-color: transparent;
 
-      box-shadow: 0 3px 10px #BE5F84;
+      background: transparent;
 
-      @include breakpoint($mobile) {
-        background: none;
-
-        box-shadow: none;
-      }
-
-      &.active {
-
-        margin-left: 0;
-      }
+      box-shadow: none;
     }
 
-    .hamburger {
+    &.active {
 
       .line {
 
         stroke: $color-secondary;
-      }
-    }
-  }
-
-  &.repayment-close {
-
-    .menu-hamburger {
-      background: #F083A5;
-
-      box-shadow: 0 3px 10px #BE5F84;
-
-      @include breakpoint($mobile) {
-        background: none;
-
-        box-shadow: none;
-      }
-    }
-  }
-}
-
-body {
-
-  &[data-theme="chat"] {
-
-    .menu-hamburger {
-
-      @include breakpoint($mobile) {
-        border-color: transparent;
-
-        background: transparent;
-
-        box-shadow: none;
-      }
-
-      &.active {
-
-        .line {
-
-          stroke: $color-secondary;
-        }
       }
     }
   }

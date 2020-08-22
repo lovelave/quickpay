@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Action, FlushAction } from "./action";
+import { Action } from "./action";
 import { State } from "./state";
 
 export type Reducer = React.Reducer<State, Action>;

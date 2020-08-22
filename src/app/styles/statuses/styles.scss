@@ -1,9 +1,6 @@
 /*
 * Statuses styles
  */
-@import "~breakpoint-sass/stylesheets/breakpoint";
-@import "../base/variables";
-@import "../base/mixins";
 
 body {
 
@@ -12,29 +9,26 @@ body {
     filter: hue-rotate(160deg);
   }
 
-  &[data-theme="chat"] {
+  .status-wrap {
 
-    .status-wrap {
+    .status {
 
-      .status {
+      > h2 {
 
-        > h2 {
+        color: #1D5A8E;
+      }
 
-          color: #1D5A8E;
-        }
+      > p {
 
-        > p {
+        color: #5D8AB1;
+      }
 
-          color: #5D8AB1;
-        }
+      .animation-container {
+        z-index: -1;
 
-        .animation-container {
-          z-index: -1;
+        &:after {
 
-          &:after {
-
-            background: radial-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0) 55%);
-          }
+          background: radial-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0) 55%);
         }
       }
     }
@@ -394,21 +388,6 @@ body {
 
         background-size: contain;
         background-repeat: no-repeat;
-      }
-
-      &_tools {
-
-        &:before {
-          background-image: url("tools.png");
-        }
-
-      }
-
-      &_sad {
-
-        &:before {
-          background-image: url("sad.png");
-        }
       }
     }
 
