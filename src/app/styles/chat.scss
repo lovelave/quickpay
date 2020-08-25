@@ -653,17 +653,24 @@ div:focus {
           background: linear-gradient(90deg, #DAEBF8, #EFF8FF);
         }
 
-        //.line {
-        //  width: 100%;
-        //  height: 1px;
-        //
-        //  position: absolute;
-        //
-        //  top: 0;
-        //  left: 0;
-        //
-        //  background-image: url("../chat/svg/dashed-line.svg");
-        //}
+        .line {
+          width: 100%;
+          height: 1px;
+
+          position: absolute;
+
+          top: 0;
+          left: 0;
+        }
+
+        .solid {
+          font-weight: $bold;
+          font-size: (17em/16);
+
+          .increased {
+            font-size: (22em/17);
+          }
+        }
 
         .half {
           @include flex;

@@ -34,11 +34,12 @@ export const IntroRequestMessage: React.FC<{}> = () => {
                         id="sign-phone"
                         className="form__control"
                         type="tel"
+                        placeholder="+38 (0"
                         autoFocus
                     />
                     <div className="btn-container v-align">
                         <button
-                            id={"sign-phone-submit"}
+                            id="sign-phone-submit"
                             type="submit"
                             className={classNames("btn btn_action", isSubmitEnable ? "enabled" : "disabled")}
                         >

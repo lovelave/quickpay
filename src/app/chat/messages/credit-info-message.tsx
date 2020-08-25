@@ -1,6 +1,10 @@
 import * as React from "react";
 import * as Chat from "../reducer";
 import dayjs from "dayjs";
+import {plural} from "../../utils/plural";
+import {Time} from "../base/time";
+
+const dashedLine = require("../svg/dashed-line.svg");
 
 export interface Item {
     value: string
@@ -23,26 +27,29 @@ export const Item: React.FC<Item> = (
 export const CreditInfoMessage: React.FC<{value: Chat.CreditInfoMessage}> = ({value: {debt}}) => {
     const dayNames = ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"];
 
+    const formatDateReturn = dayjs(debt.dateReturn).format("DD.MM.YYYY ") +
+        " " + dayNames[new Date(debt.dateReturn).getDay()];
+
     const items: Item[] = (debt.overdue ?? 0) > 0
         ? [
             {
                 label: "Конец срока",
-                value: dayjs(debt.dateReturn).format("DD.MM.YYYY ") + " " + dayNames[new Date(debt.dateReturn).getDay()],
+                value: formatDateReturn,
             },
             {
                 label: "Просрочка",
-                value: (debt.overdue ?? 0).toString(),
-            }
+                value: plural((debt.overdue ?? 0), "days"),
+            },
         ]
         : [
             {
-                label: "",
-                value: "",
+                label: "Оплатить до",
+                value: formatDateReturn,
             },
             {
-                label: "",
-                value: "",
-            }
+                label: "Осталось",
+                value: plural(dayjs(debt.dateReturn).diff(new Date, "day"), "days"),
+            },
         ];
 
     return (
@@ -59,14 +66,17 @@ export const CreditInfoMessage: React.FC<{value: Chat.CreditInfoMessage}> = ({va
                             </div>
                         </div>
                         <div className="panel-footer">
-                            <span className="line"/>
-                            <div className="solid">
-                                <p>Итого к возврату на сегодня: <span className="increased">{debt.debt?.total ?? 0}</span> грн</p>
-                            </div>
+                            <img src={dashedLine} className="line" alt="line" />
+                            <p className="solid">
+                                Итого к возврату на сегодня:&nbsp;
+                                <span className="increased">{debt.debt?.total ?? 0}</span>
+                                &nbsp;грн
+                            </p>
                         </div>
                     </form>
                 </div>
             </div>
+            <Time value={new Date().toISOString()} />
         </div>
     )
 }

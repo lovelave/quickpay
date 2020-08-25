@@ -18,9 +18,9 @@ export class TextMessage {
     public readonly type? = "text";
 
     constructor(
-        public readonly content: string | string[],
+        public content: string | string[],
         public readonly author: MessageSource = "bot",
-        public readonly time: string = new Date().toISOString()
+        public readonly time: string | null = new Date().toISOString(),
     ) {
     }
 }
@@ -48,6 +48,39 @@ export class CreditInfoMessage {
     }
 }
 
+export class PaymentSumMessage {
+    public readonly type = "pay-sum";
+
+    constructor(public readonly sum: number, public readonly agreement: string) {
+    }
+}
+
+export class PaymentRequestMessage {
+    public readonly type = "pay-request";
+
+    constructor(public readonly agreement: string) {
+    }
+}
+
+export class HomeLinkMessage {
+    public readonly type = "home-link";
+}
+
+export class LoadIframeMessage {
+    public readonly type = "load-iframe";
+}
+
+export class IframeMessage {
+    public readonly type = "iframe";
+
+    public constructor(
+        public readonly action: string,
+        public readonly data: Array<[ string, string ]>
+    ) {
+    }
+
+}
+
 export class DelayMessage {
     public readonly type = "delay";
 
@@ -63,3 +96,9 @@ export type Message = FailureMessage
     | IntroMessage
     | VerifyPhoneMessage
     | IntroRequestMessage
+    | CreditInfoMessage
+    | PaymentSumMessage
+    | PaymentRequestMessage
+    | HomeLinkMessage
+    | LoadIframeMessage
+    | IframeMessage

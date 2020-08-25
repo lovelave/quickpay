@@ -1,14 +1,14 @@
 import {useMutationObserver, useWindowSize} from "@horat1us/react-hooks";
-import {useIsMobile} from "../utils/use-is-mobile";
+import {isMobile} from "../utils/use-is-mobile";
 
 export function useScrollEffect() {
-    const [, height] = useWindowSize();
+    const [width, height] = useWindowSize();
     const [ref, setRef] = useMutationObserver(() => {
         const bodyHeight = document.documentElement.scrollHeight;
         if (height === undefined) {
             return;
         }
-        if (useIsMobile()) {
+        if (isMobile(width)) {
             let handleId: ReturnType<typeof setTimeout> | undefined = setTimeout(() => {
                 handleId = undefined;
                 window.scrollTo({

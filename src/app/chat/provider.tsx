@@ -9,7 +9,7 @@ export const Provider: React.FC<{}> = () => {
     return (
         <DispatchContext.Provider value={dispatch}>
             {state.messages.map((value, key) => (
-                <State.Message value={value} key={value.type + key} i={key}/>
+                <State.Message value={value} key={value.type! + key} i={key}/>
             ))}
         </DispatchContext.Provider>
     );
