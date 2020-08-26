@@ -24,31 +24,35 @@ export const Item: React.FC<Item> = (
     );
 };
 
-export const CreditInfoMessage: React.FC<{value: Chat.CreditInfoMessage}> = ({value: {debt}}) => {
+export const CreditInfoMessage: React.FC<{value: Chat.CreditInfoMessage}> = ({value: {user, overdue}}) => {
     const dayNames = ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"];
 
-    const formatDateReturn = dayjs(debt.dateReturn).format("DD.MM.YYYY ") +
-        " " + dayNames[new Date(debt.dateReturn).getDay()];
+    const returnDate = dayjs(user.returnDate);
 
-    const items: Item[] = (debt.overdue ?? 0) > 0
+    const formatReturnDate = returnDate.format("DD.MM.YYYY") +
+        " " + dayNames[+returnDate.format("d")];
+
+    const items: Item[] = overdue > 0
         ? [
             {
                 label: "Конец срока",
-                value: formatDateReturn,
+                value: formatReturnDate,
             },
             {
                 label: "Просрочка",
-                value: plural((debt.overdue ?? 0), "days"),
+                value: plural(overdue, "days"),
             },
         ]
         : [
             {
                 label: "Оплатить до",
-                value: formatDateReturn,
+                value: formatReturnDate,
             },
             {
                 label: "Осталось",
-                value: plural(dayjs(debt.dateReturn).diff(new Date, "day"), "days"),
+                value: overdue === 0
+                    ? "Сегодня последний день!"
+                    : plural(returnDate.diff(new Date().setHours(0,0,0,0), "day"), "days"),
             },
         ];
 
@@ -69,7 +73,7 @@ export const CreditInfoMessage: React.FC<{value: Chat.CreditInfoMessage}> = ({va
                             <img src={dashedLine} className="line" alt="line" />
                             <p className="solid">
                                 Итого к возврату на сегодня:&nbsp;
-                                <span className="increased">{debt.debt?.total ?? 0}</span>
+                                <span className="increased">{user.debt}</span>
                                 &nbsp;грн
                             </p>
                         </div>

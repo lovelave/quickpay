@@ -1,4 +1,4 @@
-import {Request} from "../state/debt-interface";
+import {UserData} from "../state/debt-interface";
 
 export class FailureMessage {
     public readonly type = "info:failure";
@@ -21,8 +21,7 @@ export class TextMessage {
         public content: string | string[],
         public readonly author: MessageSource = "bot",
         public readonly time: string | null = new Date().toISOString(),
-    ) {
-    }
+    ) {}
 }
 
 export class IntroMessage {
@@ -44,22 +43,25 @@ export class VerifyPhoneMessage {
 export class CreditInfoMessage {
     public readonly type = "debt-info";
 
-    constructor(public readonly debt: Request) {
-    }
+    constructor(
+        public readonly user: UserData,
+        public readonly overdue: number,
+    ) {}
 }
 
 export class PaymentSumMessage {
     public readonly type = "pay-sum";
 
-    constructor(public readonly sum: number, public readonly agreement: string) {
-    }
+    constructor(
+        public readonly sum: number,
+        public readonly agreement: string
+    ) {}
 }
 
 export class PaymentRequestMessage {
     public readonly type = "pay-request";
 
-    constructor(public readonly agreement: string) {
-    }
+    constructor(public readonly agreement: string) {}
 }
 
 export class HomeLinkMessage {
@@ -68,6 +70,11 @@ export class HomeLinkMessage {
 
 export class LoadIframeMessage {
     public readonly type = "load-iframe";
+
+    constructor(
+        public readonly phone: string,
+        public readonly amount: number,
+    ) {}
 }
 
 export class IframeMessage {
@@ -76,16 +83,26 @@ export class IframeMessage {
     public constructor(
         public readonly action: string,
         public readonly data: Array<[ string, string ]>
-    ) {
-    }
+    ) {}
+}
 
+export class LoadResultMessage {
+    public readonly type = "load-result";
+}
+
+export class ResultPhoneMessage {
+    public readonly type = "result-phone";
+
+    constructor(public readonly overdue: number) {}
 }
 
 export class DelayMessage {
     public readonly type = "delay";
 
-    constructor(public readonly children: Array<Message>, public readonly timeout: number = 500) {
-    }
+    constructor(
+        public readonly children: Array<Message>,
+        public readonly timeout: number = 500
+    ) {}
 }
 
 export type MessageSource = "bot" | "user";
@@ -102,3 +119,5 @@ export type Message = FailureMessage
     | HomeLinkMessage
     | LoadIframeMessage
     | IframeMessage
+    | LoadResultMessage
+    | ResultPhoneMessage

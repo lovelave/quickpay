@@ -12,17 +12,6 @@ body {
     height: 100%;
   }
 
-  &:not(.show-footer) {
-
-    bobra-quickpay {
-
-      @include breakpoint($mobile) {
-
-        min-height: 100%;
-      }
-    }
-  }
-
   bobra-quickpay {
 
     @include breakpoint($mobile) {
@@ -244,6 +233,7 @@ div:focus {
     color: #3186C3;
   }
 }
+
 .message {
   display: table;
 
@@ -291,18 +281,6 @@ div:focus {
   & + .message,
   & + form {
     margin-top: (30em/16);
-  }
-
-  &.calc-message {
-    animation: contentAppear 1s ease-in-out forwards;
-
-    &.full-sized {
-
-      @include breakpoint($mobile-l) {
-
-        max-width: 592px;
-      }
-    }
   }
 
   .btn_white {
@@ -664,6 +642,8 @@ div:focus {
         }
 
         .solid {
+          display: inline-block;
+
           font-weight: $bold;
           font-size: (17em/16);
 
@@ -861,44 +841,41 @@ div:focus {
     }
   }
 
-  &:not(.calc-message) {
+  .social-list {
+    margin-top: 0;
 
-    .social-list {
-      margin-top: 0;
+    a {
+      width: 55px;
+      height: 55px;
 
-      a {
-        width: 55px;
-        height: 55px;
+      position: relative;
 
-        position: relative;
+      border-radius: 50%;
+      border-bottom: 1px solid #c4dff7;
 
-        border-radius: 50%;
-        border-bottom: 1px solid #c4dff7;
+      background-color: #fff;
 
-        background-color: #fff;
+      box-shadow: 0 3px 8px rgba(137, 191, 255, .43);
 
-        box-shadow: 0 3px 8px rgba(137, 191, 255, .43);
+      & + a {
 
-        & + a {
+        margin-left: (15em/16);
+      }
+    }
 
-          margin-left: (15em/16);
+    .icon {
+
+      &:hover {
+
+        .icon-fill {
+
+          fill: #2C7DC3;
         }
       }
 
-      .icon {
+      &-fill {
 
-        &:hover {
-
-          .icon-fill {
-
-            fill: #2C7DC3;
-          }
-        }
-
-        &-fill {
-
-          fill: $color-primary;
-        }
+        fill: $color-primary;
       }
     }
   }
@@ -920,14 +897,6 @@ div:focus {
     max-width: 90%;
   }
 
-  &.message.calc-message {
-
-    @include breakpoint($mobile) {
-      width: 100%;
-      max-width: none;
-    }
-  }
-
   & + .bot-message,
   & + form .bot-message {
 
@@ -944,59 +913,6 @@ div:focus {
   &:not(.has-time) + form .bot-message {
 
     margin-top: (9em/16);
-  }
-
-  &.pdf {
-    max-width: 550px;
-
-    .wrap {
-      padding: 0;
-
-      .info {
-        padding: (30em/16) (24em/16);
-
-        @include breakpoint($mobile) {
-
-          padding: (25em/16) (15em/16) (20em/16) (20em/16);
-        }
-      }
-
-      & + .wrap {
-
-        &:after {
-
-          border-radius: 18px;
-        }
-      }
-    }
-
-    h4 {
-      margin-bottom: (25em/24);
-
-      font-size: (24em/16);
-      font-weight: $bold;
-
-      @include breakpoint($mobile) {
-
-        font-size: (21em/16);
-      }
-    }
-
-    p:not(:last-child) {
-      margin-bottom: (33em/24);
-
-      line-height: (23em/17);
-
-      @include breakpoint($mobile) {
-
-        line-height: (23em/16);
-      }
-    }
-
-    .btn_pdf {
-
-      text-decoration: none;
-    }
   }
 
   &.resend {

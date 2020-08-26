@@ -18,10 +18,13 @@ export const IntroRequestMessage: React.FC<{}> = () => {
         if (!isSubmitEnable) {
             return false;
         }
-        dispatch(new Chat.ReplaceAction([
-            new Chat.TextMessage(value, "user"),
-            new Chat.VerifyPhoneMessage(rawValue),
-        ]));
+        dispatch([
+            new Chat.PhoneAction(rawValue),
+            new Chat.ReplaceAction([
+                new Chat.TextMessage(value, "user"),
+                new Chat.VerifyPhoneMessage(rawValue),
+            ]),
+        ]);
     };
 
     return (

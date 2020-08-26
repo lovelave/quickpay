@@ -6,14 +6,13 @@ export const PaymentRequestMessage: React.FC<{value: Chat.PaymentRequestMessage}
     const dispatch = Chat.useDispatchContext();
 
     const cardHandler = () => {
-        dispatch(new Chat.ReplaceAction([
-            new Chat.TextMessage("Картой", "user"),
-            new Chat.TextMessage([
-                "Введите любую активную карту с балансом не менее указанного.",
-                "В случае вопросов, замените карту либо свяжитесь с вашим банком или сервисом Platon: 0(800)750-504"
+        dispatch([
+            new Chat.ReplaceAction([
+                new Chat.TextMessage("Картой", "user"),
+                new Chat.TextMessage("Введите любую активную карту с балансом не менее указанного."),
             ]),
-            new Chat.LoadIframeMessage(),
-        ]));
+            new Chat.PlatonAction(),
+        ]);
     }
 
     const receiptHandler = () => {

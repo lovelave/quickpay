@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <title>Bobra IFrame</title>
+    <style type="text/css">
+        body {
+            background: none transparent;
+        }
+    </style>
+</head>
+<body>
+<h1>Переадресація...</h1>
+<script>
+    (function (w) {
+        const isFailure = window.location.search.indexOf("?fail") === 0;
+        const eventName = isFailure ? "iframe.failure" : "iframe.complete";
+        const event = new Event(eventName, {
+            cancelable: true,
+        });
+        if (w.dispatchEvent(event)) {
+            setTimeout(function () {
+                w.location.href = "/";
+            }, 100);
+        }
+    })(window.parent || window);
+</script>
+</body>
+</html>

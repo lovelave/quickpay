@@ -3,6 +3,7 @@ import {useIsMobile} from "../../../utils/use-is-mobile";
 
 export type IframePaymentProps = Omit<IframePaymentFormProps, "target"> & {
     onComplete: (e: Event) => void;
+    onError?: (e: Event) => void;
 }
 
 type IframePaymentFormProps = Omit<React.HTMLProps<HTMLFormElement>, "data"> & {
@@ -34,25 +35,32 @@ const IframePaymentForm: React.FC<IframePaymentFormProps> = ({data, ...props}) =
 const iframeName = "chat-card-platon";
 
 export const IframePayment: React.FC<IframePaymentProps> =
-    ({onComplete, children, ...props}) => {
+    ({onComplete, onError, children, ...props}) => {
 
         React.useEffect(() => {
             window.addEventListener("iframe.complete", onComplete);
             return () => window.removeEventListener("iframe.complete", onComplete);
         }, [onComplete]);
 
-        if (useIsMobile()) {
-            return <IframePaymentForm {...props} target="_blank">
-                {children}
-            </IframePaymentForm>
-        }
+        React.useEffect(() => {
+            if (!onError) {
+                return;
+            }
+
+            window.addEventListener("iframe.failure", onError);
+            return () => window.removeEventListener("iframe.failure", onError);
+        }, [onError]);
+
+        // if (useIsMobile()) {
+        //     return <IframePaymentForm {...props} target="_blank">
+        //         {children}
+        //     </IframePaymentForm>
+        // }
 
         return (
-            <>
-                <IframePaymentForm {...props} target={iframeName}>
-                    <iframe id={iframeName} name={iframeName}/>
-                    {children}
-                </IframePaymentForm>
-            </>
+            <IframePaymentForm {...props} target={iframeName}>
+                <iframe id={iframeName} name={iframeName}/>
+                {children}
+            </IframePaymentForm>
         );
     };

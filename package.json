@@ -47,5 +47,8 @@
     "resets.css": "^1.1.0",
     "sass": "^1.26.10",
     "typescript": "^3.9.7"
-  }
+  },
+  "browserslist": [
+    "> 0.5% in UA"
+  ]
 }

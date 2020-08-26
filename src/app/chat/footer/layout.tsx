@@ -20,7 +20,7 @@ export const Footer = () => {
     if (isMobile) {
         return <footer className="footer mobile">
             <div className="footer-below">
-                {/*<Author />*/}
+                <Author />
             </div>
         </footer>
     }

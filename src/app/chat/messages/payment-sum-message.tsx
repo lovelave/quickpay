@@ -2,7 +2,7 @@ import * as React from "react";
 import * as Base from "../base";
 import * as Chat from "../reducer";
 import classNames from "classnames";
-import {ReplaceAction, useDispatchContext} from "../reducer";
+import {AmountAction, ReplaceAction, useDispatchContext} from "../reducer";
 
 const IconAirplane = require("../svg/icon-airplane.svg");
 
@@ -31,7 +31,8 @@ export const PaymentSumMessage: React.FC<{value: Chat.PaymentSumMessage}> = ({va
 
         localStorage.setItem("ll.pay", JSON.stringify(value.replace(/,/, ".")));
 
-        dispatch(
+        dispatch([
+            new AmountAction(+value),
             new ReplaceAction(
             [
                 new Chat.TextMessage(value + " грн", "user"),
@@ -41,7 +42,7 @@ export const PaymentSumMessage: React.FC<{value: Chat.PaymentSumMessage}> = ({va
                 ]),
                 new Chat.PaymentRequestMessage(agreement),
             ]),
-        );
+        ]);
     };
 
     return (

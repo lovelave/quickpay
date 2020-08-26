@@ -7,6 +7,22 @@ export class PushAction {
     }
 }
 
+export class AmountAction {
+    public readonly type = "amount";
+
+    constructor(public readonly amount: number) {}
+}
+
+export class PhoneAction {
+    public readonly type = "phone";
+
+    constructor(public readonly phone: string) {}
+}
+
+export class PlatonAction {
+    public readonly type = "platon";
+}
+
 export class RemoveAction {
     public readonly type = "message:remove";
 
@@ -51,4 +67,7 @@ export type Action = PushAction
     | DeleteAction
     | ReplaceAction
     | FlushAction
+    | AmountAction
+    | PhoneAction
+    | PlatonAction
     | Array<Action>;

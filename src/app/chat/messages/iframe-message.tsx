@@ -6,20 +6,19 @@ import {IframePayment} from "./iframe-payment";
 export const IframeMessage: React.FC<{value: Chat.IframeMessage}> = ({value: {action, data}}) => {
     const dispatch = Chat.useDispatchContext();
 
-    const handleComplete = () => {
-        // setTimeout(() => {
-        //     dispatch(new Chat.ReplaceAction([
-        //         new Chat.LoadIframeMessage(),
-        //     ]));
-        // }, 1500);
-        console.log("заебись");
-    };
+    const handleComplete = React.useCallback(() => {
+        dispatch(new Chat.ReplaceAction([new Chat.LoadResultMessage()]));
+    }, [dispatch]);
+
+    const handleError = React.useCallback(() => {
+        dispatch(new Chat.ReplaceAction([new Chat.TextMessage("xyu")]));
+    }, [dispatch]);
 
     return (
         <Base.WrapMessage source="user" className="message-card">
-            <IframePayment onComplete={handleComplete} data={data} action={action}>
+            <IframePayment onComplete={handleComplete} onError={handleError} data={data} action={action}>
                 <div className="for-mobile">
-                    <p>Для ввода перейдете на страницу платежного сервиса Platon. Ваши данные надежно защищены.</p>
+                    <p>Для ввода перейдите на страницу платежного сервиса Platon. Ваши данные надежно защищены.</p>
                     <button type="submit" className="btn btn_blue">Перейти</button>
                 </div>
             </IframePayment>

@@ -5,7 +5,7 @@ export const HomeLinkMessage = () => {
     // TODO use home link from .env
     return (
         <Base.ButtonMessage source={"user"}>
-            <a href="#" className="btn btn_blue">
+            <a href="https://lovilave.com.ua/" className="btn btn_blue">
                 На главную
             </a>
         </Base.ButtonMessage>
