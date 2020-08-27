@@ -9,3 +9,4 @@ export * from "./payment-request-message";
 export * from "./payment-sum-message";
 export * from "./result-phone-message";
 export * from "./verify-phone-message";
+export * from "./invalid-phone-request-message";

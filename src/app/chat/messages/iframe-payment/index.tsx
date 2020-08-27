@@ -1,5 +1,4 @@
 import * as React from "react";
-import {useIsMobile} from "../../../utils/use-is-mobile";
 
 export type IframePaymentProps = Omit<IframePaymentFormProps, "target"> & {
     onComplete: (e: Event) => void;
@@ -34,33 +33,25 @@ const IframePaymentForm: React.FC<IframePaymentFormProps> = ({data, ...props}) =
 
 const iframeName = "chat-card-platon";
 
-export const IframePayment: React.FC<IframePaymentProps> =
-    ({onComplete, onError, children, ...props}) => {
+export const IframePayment: React.FC<IframePaymentProps> = ({onComplete, onError, ...props}) => {
 
-        React.useEffect(() => {
-            window.addEventListener("iframe.complete", onComplete);
-            return () => window.removeEventListener("iframe.complete", onComplete);
-        }, [onComplete]);
+    React.useEffect(() => {
+        window.addEventListener("iframe.complete", onComplete);
+        return () => window.removeEventListener("iframe.complete", onComplete);
+    }, [onComplete]);
 
-        React.useEffect(() => {
-            if (!onError) {
-                return;
-            }
+    React.useEffect(() => {
+        if (!onError) {
+            return;
+        }
 
-            window.addEventListener("iframe.failure", onError);
-            return () => window.removeEventListener("iframe.failure", onError);
-        }, [onError]);
+        window.addEventListener("iframe.failure", onError);
+        return () => window.removeEventListener("iframe.failure", onError);
+    }, [onError]);
 
-        // if (useIsMobile()) {
-        //     return <IframePaymentForm {...props} target="_blank">
-        //         {children}
-        //     </IframePaymentForm>
-        // }
-
-        return (
-            <IframePaymentForm {...props} target={iframeName}>
-                <iframe id={iframeName} name={iframeName}/>
-                {children}
-            </IframePaymentForm>
-        );
-    };
+    return (
+        <IframePaymentForm {...props} target={iframeName}>
+            <iframe id={iframeName} name={iframeName}/>
+        </IframePaymentForm>
+    );
+};

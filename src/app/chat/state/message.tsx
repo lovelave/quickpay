@@ -1,5 +1,5 @@
 import * as React from "react";
-import * as Chat from "../reducer";
+import * as Chat from "../chat-logic";
 import * as Messages from "../messages/";
 import {TextMessage} from "../base";
 import {FailureMessage} from "./failure-message";
@@ -15,6 +15,10 @@ export type Message<P extends MessageProps = MessageProps> =
 
 export const Message: Message = ({value}) => {
     switch (value.type) {
+        case "text":
+            return <TextMessage value={value}/>;
+        case "delay":
+            return <DelayMessage value={value}/>;
         case "intro":
             return <Messages.IntroMessage />;
         case "intro-request":
@@ -34,13 +38,13 @@ export const Message: Message = ({value}) => {
         case "iframe":
             return <Messages.IframeMessage value={value}/>;
         case "load-result":
-            return <Messages.LoadResultMessage />;
+            return <Messages.LoadResultMessage value={value}/>;
         case "result-phone":
             return <Messages.ResultPhoneMessage value={value}/>;
-        case "text":
-            return <TextMessage value={value}/>;
-        case "delay":
-            return <DelayMessage value={value}/>;
+        case "invalid-phone":
+            return <Messages.InvalidPhoneRequestMessage />;
+        // case "payment-result":
+        //     return <Messages.ResultPaymentMessage value={value}/>;
     }
     return <FailureMessage details={value}/>;
 };

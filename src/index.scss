@@ -15,6 +15,7 @@
 
 // all styles
 @import "./src/app/styles/bot-turned";
+@import "./src/app/styles/bot-error";
 @import "./src/app/styles/chat";
 @import "./src/app/styles/footer";
 @import "./src/app/styles/header";
@@ -34,3 +35,6 @@
 
 // data-list
 @import "./src/app/styles/data-list/data-list";
+
+// statuses
+@import "./src/app/styles/statuses/styles";

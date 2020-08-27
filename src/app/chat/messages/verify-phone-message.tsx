@@ -1,17 +1,14 @@
 import * as React from "react";
-import * as Chat from "../reducer";
+import * as Chat from "../chat-logic";
 import * as Base from "../base";
-import {UserData} from "../state/debt-interface";
-import dayjs from "dayjs";
+import {UserData} from "../chat-logic";
+import {getOverdue} from "../../utils/overdue";
 
 export const VerifyPhoneMessage: React.FC<{ value: Chat.VerifyPhoneMessage }> = ({value}) => {
     const dispatch = Chat.useDispatchContext();
 
     React.useEffect(() => {
         let controller: AbortController | undefined = new AbortController();
-
-        const pageUrl = window.location.origin + "?" + value.phone;
-        window.history.pushState({path: pageUrl}, "", pageUrl);
 
         const requestUrl = new URL("https://test.l-l.cloud/v3/quick-pay");
         requestUrl.searchParams.append("id", value.phone);
@@ -26,18 +23,19 @@ export const VerifyPhoneMessage: React.FC<{ value: Chat.VerifyPhoneMessage }> = 
                             new Chat.RemoveAction(value),
                             new Chat.PushAction([
                                 new Chat.TextMessage("Хмм.. На этом номере нет активного кредита."),
+                                new Chat.InvalidPhoneRequestMessage(),
                             ])
                         ]);
                         return Promise.reject(undefined);
                     case 200:
                         return response.json();
                     default:
-                        dispatch(new Chat.ReplaceAction([new Chat.TextMessage("Ошибка")]));
+                        dispatch(new Chat.StateTypeAction("error"));
                         return Promise.reject(undefined);
                 }
             })
             .then((user: UserData) => {
-                const overdue = dayjs(new Date().setHours(0,0,0, 0)).diff(user.returnDate, "day");
+                const overdue = getOverdue(user.returnDate);
 
                 dispatch([
                     new Chat.RemoveAction(value),

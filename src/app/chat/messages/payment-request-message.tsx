@@ -1,11 +1,11 @@
 import * as React from "react";
 import * as Base from "../base";
-import * as Chat from "../reducer";
+import * as Chat from "../chat-logic";
 
 export const PaymentRequestMessage: React.FC<{value: Chat.PaymentRequestMessage}> = ({value: {agreement}}) => {
     const dispatch = Chat.useDispatchContext();
 
-    const cardHandler = () => {
+    const cardHandler = React.useCallback(() => {
         dispatch([
             new Chat.ReplaceAction([
                 new Chat.TextMessage("Картой", "user"),
@@ -13,15 +13,15 @@ export const PaymentRequestMessage: React.FC<{value: Chat.PaymentRequestMessage}
             ]),
             new Chat.PlatonAction(),
         ]);
-    }
+    }, [dispatch]);
 
-    const receiptHandler = () => {
+    const receiptHandler = React.useCallback(() => {
         dispatch(new Chat.ReplaceAction([
             new Chat.TextMessage("Скачать квитанцию", "user"),
             new Chat.TextMessage("Готово! Буду ждать вашу оплату."),
             new Chat.HomeLinkMessage(),
         ]));
-    }
+    }, [dispatch]);
 
     return (
         <Base.ButtonMessage source={"user"}>

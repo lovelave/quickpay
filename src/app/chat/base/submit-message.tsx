@@ -1,5 +1,5 @@
 import * as React from "react";
-import {useDispatchContext, Action} from "../reducer";
+import {useDispatchContext, Action} from "../chat-logic";
 import { LoadMessage } from "./load-message";
 
 export interface SubmitMessageProps<V = any> {

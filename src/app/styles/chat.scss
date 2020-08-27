@@ -1104,7 +1104,7 @@ div:focus {
       margin-left: 16px;
 
       @include breakpoint($mobile) {
-
+        margin-top: 10px;
         margin-left: 10px;
       }
     }

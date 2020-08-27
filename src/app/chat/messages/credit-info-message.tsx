@@ -1,5 +1,5 @@
 import * as React from "react";
-import * as Chat from "../reducer";
+import * as Chat from "../chat-logic";
 import dayjs from "dayjs";
 import {plural} from "../../utils/plural";
 import {Time} from "../base/time";

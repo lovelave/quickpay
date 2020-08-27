@@ -358,7 +358,7 @@ body {
 
     transform: translate(-50%, 50%);
 
-    animation-name: appearence, up-down;
+    animation-name: tooltip-appearance, tooltip-up-down;
     animation-duration: .5s, 3s;
     animation-delay: 1s, 1s;
     animation-fill-mode: forwards, none;
@@ -407,7 +407,7 @@ body {
   }
 }
 
-@keyframes appearence {
+@keyframes tooltip-appearance {
 
   from {
     opacity: 0;
@@ -422,7 +422,7 @@ body {
   }
 }
 
-@keyframes up-down {
+@keyframes tooltip-up-down {
   0%,
   100% {
     transform: translateY(-2px);

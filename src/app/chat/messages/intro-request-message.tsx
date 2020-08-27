@@ -1,5 +1,5 @@
 import * as React from "react";
-import * as Chat from "../reducer";
+import * as Chat from "../chat-logic";
 import { useInputState } from "@horat1us/react-hooks";
 import { PhoneInput } from "@ua-opendata/react-phone-input";
 import classNames from "classnames";
@@ -19,7 +19,7 @@ export const IntroRequestMessage: React.FC<{}> = () => {
             return false;
         }
         dispatch([
-            new Chat.PhoneAction(rawValue),
+            new Chat.StateInputDataAction("phone", rawValue),
             new Chat.ReplaceAction([
                 new Chat.TextMessage(value, "user"),
                 new Chat.VerifyPhoneMessage(rawValue),

@@ -7,11 +7,11 @@ export const Header: React.FC<{}> = () => {
     return (
         <header className="header">
             <div className="container">
-                <a href="#" className="logo">
+                <a href="https://lovilave.com.ua/" className="logo">
                     <ColorLogo />
                 </a>
                 <div className="header-controls">
-                    <a href="#" className="menu-hamburger">
+                    <a href="https://lovilave.com.ua/nav" className="menu-hamburger">
                         <div className="overlay">
                             <span className="label">Меню</span>
                             <Hamburger />

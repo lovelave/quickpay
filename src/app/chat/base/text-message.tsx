@@ -1,5 +1,5 @@
 import * as React from "react";
-import * as Chat from "../reducer";
+import * as Chat from "../chat-logic";
 import * as Base from "../base";
 
 export const TextMessage: React.FC<{value: Chat.TextMessage}> = ({value}) => {

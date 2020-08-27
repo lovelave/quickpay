@@ -1,4 +1,4 @@
-import {UserData} from "../state/debt-interface";
+import {UserData} from "./reducer";
 
 export class FailureMessage {
     public readonly type = "info:failure";
@@ -21,6 +21,15 @@ export class TextMessage {
         public content: string | string[],
         public readonly author: MessageSource = "bot",
         public readonly time: string | null = new Date().toISOString(),
+    ) {}
+}
+
+export class DelayMessage {
+    public readonly type = "delay";
+
+    constructor(
+        public readonly children: Array<Message>,
+        public readonly timeout: number = 500
     ) {}
 }
 
@@ -73,7 +82,7 @@ export class LoadIframeMessage {
 
     constructor(
         public readonly phone: string,
-        public readonly amount: number,
+        public readonly amount: string,
     ) {}
 }
 
@@ -86,24 +95,30 @@ export class IframeMessage {
     ) {}
 }
 
-export class LoadResultMessage {
-    public readonly type = "load-result";
-}
-
 export class ResultPhoneMessage {
     public readonly type = "result-phone";
 
     constructor(public readonly overdue: number) {}
 }
 
-export class DelayMessage {
-    public readonly type = "delay";
-
-    constructor(
-        public readonly children: Array<Message>,
-        public readonly timeout: number = 500
-    ) {}
+export class InvalidPhoneRequestMessage {
+    public readonly type = "invalid-phone";
 }
+
+export class LoadResultMessage {
+    public readonly type = "load-result";
+
+    constructor(public readonly phone: string) {}
+}
+
+// export class ResultPaymentMessage {
+//     public readonly type = "payment-result";
+//
+//     constructor(
+//         public readonly debt: number,
+//         public readonly dateReturn: string,
+//     ) {}
+// }
 
 export type MessageSource = "bot" | "user";
 
@@ -121,3 +136,5 @@ export type Message = FailureMessage
     | IframeMessage
     | LoadResultMessage
     | ResultPhoneMessage
+    | InvalidPhoneRequestMessage
+    // | ResultPaymentMessage

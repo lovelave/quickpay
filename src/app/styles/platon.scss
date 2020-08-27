@@ -20,7 +20,9 @@ Message with Platon form styles
 
     @include breakpoint($mobile) {
       width: auto;
-      height: auto;
+      height: 330px;
+
+      padding: 5px;
 
       color: $color-title;
     }
@@ -61,24 +63,5 @@ Message with Platon form styles
   form {
     width: 100%;
     height: 100%;
-  }
-
-  iframe {
-
-    @include breakpoint($mobile) {
-      display: none;
-
-      height: 0;
-      width: 0;
-    }
-  }
-
-  .for-mobile {
-    display: none;
-
-    @include breakpoint($mobile) {
-
-      display: block;
-    }
   }
 }

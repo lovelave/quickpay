@@ -1,15 +1,14 @@
 import * as React from "react";
 import * as Base from "../base";
-import * as Chat from "../reducer";
+import * as Chat from "../chat-logic";
 import classNames from "classnames";
-import {AmountAction, ReplaceAction, useDispatchContext} from "../reducer";
 
 const IconAirplane = require("../svg/icon-airplane.svg");
 
 export const PaymentSumMessage: React.FC<{value: Chat.PaymentSumMessage}> = ({value: {sum, agreement}}) => {
     const [value, setValue] = React.useState<string>(sum.toString());
 
-    const dispatch = useDispatchContext();
+    const dispatch = Chat.useDispatchContext();
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
@@ -29,11 +28,9 @@ export const PaymentSumMessage: React.FC<{value: Chat.PaymentSumMessage}> = ({va
             return;
         }
 
-        localStorage.setItem("ll.pay", JSON.stringify(value.replace(/,/, ".")));
-
         dispatch([
-            new AmountAction(+value),
-            new ReplaceAction(
+            new Chat.StateInputDataAction("amount", value),
+            new Chat.ReplaceAction(
             [
                 new Chat.TextMessage(value + " грн", "user"),
                 new Chat.TextMessage([
