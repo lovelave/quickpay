@@ -22,7 +22,7 @@
   "includePaths": [
     "node_modules"
   ],
-  "homepage": "https://github.com/lovelave/quickpay#readme",
+  "homepage": "https://github.com/lovelave/quickpay",
   "dependencies": {
     "@horat1us/react-hooks": "^1.11.0",
     "@sentry/react": "^5.22.0",

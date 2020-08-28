@@ -1,9 +1,16 @@
 language: node_js
 node_js: node
 
-before_deploy:
-  - npm i
+install: npm install
+
+script:
   - npm run build
+
+before_deploy:
+  - echo "node_modules" > .gitignore
+
+cache:
+  npm: true
 
 deploy:
   provider: pages
