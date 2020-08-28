@@ -13,7 +13,7 @@ export const Header: React.FC<{showLogo?: true}> = ({showLogo}) => {
                     <ColorLogo />
                 </a>
                 <div className="header-controls">
-                    <a href={url + "/nav"} className="menu-hamburger">
+                    <a href={url + "nav"} className="menu-hamburger">
                         <div className="overlay">
                             <span className="label">Меню</span>
                             <Hamburger />
