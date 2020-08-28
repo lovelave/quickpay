@@ -13,7 +13,9 @@ export class ErrorBoundary extends React.Component<{dispatch: Dispatch}, ErrorBo
     }
 
     componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
-        Sentry.captureException(error, {extra: errorInfo});
+        if (process.env.SENTRY_DSN) {
+            Sentry.captureException(error, {extra: errorInfo});
+        }
     }
     public render() {
         if ("error" in this.state) {

@@ -4,15 +4,16 @@ import {Hamburger} from "./hamburger";
 import classNames from "classnames";
 
 export const Header: React.FC<{showLogo?: true}> = ({showLogo}) => {
-    // TODO: add origin url from .env
+    const url = process.env.ORIGIN_URL;
+
     return (
         <header className="header">
             <div className="container">
-                <a href="https://lovilave.com.ua/" className={classNames("logo", showLogo && "show")}>
+                <a href={url} className={classNames("logo", showLogo && "show")}>
                     <ColorLogo />
                 </a>
                 <div className="header-controls">
-                    <a href="https://lovilave.com.ua/nav" className="menu-hamburger">
+                    <a href={url + "/nav"} className="menu-hamburger">
                         <div className="overlay">
                             <span className="label">Меню</span>
                             <Hamburger />

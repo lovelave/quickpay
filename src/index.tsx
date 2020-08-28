@@ -5,7 +5,7 @@ import { Integrations } from "@sentry/tracing";
 import { App } from "./app";
 
 Sentry.init({
-    dsn: "https://7b4c24607f9d490e858938870fd92348@o421925.ingest.sentry.io/5409164",
+    dsn: process.env.SENTRY_DSN,
     integrations: [
         new Integrations.BrowserTracing(),
     ],

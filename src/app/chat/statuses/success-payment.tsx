@@ -17,6 +17,8 @@ interface SuccessPaymentProps {
 export const SuccessPaymentStatus: React.FC<SuccessPaymentProps> = ({user}) => {
     const dispatch = Chat.useDispatchContext();
 
+    const url = process.env.ORIGIN_URL;
+
     const valueIsNaN = (v: any) => v !== v;
 
     if (!user) {
@@ -32,7 +34,7 @@ export const SuccessPaymentStatus: React.FC<SuccessPaymentProps> = ({user}) => {
                         <span>Подписывайтесь на наши соцсети!</span>
                     </p>
                     <div className="btn-container">
-                        <a href="https://lovilave.com.ua/" className="btn btn_blue">
+                        <a href={url} className="btn btn_blue">
                             <span>На главную</span>
                         </a>
                     </div>
@@ -49,7 +51,7 @@ export const SuccessPaymentStatus: React.FC<SuccessPaymentProps> = ({user}) => {
                     <h2>Оплата успешна</h2>
                     <p>Перейдите в личный кабинет, чтобы посмотреть всю информацию о кредите.</p>
                     <div className="btn-container">
-                        <a href="https://lovilave.com.ua/" className="btn btn_blue">
+                        <a href={url} className="btn btn_blue">
                             <span>На главную</span>
                         </a>
                     </div>
@@ -79,7 +81,7 @@ export const SuccessPaymentStatus: React.FC<SuccessPaymentProps> = ({user}) => {
                     <span>Хотите оплатить сейчас?</span>
                 </p>
                 <div className="btn-container">
-                    <a href="https://lovilave.com.ua/" className="btn btn_white">
+                    <a href={url} className="btn btn_white">
                         <span>Позже</span>
                     </a>
                     <button className="btn btn_blue" onClick={handleClick}>
