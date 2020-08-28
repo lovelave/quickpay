@@ -12,6 +12,8 @@ before_deploy:
 cache:
   npm: true
 
+local_dir: ./dist
+
 deploy:
   provider: pages
   skip-cleanup: true
