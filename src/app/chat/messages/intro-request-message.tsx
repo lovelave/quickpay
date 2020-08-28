@@ -13,11 +13,13 @@ export const IntroRequestMessage: React.FC<{}> = () => {
 
     const isSubmitEnable = rawValue.length === 12;
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = React.useCallback((e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+
         if (!isSubmitEnable) {
             return false;
         }
+
         dispatch([
             new Chat.StateInputDataAction("phone", rawValue),
             new Chat.ReplaceAction([
@@ -25,7 +27,7 @@ export const IntroRequestMessage: React.FC<{}> = () => {
                 new Chat.VerifyPhoneMessage(rawValue),
             ]),
         ]);
-    };
+    },[rawValue, value, dispatch]);
 
     return (
         <form onSubmit={handleSubmit}>

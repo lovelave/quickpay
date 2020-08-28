@@ -49,7 +49,7 @@ export const VerifyPhoneMessage: React.FC<{ value: Chat.VerifyPhoneMessage }> = 
             });
 
         return () => controller && controller.abort();
-    }, [value.phone]);
+    }, [value.phone, value.type, dispatch]);
 
     return <Base.LoadMessage/>;
 };

@@ -11,7 +11,7 @@ export const PaymentSumMessage: React.FC<{value: Chat.PaymentSumMessage}> = ({va
 
     const dispatch = Chat.useDispatchContext();
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = React.useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
          if (
              value.length === 0 ||
@@ -20,9 +20,9 @@ export const PaymentSumMessage: React.FC<{value: Chat.PaymentSumMessage}> = ({va
             ) {
             setValue(value.replace(/(.*[,.]\d{1,2})\d*$/, "$1"));
          }
-    };
+    }, [dispatch]);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = React.useCallback((e: React.FormEvent) => {
         e.preventDefault();
 
         if (value.length < 1) {
@@ -41,11 +41,11 @@ export const PaymentSumMessage: React.FC<{value: Chat.PaymentSumMessage}> = ({va
                 new Chat.PaymentRequestMessage(agreement),
             ]),
         ]);
-    };
+    }, [value, agreement, dispatch]);
 
     return (
         <form onSubmit={handleSubmit}>
-            <Base.Form.ControlMessage>
+            <Base.ControlMessage>
                 <input
                     type="text"
                     className="form__control"
@@ -63,7 +63,7 @@ export const PaymentSumMessage: React.FC<{value: Chat.PaymentSumMessage}> = ({va
                         <img src={IconAirplane} alt="icon" className="icon icon_airplane"/>
                     </button>
                 </div>
-            </Base.Form.ControlMessage>
+            </Base.ControlMessage>
         </form>
     )
 }

@@ -32,7 +32,7 @@ export const LoadIframeMessage: React.FC<{value: Chat.LoadIframeMessage}> = ({va
             });
 
         return () => controller && controller.abort();
-    }, []);
+    }, [phone, amount, dispatch]);
 
     return <Base.LoadMessage />;
 };
