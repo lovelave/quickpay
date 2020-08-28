@@ -55,10 +55,13 @@
     display: none;
     
     color: $color-primary;
-    
-    @include breakpoint($mobile) {
 
-      display: block;
+    &:not(.hide) {
+
+      @include breakpoint($mobile) {
+
+        display: block;
+      }
     }
 
     .footer {

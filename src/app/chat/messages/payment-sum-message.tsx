@@ -2,6 +2,7 @@ import * as React from "react";
 import * as Base from "../base";
 import * as Chat from "../chat-logic";
 import classNames from "classnames";
+import {useIsMobile} from "../../hooks/use-is-mobile";
 
 const IconAirplane = require("../svg/icon-airplane.svg");
 
@@ -50,7 +51,7 @@ export const PaymentSumMessage: React.FC<{value: Chat.PaymentSumMessage}> = ({va
                     className="form__control"
                     value={value}
                     onChange={handleChange}
-                    autoFocus
+                    autoFocus={!useIsMobile() ?? true}
                     placeholder="Введите сумму"
                 />
                 <div className="btn-container v-align">

@@ -3,6 +3,7 @@ import * as Chat from "../chat-logic";
 import * as Base from "../base";
 import {UserData} from "../chat-logic";
 import {getOverdue} from "../../utils/overdue";
+import {getPaymentDetailsUrl} from "../../utils/payment-details-url";
 
 export const VerifyPhoneMessage: React.FC<{ value: Chat.VerifyPhoneMessage }> = ({value}) => {
     const dispatch = Chat.useDispatchContext();
@@ -42,7 +43,7 @@ export const VerifyPhoneMessage: React.FC<{ value: Chat.VerifyPhoneMessage }> = 
                     new Chat.PushAction([
                         new Chat.ResultPhoneMessage(overdue),
                         new Chat.CreditInfoMessage(user, overdue),
-                        new Chat.PaymentSumMessage(user.debt, "https://bobra-backend-test.s3.eu-central-1.amazonaws.com/documents/27/035b4ce9654614d8749b2eaf2f2c6904042cc0b7.pdf"),
+                        new Chat.PaymentSumMessage(user.debt, getPaymentDetailsUrl()),
                     ])
                 ]);
             });

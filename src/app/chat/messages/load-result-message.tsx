@@ -27,12 +27,14 @@ export const LoadResultMessage: React.FC<{value: Chat.LoadResultMessage}> = ({va
                     case 200:
                         return response.json();
                     default:
-                        dispatch(new Chat.StateTypeAction("error"));
+                        dispatch([
+                            new Chat.StateUserAction(NaN, ""),
+                            new Chat.StateTypeAction("pay-success"),
+                        ]);
                         return Promise.reject(undefined);
                 }
             })
             .then((user: UserData) => {
-                console.log(user);
                 dispatch([
                     new Chat.RemoveAction(value),
                     new Chat.StateInputDataAction("amount", undefined),

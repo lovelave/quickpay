@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useIsMobile } from "../../utils/use-is-mobile";
+import { useIsMobile } from "../../hooks/use-is-mobile";
 const IconVisa = require("../svg/icon-visa.svg");
 const IconPrivat = require("../svg/icon-privat.svg");
 const IconMastercard = require("../svg/icon-mastercard.svg");
@@ -7,8 +7,9 @@ const IconKyivstar = require("../svg/icon-kyivstar.svg");
 const IconVodafone = require("../svg/icon-vodafone.svg");
 import {Social} from "./social";
 import {Author} from "./author";
+import classNames from "classnames";
 
-export const Footer = () => {
+export const Footer: React.FC<{hide?: true}> = ({hide}) => {
     const isMobile = useIsMobile();
 
     if (isMobile === undefined) {
@@ -18,7 +19,7 @@ export const Footer = () => {
     const year = new Date().getFullYear().toString();
 
     if (isMobile) {
-        return <footer className="footer mobile">
+        return <footer className={classNames("footer mobile", hide && "hide")}>
             <div className="footer-below">
                 <Author />
             </div>

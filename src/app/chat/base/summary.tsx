@@ -1,5 +1,5 @@
 import * as React from "react";
-import {useIsMobile} from "../../utils/use-is-mobile";
+import {useIsMobile} from "../../hooks/use-is-mobile";
 
 export interface Item {
     name: string,

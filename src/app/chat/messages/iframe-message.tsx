@@ -6,20 +6,16 @@ import {IframePayment} from "./iframe-payment";
 export const IframeMessage: React.FC<{value: Chat.IframeMessage}> = ({value: {action, data}}) => {
     const dispatch = Chat.useDispatchContext();
 
-    React.useEffect(() => {
-        const event = new Event("iframe.complete", {
-            cancelable: true,
-        });
-
-        window.dispatchEvent(event);
-    }, []);
-
     const handleComplete = React.useCallback(() => {
         dispatch(new Chat.LoadPaymentResultAction());
     }, [dispatch]);
 
     const handleError = React.useCallback(() => {
-        // dispatch(new Chat.PaymentErrorMessage);
+        dispatch(new Chat.ReplaceAction([
+            new Chat.TextMessage("Ошибка оплаты", "user"),
+            new Chat.TextMessage("Вы можете попробовать еще раз или скачать реквизиты для оплаты"),
+            new Chat.PaymentErrorRequestMessage(),
+        ]));
     }, [dispatch]);
 
     return (

@@ -111,14 +111,9 @@ export class LoadResultMessage {
     constructor(public readonly phone: string) {}
 }
 
-// export class ResultPaymentMessage {
-//     public readonly type = "payment-result";
-//
-//     constructor(
-//         public readonly debt: number,
-//         public readonly dateReturn: string,
-//     ) {}
-// }
+export class PaymentErrorRequestMessage {
+    public readonly type = "payment-error";
+}
 
 export type MessageSource = "bot" | "user";
 
@@ -137,4 +132,4 @@ export type Message = FailureMessage
     | LoadResultMessage
     | ResultPhoneMessage
     | InvalidPhoneRequestMessage
-    // | ResultPaymentMessage
+    | PaymentErrorRequestMessage

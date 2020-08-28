@@ -121,7 +121,7 @@ body {
 
   > p {
     line-height: (28em/20);
-    font-size: (20em/16);
+    font-size: (19em/16);
 
     @include breakpoint($mobile) {
       margin-bottom: (10em/18);
@@ -131,8 +131,21 @@ body {
     }
 
     span {
-
       display: block;
+
+      .phone-link {
+
+        @include breakpoint($mobile-p) {
+          display: block;
+        }
+      }
+
+      & + span {
+
+        @include breakpoint($mobile-p) {
+          margin-top: (10em/16);
+        }
+      }
     }
   }
 

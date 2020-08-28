@@ -43,8 +43,8 @@ export const Message: Message = ({value}) => {
             return <Messages.ResultPhoneMessage value={value}/>;
         case "invalid-phone":
             return <Messages.InvalidPhoneRequestMessage />;
-        // case "payment-result":
-        //     return <Messages.ResultPaymentMessage value={value}/>;
+        case "payment-error":
+            return <Messages.PaymentErrorRequestMessage />;
     }
     return <FailureMessage details={value}/>;
 };

@@ -1,5 +1,5 @@
 import {useMutationObserver, useWindowSize} from "@horat1us/react-hooks";
-import {isMobile} from "../utils/use-is-mobile";
+import {isMobile} from "../hooks/use-is-mobile";
 
 export function useScrollEffect() {
     const [width, height] = useWindowSize();

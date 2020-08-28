@@ -5,31 +5,41 @@ import * as Chat from "./chat-logic";
 import {Section} from "./section";
 import {ErrorStatus} from "./statuses/error";
 import {SuccessPaymentStatus} from "./statuses/success-payment";
+import {Header} from "./header/layout";
+import {Footer} from "./footer/layout";
+import {ErrorBoundary} from "../../error-boundary";
 
 export const Provider: React.FC<{}> = () => {
     const [state, dispatch] = Chat.useReducer();
 
-    return <Chat.DispatchContext.Provider value={dispatch}>
-        {getProviderLayout(state)}
-    </Chat.DispatchContext.Provider>
+    return <ErrorBoundary dispatch={dispatch}>
+        <Chat.DispatchContext.Provider value={dispatch}>
+            {getProviderLayout(state)}
+        </Chat.DispatchContext.Provider>
+    </ErrorBoundary>
 };
 
 function getProviderLayout(state: Chat.State) {
     switch (state.type) {
         case "error":
             return <>
+                <Header showLogo/>
                 <main className="main">
                     <ErrorStatus />
                 </main>
+                <Footer hide/>
             </>;
         case "pay-success":
             return <>
+                <Header showLogo/>
                 <main className="main">
                     <SuccessPaymentStatus user={state.user} />
                 </main>
+                <Footer hide/>
             </>;
         default:
             return <>
+                <Header />
                 <div className="bot__overlay">
                     <TurnedBot.Layout/>
                 </div>
@@ -44,6 +54,7 @@ function getProviderLayout(state: Chat.State) {
                         </div>
                     </Section>
                 </main>
+                <Footer />
             </>;
     }
 }

@@ -65,10 +65,13 @@ Header styles
   .logo {
     font-size: 0;
 
-    @include breakpoint($mobile) {
-      opacity: 0;
+    &:not(.show) {
 
-      pointer-events: none;
+      @include breakpoint($mobile) {
+        opacity: 0;
+
+        pointer-events: none;
+      }
     }
 
     .img {

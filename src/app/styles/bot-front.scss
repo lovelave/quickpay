@@ -1,0 +1,95 @@
+/*
+Bot full face styles
+ */
+
+$click-animation-time: 2.5s;
+
+.animation-container {
+
+  .bot_full-face {
+    animation: bot-up-down 3s ease-in-out infinite;
+
+    #eye-left {
+      animation: eye-left-blink-bot-full-face $click-animation-time infinite;
+    }
+
+    #eye-right {
+      animation: eye-right-blink-bot-full-face $click-animation-time infinite;
+    }
+
+    #mouth {
+      animation: mouth-close-open-bot-full-face $click-animation-time infinite;
+    }
+
+    #ear-left {
+      animation: ear-left-bot-full-face $click-animation-time infinite;
+    }
+
+    #ear-right {
+      animation: ear-right-bot-full-face $click-animation-time infinite;
+    }
+  }
+
+  @keyframes bot-up-down {
+    0% {
+      transform: translateY(0px);
+      transition-property: transform;
+      transition-timing-function: cubic-bezier(0.57, 0.01, 0.69, 0.82);
+    }
+    50% {
+      transform: translateY(10px);
+      transition-timing-function: ease-in;
+    }
+    100% {
+      transform: translateY(0px);
+      transition-timing-function: ease-in;
+    }
+  }
+
+  @keyframes mouth-close-open-bot-full-face {
+    0%,
+    86%,
+    100% {
+      transform: matrix(1, 0, 0, 1, 29.52700000000000, 40.66700000000000);
+    }
+    87%,
+    99% {
+      transform: matrix(1, 0, 0, 1.03000000000000, 29.52700000000000, 40.57706000000000);
+    }
+    88%,
+    98% {
+      transform: matrix(1, 0, 0, 1, 29.52700000000000, 40.66700000000000);
+    }
+    95% {
+      transform: matrix(0.93000000000000, 0, 0, 0.90000000000000, 30.30176000000000, 42.30180000000001);
+    }
+  }
+
+  @keyframes ear-left-bot-full-face {
+    0%,
+    86%,
+    100% {
+      transform: matrix(1, 0, 0, 1, 1.34100000000001, -1);
+    }
+    87% {
+      transform: matrix(0.99996192306417, 0.00872653549837, -0.00872653549837, 0.99996192306417, 2.10136054392922, -1.75491488067262);
+    }
+    95% {
+      transform: matrix(0.99990252400930, -0.01396218033915, 0.01396218033915, 0.99990252400930, 0.13820985632242, 0.22158136720620);
+    }
+  }
+
+  @keyframes ear-right-bot-full-face {
+    0%,
+    86%,
+    100% {
+      transform: matrix(1, 0, 0, 1, 107, -1);
+    }
+    87% {
+      transform: matrix(0.99996192306417, -0.00872653549837, 0.00872653549837, 0.99996192306417, 106.24851306926875, -0.99748510573815);
+    }
+    95% {
+      transform: matrix(0.99986254453844, 0.01657986818770, -0.01657986818770, 0.99986254453844, 108.42775949890257, -0.98671132726216);
+    }
+  }
+}

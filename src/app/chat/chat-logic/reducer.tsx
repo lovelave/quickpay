@@ -30,7 +30,6 @@ export const Reducer: Reducer = (state, action): State => {
     }
 
     switch (action.type) {
-
         // State type actions
         case "error":
             return {
@@ -38,7 +37,6 @@ export const Reducer: Reducer = (state, action): State => {
                 type: "error",
             }
         case "pay-success":
-            console.log("pay-success action");
             return {
                 ...state,
                 messages: [],
