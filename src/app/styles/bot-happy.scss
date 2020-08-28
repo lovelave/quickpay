@@ -1,0 +1,88 @@
+/*
+Bot happy styles
+ */
+
+$click-animation-time: 1.5s;
+
+.animation-container {
+
+  .bot_happy {
+    transform: translate(-18px, 20px) rotate(-14deg);
+
+    animation: bot-move-bot-happy $click-animation-time infinite ease-out;
+
+    #eyes {
+      animation: eyes-move-bot-happy $click-animation-time infinite;
+    }
+
+    #mouth {
+      animation: mouth-move-open-bot-happy $click-animation-time infinite;
+    }
+
+    #ear-left {
+      animation: ear-left-bot-happy $click-animation-time infinite;
+    }
+
+    #ear-right {
+      animation: ear-right-bot-happy $click-animation-time infinite;
+    }
+  }
+
+  @keyframes bot-move-bot-happy {
+    0%,
+    100% {
+      transform: translate(-18px, 20px) rotate(-14deg);
+    }
+    25%,
+    75% {
+      transform: translate(0px, 0px) rotate(0deg);
+    }
+    50% {
+      transform: translate(18px, 20px) rotate(14deg);
+    }
+  }
+
+  @keyframes eyes-move-bot-happy {
+    0%,
+    51%,
+    100% {
+      transform: matrix(1, 0, 0, 1, 0, 0);
+    }
+    25%,
+    75% {
+      transform: matrix(1, 0, 0, 1, 0, -4.40854589999999);
+    }
+  }
+
+  @keyframes mouth-move-open-bot-happy {
+    0%,
+    51%,
+    100% {
+      transform: matrix(1, 0, 0, 1, 35.73300000000000, 29.45300000000000);
+    }
+    25%,
+    75% {
+      transform: matrix(1, 0, 0, 0.70000000000000, 35.73300000000000, 26.52042596416234);
+    }
+  }
+
+  @keyframes ear-left-bot-happy {
+    0%,
+    100% {
+      transform: matrix(0.99026806874157, -0.13917310096007, 0.13917310096007, 0.99026806874157, -13.75594952985993, 16.10774186656960);
+    }
+    51% {
+      transform: matrix(0.98480775301221, 0.17364817766693, -0.17364817766693, 0.98480775301221, 20.12379516197818, -17.18904609419634);
+    }
+  }
+
+  @keyframes ear-right-bot-happy {
+    0%,
+    100% {
+      transform: matrix(0.98480775301221, -0.17364817766693, 0.17364817766693, 0.98480775301221, 112.10715426017710, 1.66855980849802);
+    }
+    51% {
+      transform: matrix(0.98480775301221, 0.17364817766693, -0.17364817766693, 0.98480775301221, 149.18103254003080, 1.57498425392917);
+    }
+  }
+}

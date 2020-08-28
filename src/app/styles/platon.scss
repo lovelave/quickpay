@@ -1,0 +1,67 @@
+/*
+Message with Platon form styles
+ */
+
+.user-message.message-card {
+  $message-width: 525px;
+
+  @include breakpoint($mobile) {
+    float: left;
+
+    margin-top: (12em/16) !important;
+
+    text-align: left;
+  }
+
+  .wrap {
+    width: $message-width;
+    max-width: $message-width;
+    height: 430px;
+
+    @include breakpoint($mobile) {
+      width: auto;
+      height: 330px;
+
+      padding: 5px;
+
+      color: $color-title;
+    }
+
+    &:after {
+      border-radius: 18px 0 18px 18px;
+
+      background-color: $color-secondary;
+
+      box-shadow: 0 6px 16px -10px rgba(0,128,237,.45);
+
+      @include breakpoint($mobile) {
+
+        border-radius: 18px;
+      }
+    }
+
+    p {
+
+      @include breakpoint($mobile) {
+        font-size: (16em/16);
+        line-height: (22em/16);
+      }
+    }
+
+    .btn {
+
+      @include breakpoint($mobile) {
+        width: 100%;
+
+        margin-top: (17em/17);
+
+        font-size: (17em/16);
+      }
+    }
+  }
+
+  form {
+    width: 100%;
+    height: 100%;
+  }
+}

@@ -1,0 +1,187 @@
+/*
+Header styles
+ */
+
+.header {
+  $content-blurring-height: 20px;
+
+  position: fixed;
+
+  top: 0;
+  right: 0;
+  left: 0;
+
+  background: linear-gradient(45deg, #f6faff, #eff8ff);;
+
+  z-index: map-get($zindex, header);
+
+  &:after {
+    content: "";
+
+    height: $content-blurring-height;
+
+    position: absolute;
+
+    right: 0;
+    bottom: (-$content-blurring-height);
+    left: 0;
+
+    background: linear-gradient(180deg,#f4f9ff 0,rgba(239,248,255,0));
+
+    transition: opacity .3s ease-in-out .3s;
+
+    z-index: -2;
+
+    @include breakpoint($mobile) {
+
+      background: linear-gradient(#f4f9ff 0%, #f4f9ff 5%, rgba(255, 255, 255, 0) 100%);
+    }
+  }
+
+  > .container {
+    @include justify-content;
+    @include valign-center;
+
+    max-width: (1324em/16);
+
+    padding: (20em/16) (12em/16) 0;
+
+    @include breakpoint($laptop) {
+      max-width: 1366px;
+
+      padding: (20em/16) (33em/16);
+    }
+
+    @include breakpoint($tablet) {
+
+      padding: (20em/16) (30em/16);
+    }
+
+    @include breakpoint($mobile) {
+      padding: (15em/16) (12em/16) 0;
+    }
+  }
+
+  .logo {
+    font-size: 0;
+
+    &:not(.show) {
+
+      @include breakpoint($mobile) {
+        opacity: 0;
+
+        pointer-events: none;
+      }
+    }
+
+    .img {
+      width: 136px;
+      height: 34px;
+
+      @include breakpoint($mobile) {
+        width: 110px;
+        height: 28px;
+      }
+    }
+  }
+
+  .menu-hamburger {
+    position: relative;
+
+    margin-left: (18em/16);
+    padding: (8em/16) (15em/16) (11em/16) (17em/16);
+
+    border-radius: 35px;
+    border-color: #3dabff transparent #0072d4;
+    border-style: solid;
+    border-width: 1px 0;
+
+    background: linear-gradient(#39a3ff,#0e8fff);
+
+    box-shadow: 0 5px 11px -4px rgba(0,130,251,.6);
+
+    vertical-align: middle;
+
+    @include breakpoint($mobile) {
+      margin-left: (6em/16);
+      padding: (3em/16) (7em/16);
+
+      border-color: transparent;
+
+      background: transparent;
+
+      box-shadow: none;
+    }
+
+    &:hover {
+      border-color: #60baff transparent #007de8;
+
+      @include breakpoint($mobile) {
+
+        border-color: transparent;
+      }
+
+      &:after {
+        opacity: 1;
+
+        @include breakpoint($mobile) {
+
+          opacity: 0;
+        }
+      }
+    }
+
+    &:after {
+      content: '';
+
+      position: absolute;
+
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+
+      margin: auto;
+
+      border-radius: 35px;
+
+      background: linear-gradient(-180deg,#38b8ff,#198aff);
+
+      transition: opacity .2s ease-in;
+
+      opacity: 0;
+    }
+
+    .label {
+
+      @include breakpoint($mobile) {
+
+        display: none;
+      }
+    }
+  }
+
+  .hamburger {
+
+    .line {
+
+      @include breakpoint($mobile) {
+
+        fill: #3c9cf4;
+      }
+    }
+  }
+
+  .header-controls {
+    @include flex;
+    align-items: center;
+
+    position: relative;
+
+    .overlay {
+      display: inline-block;
+
+      line-height: 1px;
+    }
+  }
+}

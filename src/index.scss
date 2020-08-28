@@ -1,0 +1,42 @@
+// font
+@import url("https://fonts.googleapis.com/css?family=Ubuntu:300,500,700&display=swap&subset=cyrillic");
+
+// dependencies
+@import "~compass-mixins/lib/compass/css3";
+@import "~breakpoint-sass/stylesheets/breakpoint";
+
+//// base
+@import "./app/styles/base/variables";
+@import "./app/styles/base/mixins";
+@import "./app/styles/base/global";
+
+// buttons
+@import "./src/app/styles/buttons";
+
+// all styles
+@import "./src/app/styles/bot-turned";
+@import "./src/app/styles/bot-error";
+@import "./src/app/styles/bot-happy";
+@import "./src/app/styles/bot-front";
+@import "./src/app/styles/chat";
+@import "./src/app/styles/footer";
+@import "./src/app/styles/header";
+@import "./src/app/styles/menu-button";
+@import "./src/app/styles/overlay";
+@import "./src/app/styles/social";
+@import "./src/app/styles/summary-message";
+@import "./src/app/styles/typing-spinner";
+@import "./src/app/styles/platon";
+
+// layout
+@import "./src/app/styles/layout/icons";
+@import "./src/app/styles/layout/typography";
+
+// form-control
+@import "./src/app/styles/form-control/form-control";
+
+// data-list
+@import "./src/app/styles/data-list/data-list";
+
+// statuses
+@import "./src/app/styles/statuses/styles";

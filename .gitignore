@@ -1,0 +1,11 @@
+node_modules/
+build/
+.idea/
+.cache/
+dist/
+.DS_Store
+deploy.json
+commit.json
+imagedefinitions.json
+.env
+*.log

@@ -1,0 +1,51 @@
+/*
+* Typography
+*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+
+  margin: 0;
+}
+
+h1,
+h2 {
+  font-family: $font-secondary;
+  color: $color-title;
+}
+
+h1 {
+
+  font-weight: $medium;
+}
+
+h5.inner-title {
+
+  font-size: (22em/16);
+}
+
+.numbered__list {
+  display: table;
+  counter-reset: counter;
+
+
+  li {
+    display: table;
+
+    font-size: (17em/16);
+    line-height: (24em/17);
+
+    &:before {
+      display: table-cell;
+      counter-increment: counter;
+      content: counter(counter) ". ";
+
+      padding-right: (15em/18);
+    }
+  }
+}
