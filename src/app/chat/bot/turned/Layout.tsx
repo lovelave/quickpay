@@ -7,11 +7,6 @@ export const Layout = React.memo(() => {
     const [active, changeActive] = useOpenState(false);
 
     React.useEffect(() => {
-        const listener = () => changeActive();
-        document.addEventListener("DOMContentLoaded", listener);
-        return () => document.removeEventListener("DOMContentLoaded", listener);
-    }, [changeActive]);
-    React.useEffect(() => {
         if (!active) {
             return;
         }
@@ -19,7 +14,7 @@ export const Layout = React.memo(() => {
         return () => clearTimeout(id);
     }, [active, changeActive]);
     return (
-        <div onClick={changeActive} className={classNames(`animation-container turned`, active && "click-animation")}>
+        <div onClick={changeActive} className={classNames("animation-container turned", active && "click-animation")}>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 239.181 239.181" className="bot bot_turned">
                 <defs>
                     <radialGradient id="1a" cx="0.5" cy="0.5" r="0.5" gradientUnits="objectBoundingBox">

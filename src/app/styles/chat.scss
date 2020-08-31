@@ -115,37 +115,6 @@ div:focus {
     @include clearfix;
   }
 
-  .title,
-  .under-title {
-    text-align: center;
-    font-family: $font-secondary;
-  }
-
-  .title {
-    font-weight: $medium;
-    font-size: (36em/16);
-    color: #1D5A8E;
-
-    @include breakpoint($mobile) {
-
-      font-size: (20em/16);
-    }
-  }
-
-  .under-title {
-    margin: (9em/20) 0 (36em/20);
-
-    font-weight: $light;
-    font-size: (20em/16);
-    color: #5D8AB1;
-
-    @include breakpoint($mobile) {
-      margin: (5em/16) 0 (25em/16);
-
-      font-size: (16em/16);
-    }
-  }
-
   .form-group {
 
     .btn-container {
@@ -197,29 +166,6 @@ div:focus {
     width: 100%;
 
     vertical-align: middle;
-  }
-
-  .icon_lock {
-    width: 20px;
-    height: 24px;
-
-    position: absolute;
-
-    top: 50%;
-    left: 28px;
-
-    transform: translateY(-50%);
-
-    opacity: .37;
-
-    z-index: 1;
-
-    @include breakpoint($mobile) {
-      width: 17px;
-      height: 21px;
-
-      left: 23px;
-    }
   }
 
   .btn_outline {
@@ -449,14 +395,6 @@ div:focus {
         @include breakpoint($mobile) {
 
           font-size: (23em/16);
-        }
-      }
-
-      .btn_edit {
-
-        .icon_pencil {
-          width: 14px;
-          height: 14px;
         }
       }
 
@@ -915,24 +853,6 @@ div:focus {
     margin-top: (9em/16);
   }
 
-  &.resend {
-
-    .btn {
-      width: 100%;
-
-      margin-top: (17em/17);
-      padding: (10em/17) (20em/17);
-
-      box-shadow: 0 2px 10px -2px rgba(137,191,241,.6);
-
-      p {
-        font-size: (18em/17);
-
-        color: #3186C3;
-      }
-    }
-  }
-
   .wrap {
     color: #1C5377;
 
@@ -1001,50 +921,6 @@ div:focus {
     .icon {
 
       margin-right: (15em/16);
-    }
-  }
-
-  .btn_pdf {
-    @include justify-content;
-    @include valign-center;
-
-    position: relative;
-
-    .icon-overlay {
-      padding: 12px 6px 12px 16px;
-
-      border-radius: 26px 0 0 26px;
-
-      box-shadow: -3px 0 3px rgba(0, 117, 216, .15);
-
-      line-height: 0;
-    }
-
-    .icon_pdf {
-      width: 24px;
-      height: 22px;
-    }
-
-    span {
-
-      &:first-of-type {
-        padding-right: (32em/19);
-
-        font-size: (19em/16);
-        font-weight: $bold;
-        color: #3C9CF4;
-
-        @include breakpoint($mobile) {
-
-          font-size: (17em/16);
-        }
-      }
-    }
-
-    .icon_dropdown-arrow {
-      transform: rotate(90deg);
-
-      margin-right: (5em/16);
     }
   }
 }
@@ -1127,42 +1003,6 @@ div:focus {
     opacity: 0;
 
     animation: contentAppear $message-appear-time .5s linear forwards;
-
-    .has-error {
-
-      .form__control,
-      .form__control:hover,
-      .form__control:focus {
-        border-color: transparent transparent #ffc1be;
-
-        box-shadow: 0 7px 17px #FB68604D;
-
-        color: #ff645b;
-      }
-
-      .btn-container {
-
-        .btn_action {
-          border-bottom: none;
-
-          box-shadow: none;
-
-          pointer-events: none;
-
-          &.disabled,
-          &.enabled {
-
-            &:before {
-              border-top-color: #EF4D43;
-
-              background: linear-gradient(180deg, #EF4D43, #FFEFEF);
-
-              animation: disappearance .3s linear forwards;
-            }
-          }
-        }
-      }
-    }
 
     .form-group {
       margin-left: (16em/16);
@@ -1397,314 +1237,6 @@ div:focus {
       }
     }
   }
-
-  .icon_pencil {
-    opacity: .7;
-
-    .icon-fill {
-
-      fill: #D9F5FF;
-    }
-  }
-
-  .hamburger {
-    display: none;
-
-    width: 40px;
-
-    position: absolute;
-
-    top: 0;
-    right: -55px;
-    bottom: 0;
-
-    margin: auto;
-
-    @include breakpoint($mobile-p) {
-      width: 35px;
-
-      top: auto;
-      right: auto;
-      bottom: 16px;
-      left: -38px;
-    }
-
-    @include breakpoint($mobile-l) {
-      width: 35px;
-
-      top: auto;
-      right: auto;
-      bottom: 16px;
-      left: -38px;
-    }
-
-    @include breakpoint($iphone5-p) {
-
-      left: -35px;
-    }
-
-    &:hover {
-
-      .line {
-
-        stroke: #49abef;
-      }
-    }
-
-    &.active {
-      transform: rotate(45deg);
-      animation: none;
-
-      .top {
-        stroke-dashoffset: -68px;
-        animation: none;
-      }
-
-      .bottom {
-        stroke-dashoffset: -68px;
-        animation: none;
-      }
-    }
-
-    .line {
-      stroke-width: 5;
-      stroke: #97d2fb;
-    }
-  }
-
-  &.user-card {
-    @include breakpoint($mobile) {
-
-      width: 100%;
-    }
-
-    @include breakpoint($mobile-p) {
-
-      float: initial;
-    }
-
-    .wrap {
-      padding: 0;
-
-      @include breakpoint($mobile-p) {
-
-        width: 100%;
-      }
-
-      &:after {
-
-        content: none;
-      }
-    }
-
-    .bank__name {
-
-      margin-left: (14em/17);
-    }
-  }
-
-  .card {
-    width: 370px;
-
-    position: relative;
-
-    padding-top: (25em/16);
-
-    float: right;
-
-    @include breakpoint($mobile) {
-      width: 100%;
-
-      margin-bottom: 0;
-    }
-
-    .card__background {
-      overflow: hidden;
-
-      position: absolute;
-
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-
-      &:after {
-        top: auto;
-        bottom: 0;
-
-        @include breakpoint($mobile-p) {
-
-          height: 178px;
-        }
-      }
-    }
-
-    &-header {
-      justify-content: normal;
-
-      svg {
-
-        margin-right: (10em/16);
-      }
-    }
-
-    .icon_pencil {
-
-      .icon-fill {
-
-        fill: #D9F5FF;
-      }
-    }
-
-    .bank__name {
-      margin-top: (3em/17);
-
-      color: $color-secondary;
-
-      @include breakpoint($mobile) {
-
-        margin-top: (2em/17);
-      }
-    }
-
-    .icon {
-      vertical-align: middle;
-
-      &_visa {
-
-        .icon-fill {
-
-          fill: $color-secondary;
-        }
-      }
-    }
-
-    &-body {
-      margin-top: (53em/16);
-      margin-bottom: (12em/16);
-
-      @include breakpoint($mobile-p) {
-        margin-top: (35em/16);
-        margin-bottom: (10em/16);
-      }
-
-      span {
-
-        font-size: (23em/16);
-      }
-    }
-
-    &:before,
-    &:after {
-
-      content: none;
-    }
-
-    &-footer {
-
-      text-align: left;
-    }
-  }
-}
-
-.email-sending {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  padding: (10em/16) (17em/16) (7em/16) (24em/16);
-
-  border-radius: 0 0 18px 18px;
-
-  background-color: #F2F9FF5A;
-
-  .decor {
-    position: relative;
-
-    padding: 16px 9px 16px 14px;
-
-    border-radius: 26px 0 0 26px;
-
-    background: linear-gradient(270deg, #FFFFFF 0%, #FAFDFF 100%);
-
-    box-shadow: -3px 0px 3px #0075D812;
-
-    line-height: 0;
-
-    //&:after {
-    //  content: "";
-    //  display: inline-block;
-    //
-    //  width: 23px;
-    //  height: 16px;
-    //
-    //  background-image: url("../chat/svg/icon-letter.png");
-    //  background-size: cover;
-    //}
-  }
-}
-
-.checkbox {
-  position: relative;
-
-  &.checked {
-
-    label {
-
-      //&:before {
-      //  border-color: #D6EBFF;
-      //
-      //  background-image: url("../chat/svg/icon-tick.svg");
-      //
-      //  box-shadow: 0 2px 7px rgba(66,140,206,.15);
-      //}
-    }
-  }
-
-  input {
-    position: absolute;
-    z-index: -1;
-    opacity: 0;
-
-
-
-    & + label {
-      display: inline-flex;
-      align-items: center;
-      user-select: none;
-    }
-  }
-
-  label {
-    font-size: (15em/16);
-
-    @include breakpoint($mobile-p) {
-
-      font-size: (14em/16);
-    }
-
-    &:before {
-      content: "";
-      display: inline-block;
-
-      width: 24px;
-      height: 24px;
-
-      flex-shrink: 0;
-      flex-grow: 0;
-
-      margin-right: (14em/15);
-
-      border-radius: 6px;
-      border: 1px solid #C9DDEA;
-
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: 50% 50%;
-
-      transition: border-color .2s ease-in-out, box-shadow .2s ease-in-out;
-    }
-  }
 }
 
 .icon {
@@ -1712,8 +1244,6 @@ div:focus {
   &_eye {
     width: 21px;
     height: 13px;
-
-    //background-image: url("../chat/svg/icon-eye.svg");
   }
 
   &_pencil {
@@ -1725,16 +1255,12 @@ div:focus {
     width: 22px;
     height: 19px;
 
-    //background-image: url("../chat/svg/icon-airplane.svg");
-
     z-index: 2;
   }
 
   &_mastercard-solid {
     width: 46px;
     height: 29px;
-
-    //background-image: url("../chat/svg/icon-mastercard-solid.svg");
   }
 }
 

@@ -1,5 +1,5 @@
 import * as React from "react";
-import {useScrollEffect} from "./use-scroll-effect";
+import {useScrollEffect} from "../hooks/use-scroll-effect";
 
 export const Section: React.FC<{}> = ({children}) => {
     const ref = useScrollEffect();

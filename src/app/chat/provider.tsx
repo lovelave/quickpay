@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as StateMessage from "./state";
-import * as TurnedBot from "./bot/turned";
 import * as Chat from "./chat-logic";
+import {Layout as TurnedBot} from "./bot/turned";
 import {Section} from "./section";
 import {ErrorStatus} from "./statuses/error";
 import {SuccessPaymentStatus} from "./statuses/success-payment";
@@ -41,14 +41,14 @@ function getProviderLayout(state: Chat.State) {
             return <>
                 <Header />
                 <div className="bot__overlay">
-                    <TurnedBot.Layout/>
+                    <TurnedBot />
                 </div>
                 <main className="main">
                     <Section>
                         <div className="chat-stream">
                             <div className="chat-list">
                                 {state.messages.map((value, key) => (
-                                    <StateMessage.Message value={value} key={value.type! + key} i={key}/>
+                                    <StateMessage.Message value={value} key={value.type + key} i={key}/>
                                 ))}
                             </div>
                         </div>
