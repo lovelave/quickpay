@@ -4,7 +4,7 @@
   "description": "Site for payment on another domain",
   "main": "index.js",
   "scripts": {
-    "start": "parcel ./src/index.html ./src/index.tsx",
+    "start": "parcel ./src/index.html",
     "build": "parcel build --public-url=./ ./src/index.html"
   },
   "repository": {

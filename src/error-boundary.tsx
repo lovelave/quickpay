@@ -13,7 +13,7 @@ export class ErrorBoundary extends React.Component<{dispatch: Dispatch}, ErrorBo
     }
 
     componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
-        if (process.env.SENTRY_DSN) {
+        if (process.env.NODE_ENV === "production" && process.env.SENTRY_DSN) {
             Sentry.captureException(error, {extra: errorInfo});
         }
     }

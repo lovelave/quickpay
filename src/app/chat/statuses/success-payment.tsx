@@ -17,6 +17,13 @@ interface SuccessPaymentProps {
 export const SuccessPaymentStatus: React.FC<SuccessPaymentProps> = ({user}) => {
     const dispatch = Chat.useDispatchContext();
 
+    React.useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    }, []);
+
     const url = process.env.ORIGIN_URL;
 
     const valueIsNaN = (v: any) => v !== v;

@@ -38,6 +38,13 @@ Header styles
     }
   }
 
+  &.static {
+
+    @include breakpoint($mobile) {
+      position: relative;
+    }
+  }
+
   > .container {
     @include justify-content;
     @include valign-center;
