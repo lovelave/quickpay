@@ -2,39 +2,6 @@
 * Statuses styles
  */
 
-body {
-
-  &.forbidden {
-
-    filter: hue-rotate(160deg);
-  }
-
-  .status-wrap {
-
-    .status {
-
-      > h2 {
-
-        color: #1D5A8E;
-      }
-
-      > p {
-
-        color: #5D8AB1;
-      }
-
-      .animation-container {
-        z-index: -1;
-
-        &:after {
-
-          background: radial-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0) 55%);
-        }
-      }
-    }
-  }
-}
-
 .status-wrap {
   @include flex;
 
@@ -45,7 +12,7 @@ body {
   margin-top: (80em/16);
 
   @include breakpoint($mobile) {
-    margin: (50em/16) 0 (20em/16);
+    margin: (20em/16) 0 (20em/16);
     padding: 0 (18em/16);
   }
 }
@@ -61,6 +28,8 @@ body {
 
     position: relative;
 
+    z-index: -1;
+
     &:after {
       content: "";
 
@@ -75,6 +44,8 @@ body {
       transform: translate(-50%, -50%);
 
       border-radius: 50%;
+
+      background: radial-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0) 55%);
 
       z-index: -1;
 
@@ -105,6 +76,7 @@ body {
     margin-bottom: (5em/40);
 
     font-size: (40em/16);
+    color: #1D5A8E;
 
     @include breakpoint($mobile) {
       margin-bottom: (15em/35);
@@ -122,6 +94,7 @@ body {
   > p {
     line-height: (28em/20);
     font-size: (19em/16);
+    color: #5D8AB1;
 
     @include breakpoint($mobile) {
       margin-bottom: (10em/18);

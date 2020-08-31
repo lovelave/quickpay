@@ -7,7 +7,7 @@ export const Header: React.FC<{showLogo?: true}> = ({showLogo}) => {
     const url = process.env.ORIGIN_URL;
 
     return (
-        <header className="header">
+        <header className={classNames("header", showLogo && "static")}>
             <div className="container">
                 <a href={url} className={classNames("logo", showLogo && "show")}>
                     <ColorLogo />

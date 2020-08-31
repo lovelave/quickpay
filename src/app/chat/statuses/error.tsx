@@ -9,6 +9,13 @@ export const ErrorStatus: React.FC<{dispatch?: Dispatch}> = ({dispatch}) => {
 
     const url = getPaymentDetailsUrl();
 
+    React.useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    }, []);
+
     const handleClick = React.useCallback(() => {
         rightDispatch(new Chat.FlushAction(Chat.initialState.messages));
     }, [rightDispatch]);
