@@ -24,13 +24,17 @@ function getProviderLayout(state: Chat.State) {
         case "error":
             return <>
                 <Header showLogo/>
-                <ErrorStatus />
+                <main className="main">
+                    <ErrorStatus />
+                </main>
                 <Footer hide/>
             </>;
         case "pay-success":
             return <>
                 <Header showLogo/>
-                <SuccessPaymentStatus user={state.user} />
+                <main className="main">
+                    <SuccessPaymentStatus user={state.user} />
+                </main>
                 <Footer hide/>
             </>;
         default:
