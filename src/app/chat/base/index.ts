@@ -8,5 +8,4 @@ export * from "./load-message";
 export * from "./wrap-message";
 export * from "./text-message";
 export * from "./failure-message";
-export * from "./submit-message";
 export * from "./button";
