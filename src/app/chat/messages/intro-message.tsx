@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as Base from "../base";
 
-export const IntroMessage = () => {
+export const IntroMessage: React.FC<{}> = React.memo(() => {
     return <>
         <Base.WrapMessage source={"bot"}>
             <p>Приветствую! Вы можете оплатить свой кредит или кредит друга по номеру телефона!</p>
@@ -10,4 +10,4 @@ export const IntroMessage = () => {
             <p>Укажите номер мобильного телефона</p>
         </Base.WrapMessage>
     </>
-}
+});

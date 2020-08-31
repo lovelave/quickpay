@@ -12,50 +12,37 @@ import {ErrorBoundary} from "../../error-boundary";
 export const Provider: React.FC<{}> = () => {
     const [state, dispatch] = Chat.useReducer();
 
-    return <ErrorBoundary dispatch={dispatch}>
-        <Chat.DispatchContext.Provider value={dispatch}>
-            {getProviderLayout(state)}
-        </Chat.DispatchContext.Provider>
-    </ErrorBoundary>
+    return <Chat.DispatchContext.Provider value={dispatch}>
+        <ErrorBoundary>
+            <Header showLogo={state.type} />
+            {!state.type &&
+            <div className="bot__overlay">
+                <TurnedBot />
+            </div>}
+            <main className="main">
+                {getProviderLayout(state)}
+            </main>
+            <Footer hide={state.type} />
+        </ErrorBoundary>
+    </Chat.DispatchContext.Provider>
 };
 
 function getProviderLayout(state: Chat.State) {
     switch (state.type) {
         case "error":
-            return <>
-                <Header showLogo/>
-                <main className="main">
-                    <ErrorStatus />
-                </main>
-                <Footer hide/>
-            </>;
+            return <ErrorStatus />;
         case "pay-success":
-            return <>
-                <Header showLogo/>
-                <main className="main">
-                    <SuccessPaymentStatus user={state.user} />
-                </main>
-                <Footer hide/>
-            </>;
+            return <SuccessPaymentStatus user={state.user} />;
         default:
-            return <>
-                <Header />
-                <div className="bot__overlay">
-                    <TurnedBot />
+            return <Section>
+                <div className="chat-stream">
+                    <div className="chat-list">
+                        {state.messages.map((value, key) => (
+                            <StateMessage.Message value={value} key={value.type + key} i={key}/>
+                        ))}
+                    </div>
                 </div>
-                <main className="main">
-                    <Section>
-                        <div className="chat-stream">
-                            <div className="chat-list">
-                                {state.messages.map((value, key) => (
-                                    <StateMessage.Message value={value} key={value.type + key} i={key}/>
-                                ))}
-                            </div>
-                        </div>
-                    </Section>
-                </main>
-                <Footer />
-            </>;
+            </Section>;
     }
 }
 

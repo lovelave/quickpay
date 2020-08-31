@@ -3,7 +3,7 @@ import {ColorLogo} from "./color-logo";
 import {Hamburger} from "./hamburger";
 import classNames from "classnames";
 
-export const Header: React.FC<{showLogo?: true}> = ({showLogo}) => {
+export const Header: React.FC<{showLogo: boolean}> = React.memo(({showLogo}) => {
     const url = process.env.ORIGIN_URL;
 
     return (
@@ -23,6 +23,6 @@ export const Header: React.FC<{showLogo?: true}> = ({showLogo}) => {
             </div>
         </header>
     );
-};
+});
 
 Header.displayName = "Chat.Header";

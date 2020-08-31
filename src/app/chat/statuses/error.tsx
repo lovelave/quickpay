@@ -1,11 +1,10 @@
 import * as React from "react";
 import * as ErrorBot from "../bot/error";
 import * as Chat from "../chat-logic";
-import {Dispatch} from "../chat-logic";
 import {getPaymentDetailsUrl} from "../../utils/payment-details-url";
 
-export const ErrorStatus: React.FC<{dispatch?: Dispatch}> = ({dispatch}) => {
-    const rightDispatch = dispatch || Chat.useDispatchContext();
+export const ErrorStatus: React.FC<{}> = React.memo(() => {
+    const dispatch = Chat.useDispatchContext();
 
     const url = getPaymentDetailsUrl();
 
@@ -17,8 +16,8 @@ export const ErrorStatus: React.FC<{dispatch?: Dispatch}> = ({dispatch}) => {
     }, []);
 
     const handleClick = React.useCallback(() => {
-        rightDispatch(new Chat.FlushAction(Chat.initialState.messages));
-    }, [rightDispatch]);
+        dispatch(new Chat.FlushAction(Chat.initialState.messages));
+    }, [dispatch]);
 
     return (
         <div className="status-wrap">
@@ -45,4 +44,4 @@ export const ErrorStatus: React.FC<{dispatch?: Dispatch}> = ({dispatch}) => {
             </div>
         </div>
     );
-}
+});

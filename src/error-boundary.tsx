@@ -1,11 +1,10 @@
 import * as React from "react";
 import * as Sentry from "@sentry/react";
 import {ErrorStatus} from "./app/chat/statuses/error";
-import {Dispatch} from "./app/chat/chat-logic";
 
 export type ErrorBoundaryState = {} | {error: Error};
 
-export class ErrorBoundary extends React.Component<{dispatch: Dispatch}, ErrorBoundaryState> {
+export class ErrorBoundary extends React.Component<{}, ErrorBoundaryState> {
     public readonly state: ErrorBoundaryState = {};
 
     static getDerivedStateFromError(error: Error) {
@@ -19,7 +18,7 @@ export class ErrorBoundary extends React.Component<{dispatch: Dispatch}, ErrorBo
     }
     public render() {
         if ("error" in this.state) {
-            return <ErrorStatus dispatch={this.props.dispatch}/>;
+            return <ErrorStatus />;
         }
 
         return this.props.children;
