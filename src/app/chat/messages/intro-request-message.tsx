@@ -5,7 +5,7 @@ import { PhoneInput } from "@ua-opendata/react-phone-input";
 import classNames from "classnames";
 const IconAirplane = require("../svg/icon-airplane.svg");
 
-export const IntroRequestMessage: React.FC<{}> = () => {
+export const IntroRequestMessage: React.FC<{}> = React.memo(() => {
     const dispatch = Chat.useDispatchContext();
     const [value, handleChange] = useInputState();
 
@@ -55,4 +55,4 @@ export const IntroRequestMessage: React.FC<{}> = () => {
             </div>
         </form>
     )
-};
+});

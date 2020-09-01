@@ -9,7 +9,7 @@ import {Social} from "./social";
 import {Author} from "./author";
 import classNames from "classnames";
 
-export const Footer: React.FC<{hide?: true}> = ({hide}) => {
+export const Footer: React.FC<{hide: boolean}> = React.memo(({hide}) => {
     const isMobile = useIsMobile();
 
     if (isMobile === undefined) {
@@ -78,6 +78,6 @@ export const Footer: React.FC<{hide?: true}> = ({hide}) => {
             </div>
         </footer>
     )
-};
+});
 
 Footer.displayName = "Footer.Layout";
