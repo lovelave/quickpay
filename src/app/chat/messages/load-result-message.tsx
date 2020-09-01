@@ -20,6 +20,7 @@ export const LoadResultMessage: React.FC<{value: Chat.LoadResultMessage}> = ({va
                     case 404:
                         dispatch([
                             new Chat.RemoveAction(value),
+                            new Chat.ClearUserDataAction(),
                             new Chat.StateInputDataAction("amount", undefined),
                             new Chat.StateTypeAction("pay-success"),
                         ]);

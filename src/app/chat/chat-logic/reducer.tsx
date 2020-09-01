@@ -35,13 +35,13 @@ export const Reducer: Reducer = (state, action): State => {
             return {
                 messages: [],
                 type: "error",
-            }
+            };
         case "pay-success":
             return {
                 ...state,
                 messages: [],
                 type: "pay-success",
-            }
+            };
 
         // State user actions
         case "user-data":
@@ -53,6 +53,11 @@ export const Reducer: Reducer = (state, action): State => {
                     prolongation: action.prolongation,
                 },
             };
+        case "clear-user-data":
+            return {
+                ...state,
+                user: undefined,
+            };
 
         // State input data action
         case "amount":
@@ -63,7 +68,7 @@ export const Reducer: Reducer = (state, action): State => {
                     ...state.inputData,
                     [action.type]: action.value,
                 }
-            }
+            };
 
         // Custom message actions
         case "platon":
@@ -73,7 +78,7 @@ export const Reducer: Reducer = (state, action): State => {
             return {
                 ...state,
                 messages: [...state.messages, new Messages.LoadIframeMessage(state.inputData.phone, state.inputData.amount)],
-            }
+            };
         case "load-payment-result":
             if (!state.inputData?.phone) {
                 return state;
@@ -81,7 +86,7 @@ export const Reducer: Reducer = (state, action): State => {
             return {
                 ...state,
                 messages: [...state.messages, new Messages.LoadResultMessage(state.inputData.phone)],
-            }
+            };
 
         // Default message actions
         case "message:push":
