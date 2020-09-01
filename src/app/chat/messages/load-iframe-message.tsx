@@ -10,8 +10,6 @@ export const LoadIframeMessage: React.FC<{value: Chat.LoadIframeMessage}> = ({va
         let controller: AbortController | undefined = new AbortController();
 
         const location = window.location.origin + "/iframe.html";
-        const goodUrl = location,
-            badUrl = location;
 
         const requestUrl = new URL("https://test.l-l.cloud/v3/payment/platon/order/repayment");
         requestUrl.searchParams.append("phone", phone);
@@ -20,7 +18,11 @@ export const LoadIframeMessage: React.FC<{value: Chat.LoadIframeMessage}> = ({va
             {
                 headers: {"Content-type": "application/json"},
                 method: "POST",
-                body: JSON.stringify({Order: {goodUrl, badUrl, amount: +amount}}),
+                body: JSON.stringify({Order: {
+                    goodUrl: location,
+                    badUrl: location + "?fail",
+                    amount: +amount,
+                }}),
             })
             .then(response => response.json())
             .then(({action, data}) => {

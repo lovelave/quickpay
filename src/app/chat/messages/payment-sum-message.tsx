@@ -12,13 +12,13 @@ export const PaymentSumMessage: React.FC<{value: Chat.PaymentSumMessage}> = ({va
     const dispatch = Chat.useDispatchContext();
 
     const handleChange = React.useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-        const value = e.target.value;
+        const inputData = e.target.value;
          if (
-             value.length === 0 ||
-             (value.match(/^[1-9][,.\d]{0,7}$/)
-                 && +value.replace(/,/, "."))
+             inputData.length === 0 ||
+             (inputData.match(/^[1-9][,.\d]{0,7}$/)
+                 && +inputData.replace(/,/, "."))
             ) {
-            setValue(value.replace(/(.*[,.]\d{1,2})\d*$/, "$1"));
+            setValue(inputData.replace(/(.*[,.]\d{1,2})\d*$/, "$1"));
          }
     }, [dispatch]);
 
@@ -29,8 +29,10 @@ export const PaymentSumMessage: React.FC<{value: Chat.PaymentSumMessage}> = ({va
             return;
         }
 
+        const filteredValue = value > Math.ceil(sum) ? sum.toString() : value;
+
         dispatch([
-            new Chat.StateInputDataAction("amount", value),
+            new Chat.StateInputDataAction("amount", filteredValue),
             new Chat.ReplaceAction(
             [
                 new Chat.TextMessage(value + " грн", "user"),
@@ -41,7 +43,7 @@ export const PaymentSumMessage: React.FC<{value: Chat.PaymentSumMessage}> = ({va
                 new Chat.PaymentRequestMessage(agreement),
             ]),
         ]);
-    }, [value, agreement, dispatch]);
+    }, [value, agreement, sum, dispatch]);
 
     return (
         <form onSubmit={handleSubmit}>

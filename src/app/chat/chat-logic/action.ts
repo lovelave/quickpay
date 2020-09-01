@@ -12,6 +12,10 @@ export class StateUserAction {
     ) {}
 }
 
+export class ClearUserDataAction {
+    public readonly type = "clear-user-data";
+}
+
 // State input data action
 export class StateInputDataAction {
     constructor(
@@ -33,7 +37,6 @@ export class PlatonAction {
 export class LoadPaymentResultAction {
     public readonly type = "load-payment-result";
 }
-
 
 // Default state actions
 export class PushAction {
@@ -72,6 +75,7 @@ export class FlushAction {
 
 export type Action = PushAction
     | StateUserAction
+    | ClearUserDataAction
     | StateInputDataAction
     | StateTypeAction
     | RemoveAction
