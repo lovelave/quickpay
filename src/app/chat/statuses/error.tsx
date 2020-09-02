@@ -37,7 +37,7 @@ export const ErrorStatus: React.FC<{}> = React.memo(() => {
                     <button className="btn btn_white" onClick={handleClick}>
                         <span>Попробовать ещё</span>
                     </button>
-                    <a href={url} target="_blank" className="btn btn_blue">
+                    <a href={url} rel="noopener nofollow" target="_blank" className="btn btn_blue">
                         <span>Скачать реквизиты</span>
                     </a>
                 </div>

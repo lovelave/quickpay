@@ -25,7 +25,7 @@ export const PaymentErrorRequestMessage = () => {
 
     return (
         <Base.ButtonMessage source={"user"}>
-            <a href={url} target="_blank" className="btn btn_white" onClick={handleRecipe}>
+            <a href={url} rel="noopener nofollow" target="_blank" className="btn btn_white" onClick={handleRecipe}>
                 Скачать реквизиты
             </a>
             <Base.Button theme={"secondary"} onClick={handleRetry}>

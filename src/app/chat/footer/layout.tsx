@@ -8,8 +8,11 @@ const IconVodafone = require("../svg/icon-vodafone.svg");
 import {Social} from "./social";
 import {Author} from "./author";
 import classNames from "classnames";
+import {useOpenState} from "@horat1us/react-hooks";
 
 export const Footer: React.FC<{hide: boolean}> = React.memo(({hide}) => {
+    const [isActive, setActive] = useOpenState();
+
     const isMobile = useIsMobile();
 
     if (isMobile === undefined) {
@@ -32,8 +35,11 @@ export const Footer: React.FC<{hide: boolean}> = React.memo(({hide}) => {
                 <div className="container">
                     <div className="panel-simple">
                         <div className="panel-main">
-                            <span className="copyright">
-                                © {year} LoviLave
+                            <span className="copyright" onDoubleClick={() => setActive()}>
+                                {isActive
+                                    ? `Time: ${process.env.BUILD_TIME}. Build: ${process.env.TRAVIS_BUILD_NUMBER}.`
+                                    : `© ${year} LoviLave`
+                                }
                             </span>
                             <p>
                                 Первый сервис онлайн-кредитов, в котором с помощью чат-бота автоматически

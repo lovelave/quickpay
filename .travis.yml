@@ -5,6 +5,7 @@ node_js:
 install: npm ci
 
 script:
+  - BUILD_TIME=$(date)
   - npm run build
 
 cache:
