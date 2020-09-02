@@ -11,7 +11,7 @@ export const LoadIframeMessage: React.FC<{value: Chat.LoadIframeMessage}> = ({va
 
         const location = window.location.origin + "/iframe.html";
 
-        const requestUrl = new URL("https://lovilave.com.ua/v3/payment/platon/order/repayment");
+        const requestUrl = new URL(process.env.ORIGIN_URL + "v3/payment/platon/order/repayment");
         requestUrl.searchParams.append("phone", phone);
 
         fetch(requestUrl.toString(),

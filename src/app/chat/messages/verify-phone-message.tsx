@@ -11,7 +11,7 @@ export const VerifyPhoneMessage: React.FC<{ value: Chat.VerifyPhoneMessage }> = 
     React.useEffect(() => {
         let controller: AbortController | undefined = new AbortController();
 
-        const requestUrl = new URL("https://lovilave.com.ua/v3/quick-pay");
+        const requestUrl = new URL(process.env.ORIGIN_URL + "v3/quick-pay");
         requestUrl.searchParams.append("id", value.phone);
 
         fetch(requestUrl.toString(), {signal: controller.signal})
