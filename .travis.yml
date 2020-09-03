@@ -10,6 +10,9 @@ script:
 cache:
   npm: true
 
+after_script:
+  - if [ "$NODE_ENV" = test ]; then cp ./robots/robots.txt ./robots.txt; fi;
+
 deploy:
   - provider: pages
     skip-cleanup: true
@@ -23,6 +26,7 @@ deploy:
     github-token: $GITHUB_TOKEN
     on:
       branch: master
+      condition: $NODE_ENV = test
     local_dir: ./dist
     fqdn: pay.test.l-l.cloud
     target_branch: master
