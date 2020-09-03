@@ -29,7 +29,7 @@ export const PaymentSumMessage: React.FC<{value: Chat.PaymentSumMessage}> = ({va
             return;
         }
 
-        const filteredValue = value > Math.ceil(sum) ? sum.toString() : value;
+        const filteredValue = +value > Math.ceil(sum) ? sum.toString() : value;
 
         dispatch([
             new Chat.StateInputDataAction("amount", filteredValue),
