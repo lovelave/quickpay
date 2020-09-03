@@ -5,6 +5,7 @@ import {getOverdue} from "../../utils/overdue";
 import * as HappyBot from "../bot/happy";
 import * as FrontBot from "../bot/front";
 import {getPaymentDetailsUrl} from "../../utils/payment-details-url";
+import {getBaseUrl} from "../../utils/get-base-url";
 
 interface SuccessPaymentProps {
     user: {
@@ -24,7 +25,7 @@ export const SuccessPaymentStatus: React.FC<SuccessPaymentProps> = ({user}) => {
         });
     }, []);
 
-    const url = process.env.ORIGIN_URL;
+    const url = getBaseUrl().toString();
 
     const valueIsNaN = (v: any) => v !== v;
 

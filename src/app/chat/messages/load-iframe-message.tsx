@@ -2,7 +2,7 @@ import * as React from "react";
 import * as Base from "../base";
 import * as Chat from "../chat-logic";
 import {useDispatchContext} from "../chat-logic";
-import {getRequestUrl} from "../../utils/get-request-url";
+import {getBaseUrl} from "../../utils/get-base-url";
 
 export const LoadIframeMessage: React.FC<{value: Chat.LoadIframeMessage}> = ({value: {phone, amount}}) => {
     const dispatch = useDispatchContext();
@@ -12,7 +12,7 @@ export const LoadIframeMessage: React.FC<{value: Chat.LoadIframeMessage}> = ({va
 
         const location = window.location.origin + "/iframe.html";
 
-        const requestUrl = getRequestUrl();
+        const requestUrl = getBaseUrl();
         requestUrl.pathname = "v3/payment/platon/order/repayment";
         requestUrl.searchParams.append("phone", phone);
 

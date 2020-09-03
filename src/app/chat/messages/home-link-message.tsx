@@ -1,8 +1,9 @@
 import * as React from "react";
 import * as Base from "../base";
+import {getBaseUrl} from "../../utils/get-base-url";
 
 export const HomeLinkMessage = () => {
-    const url = process.env.ORIGIN_URL;
+    const url = getBaseUrl().toString();
 
     return (
         <Base.ButtonMessage source={"user"}>

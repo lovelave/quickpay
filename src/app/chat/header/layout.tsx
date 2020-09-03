@@ -2,9 +2,10 @@ import * as React from "react";
 import {ColorLogo} from "./color-logo";
 import {Hamburger} from "./hamburger";
 import classNames from "classnames";
+import {getBaseUrl} from "../../utils/get-base-url";
 
 export const Header: React.FC<{showLogo: boolean}> = React.memo(({showLogo}) => {
-    const url = process.env.ORIGIN_URL;
+    const url = getBaseUrl().toString();
     return (
         <header className={classNames("header", showLogo && "static")}>
             <div className="container">

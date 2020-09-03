@@ -2,7 +2,7 @@ import * as React from "react";
 import * as Chat from "../chat-logic";
 import * as Base from "../base";
 import {UserData} from "../chat-logic";
-import {getRequestUrl} from "../../utils/get-request-url";
+import {getBaseUrl} from "../../utils/get-base-url";
 
 export const LoadResultMessage: React.FC<{value: Chat.LoadResultMessage}> = ({value}) => {
     const dispatch = Chat.useDispatchContext();
@@ -10,7 +10,7 @@ export const LoadResultMessage: React.FC<{value: Chat.LoadResultMessage}> = ({va
     React.useEffect(() => {
         let controller: AbortController | undefined = new AbortController();
 
-        const requestUrl = getRequestUrl();
+        const requestUrl = getBaseUrl();
         requestUrl.pathname = "/v3/quick-pay";
         requestUrl.searchParams.append("id", value.phone);
 
