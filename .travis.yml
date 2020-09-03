@@ -7,11 +7,11 @@ install: npm ci
 script:
   - BUILD_TIME=$(TZ=":Europe/Kiev" date '+%Y-%m-%d %H:%M:%S %z') npm run build
 
+before_deploy:
+  - if [ "$NODE_ENV" = test ]; then cp ./robots/robots.txt ./robots.txt; fi;
+
 cache:
   npm: true
-
-after_script:
-  - if [ "$NODE_ENV" = test ]; then cp ./robots/robots.txt ./robots.txt; fi;
 
 deploy:
   - provider: pages
