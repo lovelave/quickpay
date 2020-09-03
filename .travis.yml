@@ -23,7 +23,9 @@ deploy:
     github-token: $GITHUB_TOKEN
     on:
       branch: master
-    local_dir: ./dist
+    local_dir:
+      - ./dist
+      - ./robots
     fqdn: pay.test.l-l.cloud
     target_branch: master
     repo: lovelave/pay.test.l-l.cloud
