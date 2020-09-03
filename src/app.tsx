@@ -9,6 +9,17 @@ import "./index.scss";
 export const App: React.FC<{}> = () => {
     useTheme("chat");
 
+    React.useEffect(() => {
+        if (!window.location.origin.includes("test")) {
+            return;
+        }
+
+        const meta = document.createElement("meta");
+        meta.setAttribute("name", "robots");
+        meta.setAttribute("content", "noindex");
+        document.head.appendChild(meta);
+    }, []);
+
     return <Provider />;
 };
 
