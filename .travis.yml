@@ -14,7 +14,6 @@ deploy:
   - provider: pages
     skip-cleanup: true
     github-token: $GITHUB_TOKEN
-    keep-history: true
     on:
       branch: master
     local_dir: ./dist
@@ -22,10 +21,9 @@ deploy:
   - provider: pages
     skip-cleanup: true
     github-token: $GITHUB_TOKEN
-    keep-history: true
     on:
       branch: master
-    target_branch: master
-    repo: lovelave/pay.test.l-l.cloud
     local_dir: ./dist
     fqdn: pay.test.l-l.cloud
+    target_branch: master
+    repo: lovelave/pay.test.l-l.cloud
