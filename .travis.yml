@@ -5,7 +5,7 @@ node_js:
 install: npm ci
 
 script:
-  - BUILD_TIME=$(date) npm run build
+  - BUILD_TIME=$(TZ=":Europe/Kiev" date '+%d.%m.%Y %H:%M:%S %z') npm run build
 
 cache:
   npm: true
