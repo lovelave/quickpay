@@ -12,7 +12,7 @@ env:
   - NODE_ENV=test URL=https://pay.test.l-l.cloud
 
 before_deploy:
-  - if [ "$NODE_ENV" = test]; then cp ./robots/robots.txt ./dist/robots.txt; fi;
+  - if [ "$NODE_ENV" = 'test' ]; then cp ./robots/robots.txt ./dist/robots.txt; fi;
 
 after_success:
   - curl --request GET "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=Quickpay%20LL%0ABuild%20%23${TRAVIS_BUILD_NUMBER}.%20Succeeded%0ACommit:%20%22${TRAVIS_COMMIT_MESSAGE}%22%0ANODE_ENV%20=%20${NODE_ENV}%0A${URL}"
