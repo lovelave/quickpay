@@ -15,10 +15,10 @@ before_deploy:
   - if [ "$NODE_ENV" = test]; then cp ./robots/robots.txt ./dist/robots.txt; fi;
 
 after_success:
-  - curl --request GET "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=Quickpay%20LL%0ABuild%20%23${TRAVIS_BUILD_NUMBER}.%20Succeeded%0ACommit:%20%22${TRAVIS_COMMIT_MESSAGE}%22%0Ahttps%3A%2F%2Fpay.lovilave.com.ua%2F"
+  - curl --request GET "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=Quickpay%20LL%0ABuild%20%23${TRAVIS_BUILD_NUMBER}.%20Succeeded%0ACommit:%20%22${TRAVIS_COMMIT_MESSAGE}%22%0ANODE_ENV%20=%20${NODE_ENV}%0Ahttps%3A%2F%2Fpay.lovilave.com.ua%2F"
 
 after_failure:
-  - curl --request GET "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=Quickpay%20LL%0ABuild%20%23${TRAVIS_BUILD_NUMBER}.%20Failed%0ACommit:%20%22${TRAVIS_COMMIT_MESSAGE}%22"
+  - curl --request GET "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=Quickpay%20LL%0ABuild%20%23${TRAVIS_BUILD_NUMBER}.%20Failed%0ACommit:%20%22${TRAVIS_COMMIT_MESSAGE}%22%0ANODE_ENV%20=%20${NODE_ENV}"
 
 cache:
   npm: true
@@ -29,6 +29,7 @@ deploy:
     github-token: $GITHUB_TOKEN
     on:
       branch: master
+      condition: $NODE_ENV = production
     local_dir: ./dist
     fqdn: pay.lovilave.com.ua
   - provider: pages
@@ -36,6 +37,7 @@ deploy:
     github-token: $GITHUB_TOKEN
     on:
       branch: master
+      condition: $NODE_ENV = test
     local_dir: ./dist
     fqdn: pay.test.l-l.cloud
     target_branch: master
