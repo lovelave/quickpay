@@ -15,7 +15,7 @@ export class InfoMessage {
 export const LoadMessage = new InfoMessage("info:load");
 
 export class TextMessage {
-    public readonly type? = "text";
+    public readonly type = "text";
 
     constructor(
         public content: string | string[],
