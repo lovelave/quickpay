@@ -16,13 +16,13 @@ Message with Platon form styles
   .wrap {
     width: $message-width;
     max-width: $message-width;
-    height: 430px;
+    height: 450px;
 
     @include breakpoint($mobile) {
       width: auto;
-      height: 330px;
+      height: 395px;
 
-      padding: 5px;
+      padding: 15px 5px;
 
       color: $color-title;
     }

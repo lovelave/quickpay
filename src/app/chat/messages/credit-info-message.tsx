@@ -42,6 +42,10 @@ export const CreditInfoMessage: React.FC<{value: Chat.CreditInfoMessage}> = ({va
                 label: "Просрочка",
                 value: plural(overdue, "days"),
             },
+            {
+                label: "Клиент",
+                value: user.name,
+            },
         ]
         : [
             {
@@ -53,6 +57,10 @@ export const CreditInfoMessage: React.FC<{value: Chat.CreditInfoMessage}> = ({va
                 value: overdue === 0
                     ? "Сегодня последний день!"
                     : plural(returnDate.diff(new Date().setHours(0,0,0,0), "day"), "days"),
+            },
+            {
+                label: "Клиент",
+                value: user.name,
             },
         ];
 

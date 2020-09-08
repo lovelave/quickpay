@@ -7,6 +7,7 @@ export type StateType = "error" | "pay-success";
 export interface UserData {
     debt: number
     returnDate: string
+    name: string
     prolongation?: number
 }
 
@@ -48,6 +49,7 @@ export const Reducer: Reducer = (state, action): State => {
             return {
                 ...state,
                 user: {
+                    name: action.name,
                     debt: action.debt,
                     returnDate: action.returnDate,
                     prolongation: action.prolongation,

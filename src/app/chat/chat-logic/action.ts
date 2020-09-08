@@ -8,6 +8,7 @@ export class StateUserAction {
     constructor(
         public readonly debt: number,
         public readonly returnDate: string,
+        public readonly name: string,
         public readonly prolongation?: number,
     ) {}
 }

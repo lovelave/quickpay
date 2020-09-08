@@ -31,7 +31,7 @@ export const LoadResultMessage: React.FC<{value: Chat.LoadResultMessage}> = ({va
                         return response.json();
                     default:
                         dispatch([
-                            new Chat.StateUserAction(NaN, ""),
+                            new Chat.StateUserAction(NaN, "", ""),
                             new Chat.StateTypeAction("pay-success"),
                         ]);
                         return Promise.reject(undefined);
@@ -41,7 +41,7 @@ export const LoadResultMessage: React.FC<{value: Chat.LoadResultMessage}> = ({va
                 dispatch([
                     new Chat.RemoveAction(value),
                     new Chat.StateInputDataAction("amount", undefined),
-                    new Chat.StateUserAction(user.debt, user.returnDate, user.prolongation),
+                    new Chat.StateUserAction(user.debt, user.returnDate, user.name, user.prolongation),
                     new Chat.StateTypeAction("pay-success"),
                 ]);
             });
