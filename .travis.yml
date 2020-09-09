@@ -31,7 +31,7 @@ deploy:
       branch: master
       condition: $NODE_ENV = production
     local_dir: ./dist
-    fqdn: pay.lovilave.com.ua
+    fqdn: $URL
   - provider: pages
     skip-cleanup: true
     github-token: $GITHUB_TOKEN
@@ -39,6 +39,6 @@ deploy:
       branch: master
       condition: $NODE_ENV = test
     local_dir: ./dist
-    fqdn: pay.test.l-l.cloud
+    fqdn: $URL
     target_branch: master
     repo: lovelave/pay.test.l-l.cloud
