@@ -8,8 +8,8 @@ script:
   - BUILD_TIME=$(TZ=":Europe/Kiev" date '+%Y-%m-%d %H:%M:%S %z') npm run build
 
 env:
-  - NODE_ENV=production
-  - NODE_ENV=test
+  - NODE_ENV=production URL=https://pay.lovilave.com.ua
+  - NODE_ENV=test URL=https://pay.test.l-l.cloud
 
 before_deploy:
   - if [ "$NODE_ENV" = 'test' ]; then cp ./robots/robots.txt ./dist/robots.txt; fi;
@@ -25,7 +25,7 @@ cache:
 
 deploy:
   - provider: pages
-    skip-cleanup: true
+    cleanup: false
     github-token: $GITHUB_TOKEN
     on:
       branch: master
@@ -33,7 +33,7 @@ deploy:
     local_dir: ./dist
     fqdn: $URL
   - provider: pages
-    skip-cleanup: true
+    cleanup: false
     github-token: $GITHUB_TOKEN
     on:
       branch: master
