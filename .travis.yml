@@ -26,6 +26,7 @@ cache:
 deploy:
   - provider: pages
     github-token: $GITHUB_TOKEN
+    cleanup: true
     on:
       branch: master
       condition: $NODE_ENV = production
@@ -33,6 +34,7 @@ deploy:
     fqdn: $URL
   - provider: pages
     github-token: $GITHUB_TOKEN
+    cleanup: true
     on:
       branch: master
       condition: $NODE_ENV = test
