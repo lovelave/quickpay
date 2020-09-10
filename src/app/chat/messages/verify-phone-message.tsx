@@ -38,6 +38,13 @@ export const VerifyPhoneMessage: React.FC<{ value: Chat.VerifyPhoneMessage }> = 
                 }
             })
             .then((user: UserData) => {
+
+                if (("LogRocket" in window) && ("object" === typeof (window as any).LogRocket)) {
+                    console.log("LogRocket identify");
+                    const {debt, returnDate, name, prolongation} = user;
+                    (window as any).LogRocket.identify(value.phone, {name, debt, returnDate, prolongation});
+                }
+
                 const overdue = getOverdue(user.returnDate);
 
                 dispatch([

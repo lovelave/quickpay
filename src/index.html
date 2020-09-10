@@ -377,5 +377,19 @@
     </div>
     <bobra-quickpay></bobra-quickpay>
     <script src="./index.tsx"></script>
+    <script>
+        if (process.env.LOG_ROCKET) {
+            (function () {
+                var s = document.createElement("script");
+                s.src = "https://cdn.lr-ingest.io/LogRocket.min.js";
+                s.setAttribute("crossorigin", "anonymous");
+                document.body.appendChild(s);
+
+                s.onload = function () {
+                    window.LogRocket && window.LogRocket.init(process.env.LOG_ROCKET);
+                }
+            })()
+        }
+    </script>
 </body>
 </html>
