@@ -36,6 +36,7 @@
     "compass-mixins": "^0.12.10",
     "dayjs": "^1.8.34",
     "logrocket": "^1.0.12",
+    "node-forge": ">=0.10.0",
     "normalize.css": "^8.0.1",
     "parcel-bundler": "^1.12.4",
     "parcel-plugin-asset-copier": "^1.1.0",
