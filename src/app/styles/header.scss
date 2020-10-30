@@ -92,6 +92,110 @@ Header styles
     }
   }
 
+  .btn_white {
+    @include flex;
+    align-items: center;
+    align-self: flex-start;
+
+    padding: (11em/16) (12em/16) (9em/16) (20em/16);
+
+    box-shadow: 0 3px 13px -4px rgba(137, 191, 241, 0.6);
+
+    border-bottom: 1px solid #bad9f5e0;
+
+    color: #3186c3;
+
+    @include breakpoint($mobile) {
+      justify-content: center;
+
+      width: 40px;
+      height: 40px;
+
+      padding: 0;
+
+      span {
+
+        &:not(.emoji) {
+
+          display: none;
+        }
+      }
+    }
+
+    &:hover {
+      color: #0088ea;
+
+      border-bottom: 1px solid #c5e4ffe0;
+
+      .emoji_human {
+
+        &:after {
+
+          opacity: 0;
+        }
+
+        &:before {
+
+          opacity: 1;
+        }
+      }
+    }
+
+    .emoji {
+
+      order: 2;
+    }
+
+    .emoji {
+
+      & + span {
+
+        margin-right: (6em/16);
+      }
+    }
+  }
+
+  .emoji {
+    line-height: 1px;
+
+    &:after,
+    &:before {
+      content: "";
+
+      display: inline-block;
+
+      width: 20px;
+      height: 20px;
+
+      background-repeat: no-repeat;
+      background-size: contain;
+
+      transition: opacity .4s linear;
+    }
+
+    &_human {
+
+      @include breakpoint($mobile-p) {
+        @include flex;
+        justify-content: center;
+      }
+
+      &:after {
+        margin-left: -20px;
+
+        background-image: url("./app/chat/header/man.png");
+
+        opacity: 1;
+      }
+
+      &:before {
+        background-image: url("./app/chat/header/man-hand.png");
+
+        opacity: 0;
+      }
+    }
+  }
+
   .menu-hamburger {
     position: relative;
 
