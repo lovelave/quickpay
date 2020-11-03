@@ -13,6 +13,10 @@ export const Header: React.FC<{showLogo: boolean}> = React.memo(({showLogo}) => 
                     <ColorLogo />
                 </a>
                 <div className="header-controls">
+                    <a href={url + "signin"} className="btn btn_white">
+                        <span className="emoji emoji_human"/>
+                        <span>Мой кабинет</span>
+                    </a>
                     <a href={url + "nav"} className="menu-hamburger">
                         <div className="overlay">
                             <span className="label">Меню</span>
