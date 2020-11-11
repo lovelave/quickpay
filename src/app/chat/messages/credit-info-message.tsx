@@ -79,7 +79,7 @@ export const CreditInfoMessage: React.FC<{value: Chat.CreditInfoMessage}> = ({va
                             <img src={dashedLine} className="line" alt="line" />
                             <p className="solid">
                                 Итого к возврату на сегодня:&nbsp;
-                                <span className="increased">{user.debt}</span>
+                                <span className="increased">{+user.debt.toFixed(2)}</span>
                                 &nbsp;грн
                             </p>
                         </div>

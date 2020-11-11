@@ -76,7 +76,7 @@ export const SuccessPaymentStatus: React.FC<{ user: UserData | undefined }> = ({
                 </div>
                 <h2>Оплата успешна</h2>
                 <p>
-                    <span>Остаток долга: {user.debt} грн до {dayjs(user.returnDate).format("DD.MM.YYYY")}</span>
+                    <span>Остаток долга: {+user.debt.toFixed(2)} грн до {dayjs(user.returnDate).format("DD.MM.YYYY")}</span>
                     <span>Хотите оплатить сейчас?</span>
                 </p>
                 <div className="btn-container">
