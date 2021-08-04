@@ -1,6 +1,7 @@
 import * as React from "react";
 import {IconFacebook} from "./icon-facebook";
 import {IconInstagram} from "./icon-instagram";
+import {IconTelegram} from "./icon-telegram";
 
 export const Social = () => {
     return (
@@ -20,6 +21,14 @@ export const Social = () => {
             >
                 <IconInstagram />
                 <span />
+            </a>
+            <a
+                href="https://t.me/lovilaveua"
+                className="button button_telegram"
+                target="_blank"
+            >
+                <IconTelegram/>
+                <span/>
             </a>
         </div>
     )
