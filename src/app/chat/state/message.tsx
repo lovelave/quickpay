@@ -10,8 +10,7 @@ export interface MessageProps<M extends Chat.Message = any> {
     i?: number;
 }
 
-export type Message<P extends MessageProps = MessageProps> =
-    React.ComponentType<P>;
+export type Message = React.ComponentType<MessageProps>;
 
 export const Message: Message = ({value}) => {
     switch (value.type) {

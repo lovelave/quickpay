@@ -9,7 +9,7 @@ import {moneyInputFilter} from "../../utils/money-input-filter";
 const IconAirplane = require("../svg/icon-airplane.svg");
 
 export const PaymentSumMessage: React.FC<{value: Chat.PaymentSumMessage}> = ({value: {sum, agreement}}) => {
-    const [value, handleChange] = useInputState(sum.toString(), moneyInputFilter);
+    const [value, handleChange] = useInputState((+sum.toFixed(2)).toString(), moneyInputFilter);
 
     const dispatch = Chat.useDispatchContext();
 

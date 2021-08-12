@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
 
 export function getOverdue(returnDate: string) {
-    return dayjs(new Date().setHours(0,0,0, 0)).diff(returnDate, "day");
+    return dayjs().startOf("day").diff(returnDate, "day");
 }

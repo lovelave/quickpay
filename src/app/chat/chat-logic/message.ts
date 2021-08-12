@@ -4,16 +4,6 @@ export class FailureMessage {
     public readonly type = "info:failure";
 }
 
-export type InfoMessageType = "info:load" | "info:failure" | "info:service" | "info:return";
-
-export class InfoMessage {
-    constructor(public readonly type: InfoMessageType) {
-        Object.freeze(this);
-    }
-}
-
-export const LoadMessage = new InfoMessage("info:load");
-
 export class TextMessage {
     public readonly type = "text";
 

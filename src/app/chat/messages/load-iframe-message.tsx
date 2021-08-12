@@ -18,6 +18,7 @@ export const LoadIframeMessage: React.FC<{value: Chat.LoadIframeMessage}> = ({va
 
         fetch(requestUrl.toString(),
             {
+                signal: controller.signal,
                 headers: {"Content-type": "application/json"},
                 method: "POST",
                 body: JSON.stringify({Order: {
@@ -33,6 +34,9 @@ export const LoadIframeMessage: React.FC<{value: Chat.LoadIframeMessage}> = ({va
                 dispatch(new Chat.ReplaceAction([
                     new Chat.IframeMessage(action, Object.entries(data) as Array<[string, string]>),
                 ]));
+            })
+            .catch(() => {
+                dispatch(new Chat.StateTypeAction("error"));
             });
 
         return () => controller && controller.abort();
