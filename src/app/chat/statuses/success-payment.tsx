@@ -5,16 +5,10 @@ import {getOverdue} from "../../utils/overdue";
 import * as HappyBot from "../bot/happy";
 import * as FrontBot from "../bot/front";
 import {getPaymentDetailsUrl} from "../../utils/payment-details-url";
+import {getBaseUrl} from "../../utils/get-base-url";
+import {UserData} from "../chat-logic";
 
-interface SuccessPaymentProps {
-    user: {
-        debt: number
-        returnDate: string
-        prolongation?: number
-    } | undefined
-}
-
-export const SuccessPaymentStatus: React.FC<SuccessPaymentProps> = ({user}) => {
+export const SuccessPaymentStatus: React.FC<{ user: UserData | undefined }> = ({user}) => {
     const dispatch = Chat.useDispatchContext();
 
     React.useEffect(() => {
@@ -24,9 +18,7 @@ export const SuccessPaymentStatus: React.FC<SuccessPaymentProps> = ({user}) => {
         });
     }, []);
 
-    const url = process.env.ORIGIN_URL;
-
-    const valueIsNaN = (v: any) => v !== v;
+    const url = getBaseUrl().toString();
 
     if (!user) {
         return (
@@ -48,7 +40,7 @@ export const SuccessPaymentStatus: React.FC<SuccessPaymentProps> = ({user}) => {
                 </div>
             </div>
         );
-    } else if (valueIsNaN(user.debt)) {
+    } else if (isNaN(user.debt)) {
         return (
             <div className="status-wrap">
                 <div className="status">
@@ -84,7 +76,7 @@ export const SuccessPaymentStatus: React.FC<SuccessPaymentProps> = ({user}) => {
                 </div>
                 <h2>Оплата успешна</h2>
                 <p>
-                    <span>Остаток долга: {user.debt} грн до {dayjs(user.returnDate).format("DD.MM.YYYY")}</span>
+                    <span>Остаток долга: {+user.debt.toFixed(2)} грн до {dayjs(user.returnDate).format("DD.MM.YYYY")}</span>
                     <span>Хотите оплатить сейчас?</span>
                 </p>
                 <div className="btn-container">

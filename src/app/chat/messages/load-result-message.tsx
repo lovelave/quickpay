@@ -2,7 +2,7 @@ import * as React from "react";
 import * as Chat from "../chat-logic";
 import * as Base from "../base";
 import {UserData} from "../chat-logic";
-import {getRequestUrl} from "../../utils/get-request-url";
+import {getBaseUrl} from "../../utils/get-base-url";
 
 export const LoadResultMessage: React.FC<{value: Chat.LoadResultMessage}> = ({value}) => {
     const dispatch = Chat.useDispatchContext();
@@ -10,7 +10,7 @@ export const LoadResultMessage: React.FC<{value: Chat.LoadResultMessage}> = ({va
     React.useEffect(() => {
         let controller: AbortController | undefined = new AbortController();
 
-        const requestUrl = getRequestUrl();
+        const requestUrl = getBaseUrl();
         requestUrl.pathname = "/v3/quick-pay";
         requestUrl.searchParams.append("id", value.phone);
 
@@ -31,7 +31,7 @@ export const LoadResultMessage: React.FC<{value: Chat.LoadResultMessage}> = ({va
                         return response.json();
                     default:
                         dispatch([
-                            new Chat.StateUserAction(NaN, ""),
+                            new Chat.StateUserAction(NaN, "", ""),
                             new Chat.StateTypeAction("pay-success"),
                         ]);
                         return Promise.reject(undefined);
@@ -41,7 +41,7 @@ export const LoadResultMessage: React.FC<{value: Chat.LoadResultMessage}> = ({va
                 dispatch([
                     new Chat.RemoveAction(value),
                     new Chat.StateInputDataAction("amount", undefined),
-                    new Chat.StateUserAction(user.debt, user.returnDate, user.prolongation),
+                    new Chat.StateUserAction(user.debt, user.returnDate, user.name, user.prolongation),
                     new Chat.StateTypeAction("pay-success"),
                 ]);
             });

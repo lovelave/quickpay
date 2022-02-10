@@ -14,7 +14,7 @@ export const Provider: React.FC<{}> = () => {
 
     return <Chat.DispatchContext.Provider value={dispatch}>
         <ErrorBoundary>
-            <Header showLogo={state.type} />
+            <Header showLogo={Boolean(state.type)} />
             {!state.type &&
             <div className="bot__overlay">
                 <TurnedBot />
@@ -22,7 +22,7 @@ export const Provider: React.FC<{}> = () => {
             <main className="main">
                 {getProviderLayout(state)}
             </main>
-            <Footer hide={state.type} />
+            <Footer hide={Boolean(state.type)} />
         </ErrorBoundary>
     </Chat.DispatchContext.Provider>
 };

@@ -15,7 +15,7 @@
     "quickpay"
   ],
   "author": "sega057",
-  "license": "unlicensed",
+  "license": "UNLICENSED",
   "bugs": {
     "url": "https://github.com/lovelave/quickpay/issues"
   },
@@ -25,8 +25,6 @@
   "homepage": "https://github.com/lovelave/quickpay",
   "dependencies": {
     "@horat1us/react-hooks": "^1.11.0",
-    "@sentry/react": "^5.22.0",
-    "@sentry/tracing": "^5.22.3",
     "@types/classnames": "^2.2.10",
     "@types/node": "^14.0.27",
     "@types/react": "^16.9.46",
@@ -37,6 +35,8 @@
     "classnames": "^2.2.6",
     "compass-mixins": "^0.12.10",
     "dayjs": "^1.8.34",
+    "logrocket": "^1.0.12",
+    "node-forge": ">=0.10.0",
     "normalize.css": "^8.0.1",
     "parcel-bundler": "^1.12.4",
     "parcel-plugin-asset-copier": "^1.1.0",

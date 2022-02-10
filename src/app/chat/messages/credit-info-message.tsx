@@ -11,9 +11,7 @@ export interface Item {
     label: string
 }
 
-export const Item: React.FC<Item> = (
-    { value, label }
-) => {
+export const Item: React.FC<Item> = ({ value, label }) => {
     return (
         <div className="form-group">
             <span className="label">{label}</span>
@@ -42,6 +40,10 @@ export const CreditInfoMessage: React.FC<{value: Chat.CreditInfoMessage}> = ({va
                 label: "Просрочка",
                 value: plural(overdue, "days"),
             },
+            {
+                label: "Клиент",
+                value: user.name,
+            },
         ]
         : [
             {
@@ -52,7 +54,11 @@ export const CreditInfoMessage: React.FC<{value: Chat.CreditInfoMessage}> = ({va
                 label: "Осталось",
                 value: overdue === 0
                     ? "Сегодня последний день!"
-                    : plural(returnDate.diff(new Date().setHours(0,0,0,0), "day"), "days"),
+                    : plural(returnDate.diff(dayjs().startOf("day"), "day"), "days"),
+            },
+            {
+                label: "Клиент",
+                value: user.name,
             },
         ];
 
@@ -73,7 +79,7 @@ export const CreditInfoMessage: React.FC<{value: Chat.CreditInfoMessage}> = ({va
                             <img src={dashedLine} className="line" alt="line" />
                             <p className="solid">
                                 Итого к возврату на сегодня:&nbsp;
-                                <span className="increased">{user.debt}</span>
+                                <span className="increased">{+user.debt.toFixed(2)}</span>
                                 &nbsp;грн
                             </p>
                         </div>

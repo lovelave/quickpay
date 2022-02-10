@@ -1,8 +1,9 @@
 import * as React from "react";
-import * as Chat from "../chat-logic";
 import { useInputState } from "@horat1us/react-hooks";
 import { PhoneInput } from "@ua-opendata/react-phone-input";
 import classNames from "classnames";
+import * as Chat from "../chat-logic";
+
 const IconAirplane = require("../svg/icon-airplane.svg");
 
 export const IntroRequestMessage: React.FC<{}> = React.memo(() => {

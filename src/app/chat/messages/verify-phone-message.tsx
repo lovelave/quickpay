@@ -4,7 +4,7 @@ import * as Base from "../base";
 import {UserData} from "../chat-logic";
 import {getOverdue} from "../../utils/overdue";
 import {getPaymentDetailsUrl} from "../../utils/payment-details-url";
-import {getRequestUrl} from "../../utils/get-request-url";
+import {getBaseUrl} from "../../utils/get-base-url";
 
 export const VerifyPhoneMessage: React.FC<{ value: Chat.VerifyPhoneMessage }> = ({value}) => {
     const dispatch = Chat.useDispatchContext();
@@ -12,7 +12,7 @@ export const VerifyPhoneMessage: React.FC<{ value: Chat.VerifyPhoneMessage }> = 
     React.useEffect(() => {
         let controller: AbortController | undefined = new AbortController();
 
-        const requestUrl = getRequestUrl();
+        const requestUrl = getBaseUrl();
         requestUrl.pathname = "v3/quick-pay";
         requestUrl.searchParams.append("id", value.phone);
 
@@ -38,6 +38,13 @@ export const VerifyPhoneMessage: React.FC<{ value: Chat.VerifyPhoneMessage }> = 
                 }
             })
             .then((user: UserData) => {
+
+                if (("LogRocket" in window) && ("object" === typeof (window as any).LogRocket)) {
+                    console.log("LogRocket identify");
+                    const {debt, returnDate, name, prolongation} = user;
+                    (window as any).LogRocket.identify(value.phone, {name, debt, returnDate, prolongation});
+                }
+
                 const overdue = getOverdue(user.returnDate);
 
                 dispatch([
