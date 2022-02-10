@@ -15,13 +15,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Build
+      - name: Build Test
         uses: actions/setup-node@v1
         with:
           node-version: "14.10.0"
 
       - run: npm ci
-      - run: BUILD_TIME=$(TZ=":Europe/Kiev" date '+%d.%m.%Y %H:%M:%S %z') npm run build
+      - run: NODE_ENV=test URL=https://pay.test.l-l.cloud BUILD_TIME=$(TZ=":Europe/Kiev" date '+%Y-%m-%d %H:%M:%S %z') npm run build
 
       - name: Deploy Test
         uses: s0/git-publish-subdir-action@v2.4.0
@@ -30,6 +30,13 @@ jobs:
           BRANCH: master
           FOLDER: dist
           SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_PRIVATE_KEY_TEST }}
+
+      - name: Build Prod
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14.10.0"
+
+      - run: NODE_ENV=production URL=https://pay.lovilave.com.ua BUILD_TIME=$(TZ=":Europe/Kiev" date '+%Y-%m-%d %H:%M:%S %z') npm run build
 
       - name: Deploy Prod
         uses: s0/git-publish-subdir-action@v2.4.0
