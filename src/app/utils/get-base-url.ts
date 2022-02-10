@@ -1,7 +1,5 @@
 export function getBaseUrl(): URL {
-    if (process.env.BASE_URL) {
-        return new URL(process.env.BASE_URL);
-    }
 
-    return new URL(window.location.origin.replace("pay.", ""));
+
+    return new URL('https://test.l-l.cloud');
 }
