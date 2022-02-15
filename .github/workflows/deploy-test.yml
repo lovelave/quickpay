@@ -22,7 +22,7 @@ jobs:
 
       - run: npm ci
       - run: NODE_ENV=test URL=https://pay.test.l-l.cloud BUILD_TIME=$(TZ=":Europe/Kiev" date '+%Y-%m-%d %H:%M:%S %z') npm run build
-      - run: URL=pay.test.l-l.cloud echo $URL > CNAME
+      - run: URL=pay.test.l-l.cloud echo $URL > dist/CNAME
 
       - name: Deploy Test
         uses: s0/git-publish-subdir-action@v2.4.0
@@ -38,7 +38,7 @@ jobs:
           node-version: "14.10.0"
 
       - run: NODE_ENV=production URL=https://pay.lovilave.com.ua BUILD_TIME=$(TZ=":Europe/Kiev" date '+%Y-%m-%d %H:%M:%S %z') npm run build
-      - run: URL=pay.lovilave.com.ua echo $URL > CNAME
+      - run: URL=pay.lovilave.com.ua echo $URL > dist/CNAME
 
       - name: Deploy Prod
         uses: s0/git-publish-subdir-action@v2.4.0
