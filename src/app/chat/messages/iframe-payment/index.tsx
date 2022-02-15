@@ -11,7 +11,7 @@ type IframePaymentFormProps = Omit<React.HTMLProps<HTMLFormElement>, "data"> & {
     data: Array<[string, string]>;
 }
 
-const IframePaymentForm: React.FC<IframePaymentFormProps> = ({data, ...props}) => {
+export const IframePaymentForm: React.FC<IframePaymentFormProps> = ({data, ...props}) => {
     const ref = React.useRef<HTMLFormElement>(null);
 
     React.useEffect(() => {
@@ -20,6 +20,7 @@ const IframePaymentForm: React.FC<IframePaymentFormProps> = ({data, ...props}) =
         }
         ref.current.submit();
     }, [ref.current, props.target]);
+    console.log(data);
 
     return (
         <form method="post" {...props} ref={ref}>

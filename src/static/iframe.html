@@ -18,6 +18,7 @@
             cancelable: true,
         });
         w.dispatchEvent(event);
+        setTimeout(() => window.location = '/', 1000);
     })(window.parent || window);
 </script>
 </body>
