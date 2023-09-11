@@ -2,8 +2,10 @@
 * Social styles
  */
 
+@use "sass:math";
+
 .social-list {
-  margin-top: (16em/16);
+  margin-top: math.div(16em, 16);
   
   a {
     display: inline-block;
@@ -12,12 +14,12 @@
 
     & + a {
       
-      margin-left: (10em/16);
+      margin-left: math.div(10em, 16);
     }
 
     & + .button_instagram {
 
-      margin-left: (4em/16);
+      margin-left: math.div(4em, 16);
     }
   }
 

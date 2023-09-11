@@ -2,6 +2,8 @@
 * Buttons styles
  */
 
+@use "sass:math";
+
 button {
 
   padding: 0;
@@ -12,7 +14,7 @@ button {
 
   position: relative;
 
-  padding: (11em/16) (23em/16);
+  padding: math.div(11em, 16) math.div(23em, 16);
 
   border-radius: $btn-border-radius;
 
@@ -26,7 +28,7 @@ button {
 
     & + span {
 
-      margin-left: (9em/16);
+      margin-left: math.div(9em, 16);
     }
   }
 
@@ -41,7 +43,7 @@ button {
     & + .icon,
     & + .emoji {
 
-      margin-left: (9em/16);
+      margin-left: math.div(9em, 16);
     }
   }
 

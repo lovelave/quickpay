@@ -5,12 +5,12 @@ const IconPrivat = require("../svg/icon-privat.svg");
 const IconMastercard = require("../svg/icon-mastercard.svg");
 const IconKyivstar = require("../svg/icon-kyivstar.svg");
 const IconVodafone = require("../svg/icon-vodafone.svg");
-import {Social} from "./social";
-import {Author} from "./author";
+import { Social } from "./social";
+import { Author } from "./author";
 import classNames from "classnames";
-import {useOpenState} from "@horat1us/react-hooks";
+import { useOpenState } from "@horat1us/react-hooks";
 
-export const Footer: React.FC<{hide: boolean}> = React.memo(({hide}) => {
+export const Footer: React.FC<{ hide: boolean }> = React.memo(({ hide }) => {
     const [isActive, setActive] = useOpenState();
 
     const isMobile = useIsMobile();
@@ -22,11 +22,13 @@ export const Footer: React.FC<{hide: boolean}> = React.memo(({hide}) => {
     const year = new Date().getFullYear().toString();
 
     if (isMobile) {
-        return <footer className={classNames("footer mobile", hide && "hide")}>
-            <div className="footer-below">
-                <Author />
-            </div>
-        </footer>
+        return (
+            <footer className={classNames("footer mobile", hide && "hide")}>
+                <div className="footer-below">
+                    <Author />
+                </div>
+            </footer>
+        );
     }
 
     return (
@@ -35,45 +37,81 @@ export const Footer: React.FC<{hide: boolean}> = React.memo(({hide}) => {
                 <div className="container">
                     <div className="panel-simple">
                         <div className="panel-main">
-                            <span className="copyright" onDoubleClick={() => setActive()}>
+                            <span
+                                className="copyright"
+                                onDoubleClick={() => setActive()}
+                            >
                                 {isActive
                                     ? `Time: ${process.env.BUILD_TIME}. Build: ${process.env.TRAVIS_BUILD_NUMBER}.`
-                                    : `© ${year} LoviLave`
-                                }
+                                    : `© ${year} LoviLave`}
                             </span>
                             <p>
-                                Первый сервис онлайн-кредитов, в котором с помощью чат-бота автоматически
-                                выдают до 10000 гривен на карту украинского банка.
+                                Перший сервіс онлайн-кредитів, у якому за
+                                допомогою чат-бота автоматично видають до 10 000
+                                гривень на картку українського банку.
                             </p>
                         </div>
                         <div className="panel-aside">
                             <div className="payment-systems">
-                                <img src={IconVisa} className="icon icon_visa" alt="Visa"/>
-                                <img src={IconMastercard} className="icon icon_mastercard" alt="Mastercard"/>
-                                <img src={IconPrivat} className="icon icon_privat" alt="ПриватБанк"/>
+                                <img
+                                    src={IconVisa}
+                                    className="icon icon_visa"
+                                    alt="Visa"
+                                />
+                                <img
+                                    src={IconMastercard}
+                                    className="icon icon_mastercard"
+                                    alt="Mastercard"
+                                />
+                                <img
+                                    src={IconPrivat}
+                                    className="icon icon_privat"
+                                    alt="ПриватБанк"
+                                />
                             </div>
                         </div>
                     </div>
                     <div className="right">
                         <div className="support">
-                            <a href="mailto:hello@lovilave.com.ua" className="btn btn_blue">
-                                Написать нам
+                            <a
+                                href="mailto:hello@lovilave.com.ua"
+                                className="btn btn_blue"
+                            >
+                                Написати нам
                                 <span className="emoji emoji_speaker" />
                             </a>
-                            <span className="sub-title">С 10:00 до 19:00, Пн - Пт</span>
+                            <span className="sub-title">
+                                З 10:00 до 19:00, Пн - Пт
+                            </span>
                             <div className="btn-container">
-                                <a href="tel:+380675613804" className="phone-link">
-                                    <img src={IconVodafone} className="icon icon_vodafone" alt="Visa"/>
+                                <a
+                                    href="tel:+380675613804"
+                                    className="phone-link"
+                                >
+                                    <img
+                                        src={IconVodafone}
+                                        className="icon icon_vodafone"
+                                        alt="Visa"
+                                    />
                                     <span>+380 67 561-38-04</span>
                                 </a>
-                                <a href="tel:+380504736480" className="phone-link">
-                                    <img src={IconKyivstar} className="icon icon_kyivstar" alt="Kyivstar"/>
+                                <a
+                                    href="tel:+380504736480"
+                                    className="phone-link"
+                                >
+                                    <img
+                                        src={IconKyivstar}
+                                        className="icon icon_kyivstar"
+                                        alt="Kyivstar"
+                                    />
                                     <span>+380 50 473-64-80</span>
                                 </a>
                             </div>
                         </div>
                         <div className="wrap">
-                            <span className="sub-title">Тут скидки и подарки</span>
+                            <span className="sub-title">
+                                Тут знижки та подарунки
+                            </span>
                             <Social />
                         </div>
                     </div>
@@ -83,7 +121,7 @@ export const Footer: React.FC<{hide: boolean}> = React.memo(({hide}) => {
                 <Author />
             </div>
         </footer>
-    )
+    );
 });
 
 Footer.displayName = "Footer.Layout";

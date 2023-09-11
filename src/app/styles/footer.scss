@@ -2,6 +2,8 @@
 * footer
  */
 
+@use "sass:math";
+
 .footer {
   background: linear-gradient(#EFF8FF, #CEE1F0);
 
@@ -48,7 +50,7 @@
   .container {
     @include flex-wrap;
 
-    max-width: (1300em/16);
+    max-width: math.div(1300em, 16);
   }
 
   &.mobile {
@@ -70,7 +72,7 @@
         background-color: rgba(195,218,236,.25);
 
         .container {
-          padding: (15em/16) 0;
+          padding: math.div(15em, 16) 0;
 
           @include breakpoint($mobile) {
             @include flex;
@@ -81,25 +83,25 @@
 
         .author {
 
-          margin-top: (7em/16);
+          margin-top: math.div(7em, 16);
         }
       }
     }
   }
 
   &-above {
-    padding: (22em/16);
+    padding: math.div(22em, 16);
 
     color: #1D5A8E;
 
     @include breakpoint($laptop) {
-      padding-right: (33em/16);
-      padding-left: (33em/16);
+      padding-right: math.div(33em, 16);
+      padding-left: math.div(33em, 16);
     }
 
     @include breakpoint($tablet) {
-      padding-right: (30em/16);
-      padding-left: (30em/16);
+      padding-right: math.div(30em, 16);
+      padding-left: math.div(30em, 16);
     }
 
     > .container,
@@ -110,18 +112,18 @@
   }
 
   &-below {
-    padding: 0 (22em/16);
+    padding: 0 math.div(22em, 16);
 
     background-color: rgba(195,218,236,.33);
 
     @include breakpoint($laptop) {
-      padding-right: (33em/16);
-      padding-left: (33em/16);
+      padding-right: math.div(33em, 16);
+      padding-left: math.div(33em, 16);
     }
 
     @include breakpoint($tablet) {
-      padding-right: (30em/16);
-      padding-left: (30em/16);
+      padding-right: math.div(30em, 16);
+      padding-left: math.div(30em, 16);
     }
 
     @include breakpoint($mobile) {
@@ -135,7 +137,7 @@
 
       position: relative;
 
-      padding: (23em/16) 0;
+      padding: math.div(23em, 16) 0;
 
       &:before {
 
@@ -153,8 +155,8 @@
 
       width: 83%;
 
-      line-height: (16em/11);
-      font-size: (11em/16);
+      line-height: math.div(16em, 11);
+      font-size: math.div(11em, 16);
       color: #1C5377;
 
       opacity: .34;
@@ -181,7 +183,7 @@
     text-align: right;
 
     @include breakpoint($mobile) {
-      margin-top: (18em/16);
+      margin-top: math.div(18em, 16);
 
       text-align: initial;
     }
@@ -193,13 +195,13 @@
     }
 
     @include breakpoint($tablet-p) {
-      margin-top: (16em/16);
+      margin-top: math.div(16em, 16);
 
       text-align: initial;
     }
 
     .wrap {
-      margin-left: (45em/16);
+      margin-left: math.div(45em, 16);
 
       @include breakpoint($mobile-p) {
         margin-left: 0;
@@ -208,7 +210,7 @@
 
       @include breakpoint($tablet) {
 
-        margin-left: (30em/16);
+        margin-left: math.div(30em, 16);
       }
     }
   }
@@ -234,10 +236,10 @@
     }
 
     .panel-aside {
-      padding-left: (4em/16);
+      padding-left: math.div(4em, 16);
 
       @include breakpoint($mobile-p) {
-        margin-top: (12em/16);
+        margin-top: math.div(12em, 16);
         padding-left: 0;
       }
 
@@ -259,17 +261,17 @@
 
     @include breakpoint($mobile-l) {
 
-      padding-right: (24em/16);
+      padding-right: math.div(24em, 16);
     }
 
     > span {
-      font-size: (13em/16);
+      font-size: math.div(13em, 16);
       font-weight: $semi-bold;
 
     }
 
     > p {
-      margin-top: (2em/12);
+      margin-top: math.div(2em, 12);
 
       line-height: 1.5em;
       font-size: 11px;
@@ -292,7 +294,7 @@
 
     @include breakpoint($tablet) {
 
-      line-height: (17em/16);
+      line-height: math.div(17em, 16);
     }
 
     .btn_blue {
@@ -302,7 +304,7 @@
   }
 
   .social-list {
-    margin-top: (10em/16);
+    margin-top: math.div(10em, 16);
 
     .icon-fill {
 
@@ -313,7 +315,7 @@
   .support {
 
     .sub-title {
-      margin-bottom: (5em/11);
+      margin-bottom: math.div(5em, 11);
     }
   }
 
@@ -322,7 +324,7 @@
 
     margin-top: 0;
 
-    font-size: (11em/16);
+    font-size: math.div(11em, 16);
     font-weight: $bold;
 
     opacity: .45;
@@ -333,7 +335,7 @@
 
     @include breakpoint($mobile-p) {
 
-      margin-top: (18em/16);
+      margin-top: math.div(18em, 16);
     }
 
     @include breakpoint($tablet) {
@@ -373,7 +375,7 @@
       width: 1.4px;
       height: 20px;
 
-      margin: 0 (11em/16);
+      margin: 0 math.div(11em, 16);
 
       background-color: #1d5a8e;
 
@@ -387,7 +389,7 @@
 
   position: relative;
 
-  font-size: (16em/16);
+  font-size: math.div(16em, 16);
   line-height: 1px;
 
   font-weight: $semi-bold;
@@ -403,12 +405,12 @@
 
   &:first-of-type {
 
-    margin-bottom: (5em/16);
+    margin-bottom: math.div(5em, 16);
   }
 
   & + span {
 
-    font-size: (11em/16);
+    font-size: math.div(11em, 16);
   }
 
   span {
@@ -425,12 +427,12 @@
 
     vertical-align: middle;
 
-    margin-right: (6em/16);
+    margin-right: math.div(6em, 16);
 
     &_kyivstar {
       width: 16px;
 
-      margin-bottom: (1em/16);
+      margin-bottom: math.div(1em, 16);
     }
   }
 }

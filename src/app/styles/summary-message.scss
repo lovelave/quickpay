@@ -2,6 +2,8 @@
 * Data panel styles
  */
 
+@use "sass:math";
+
 .data-panel {
   width: 100%;
 
@@ -9,7 +11,7 @@
 
     & + .panel-body {
 
-      margin-top: (14em/16);
+      margin-top: math.div(14em, 16);
     }
 
     .overlay,
@@ -31,15 +33,15 @@
     }
 
     h4 {
-      margin-left: (17em/23);
+      margin-left: math.div(17em, 23);
 
-      font-size: (19em/16);
+      font-size: math.div(19em, 16);
       color: rgba(38,153,251,.46);
     }
   }
 
   .panel-body {
-    padding: 0 (43em/16);
+    padding: 0 math.div(43em, 16);
 
     @include breakpoint($mobile) {
 
@@ -71,15 +73,15 @@
     }
 
     .total {
-      margin-top: (10em/16);
+      margin-top: math.div(10em, 16);
 
       span {
         font-weight: $bold;
 
         &:last-child {
-          padding-left: (10em/24);
+          padding-left: math.div(10em, 24);
 
-          font-size: (24em/16);
+          font-size: math.div(24em, 16);
         }
       }
     }
@@ -90,13 +92,13 @@
     -ms-flex-align: end;
     align-items: flex-end;
 
-    padding-bottom: (9em/16);
+    padding-bottom: math.div(9em, 16);
 
     border-bottom: 1px solid rgba(97,180,252,.25);
 
     & + .form-group {
 
-      margin-top: (9em/16);
+      margin-top: math.div(9em, 16);
     }
 
     .label {
@@ -104,7 +106,7 @@
 
       min-width: 238px;
 
-      font-size: (17em/16);
+      font-size: math.div(17em, 16);
       font-weight: $bold;
       color: $color-primary;
     }
@@ -112,7 +114,7 @@
     .value {
       width: 100%;
 
-      font-size: (17em/16);
+      font-size: math.div(17em, 16);
     }
   }
 }
