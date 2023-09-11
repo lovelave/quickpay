@@ -2,6 +2,8 @@
 * Chat styles
  */
 
+@use "sass:math";
+
 $message-appear-time: .4s;
 
 body {
@@ -54,23 +56,23 @@ div:focus {
     -ms-flex-direction: column;
     flex-direction: column;
 
-    padding: (92em/16) 0 (124em/16);
+    padding: math.div(92em, 16) 0 math.div(124em, 16);
 
     scroll-behavior: smooth;
 
     @include breakpoint($mobile) {
 
-      padding: (80em/16) $section-content-indent-x-mob (16em/16);
+      padding: math.div(80em, 16) $section-content-indent-x-mob math.div(16em, 16);
     }
 
     @include breakpoint($iphone5-p) {
 
-      padding: (80em/16) (15em/16) (16em/16);
+      padding: math.div(80em, 16) math.div(15em, 16) math.div(16em, 16);
     }
 
     @include breakpoint($tablet-p) {
 
-      padding: (94em/16) $section-content-indent-x-mob (124em/16);
+      padding: math.div(94em, 16) $section-content-indent-x-mob math.div(124em, 16);
     }
   }
 
@@ -138,14 +140,14 @@ div:focus {
     .btn {
       vertical-align: middle;
 
-      font-size: (20em/16);
+      font-size: math.div(20em, 16);
 
       & + .btn {
-        margin-left: (14em/16);
+        margin-left: math.div(14em, 16);
 
         @include breakpoint($mobile) {
 
-          margin-left: (6em/16);
+          margin-left: math.div(6em, 16);
         }
       }
 
@@ -191,7 +193,7 @@ div:focus {
 
     .wrap {
 
-      padding: (11em/16) (22em/16);
+      padding: math.div(11em, 16) math.div(22em, 16);
     }
   }
 
@@ -216,7 +218,7 @@ div:focus {
   }
 
   &.has-time {
-    margin-bottom: (30em/16);
+    margin-bottom: math.div(30em, 16);
 
     & + .message {
 
@@ -226,7 +228,7 @@ div:focus {
 
   & + .message,
   & + form {
-    margin-top: (30em/16);
+    margin-top: math.div(30em, 16);
   }
 
   .btn_white {
@@ -275,11 +277,11 @@ div:focus {
 
     position: relative;
 
-    padding: (18em/16) (22em/16);
+    padding: math.div(18em, 16) math.div(22em, 16);
 
     @include breakpoint($mobile) {
 
-      padding: (10em/16) (15em/16);
+      padding: math.div(10em, 16) math.div(15em, 16);
     }
 
     &:after {
@@ -318,12 +320,12 @@ div:focus {
     p,
     span,
     ul > li {
-      line-height: (23em/17);
-      font-size: (17em/16);
+      line-height: math.div(23em, 17);
+      font-size: math.div(17em, 16);
 
       @include breakpoint($mobile) {
-        line-height: (22em/16);
-        font-size: (16em/16);
+        line-height: math.div(22em, 16);
+        font-size: math.div(16em, 16);
       }
 
     }
@@ -331,7 +333,7 @@ div:focus {
 
   p + img {
 
-    margin-top: (20em/16);
+    margin-top: math.div(20em, 16);
   }
 
   .form-group {
@@ -378,34 +380,34 @@ div:focus {
     .wrap {
       width: 100%;
 
-      padding: (25em/16) (20em/16);
+      padding: math.div(25em, 16) math.div(20em, 16);
 
       @include breakpoint($mobile) {
 
-        padding: (25em/16) (20em/16);
+        padding: math.div(25em, 16) math.div(20em, 16);
       }
 
       h4 {
         margin-left: 0;
 
-        font-size: (24em/16);
+        font-size: math.div(24em, 16);
         font-weight: $regular;
         color: #1c5377;
 
         @include breakpoint($mobile) {
 
-          font-size: (23em/16);
+          font-size: math.div(23em, 16);
         }
       }
 
       .panel-body {
-        margin-top: (21em/16);
+        margin-top: math.div(21em, 16);
 
         padding: 0;
 
         @include breakpoint($mobile) {
 
-          margin-top: (10em/16);
+          margin-top: math.div(10em, 16);
         }
 
         .half {
@@ -425,7 +427,7 @@ div:focus {
           }
 
           & + .half {
-            margin-top: (10em/16);
+            margin-top: math.div(10em, 16);
 
             @include breakpoint($mobile) {
 
@@ -436,7 +438,7 @@ div:focus {
 
         .transparent {
           color: rgba(28, 83, 119, .27);
-          font-size: (13em/16);
+          font-size: math.div(13em, 16);
           font-weight: $bold;
 
           @include breakpoint($mobile) {
@@ -446,7 +448,7 @@ div:focus {
         }
 
         .form-group {
-          padding: (3em/16) 0 (5em/16);
+          padding: math.div(3em, 16) 0 math.div(5em, 16);
 
           border-bottom: 1px solid rgba(28, 83, 119, .12);
 
@@ -456,7 +458,7 @@ div:focus {
             @include flex;
             align-items: normal;
 
-            padding: (6em/16) 0;
+            padding: math.div(6em, 16) 0;
 
             .label {
 
@@ -500,11 +502,11 @@ div:focus {
           }
 
           span {
-            font-size: (14em/16);
+            font-size: math.div(14em, 16);
 
             @include breakpoint($mobile) {
 
-              font-size: (15em/16);
+              font-size: math.div(15em, 16);
             }
           }
         }
@@ -514,12 +516,12 @@ div:focus {
 
           @include breakpoint($mobile) {
 
-            margin-top: (15em/16);
+            margin-top: math.div(15em, 16);
           }
 
           .decreased {
 
-            font-size: (15em/23);
+            font-size: math.div(15em, 23);
           }
         }
       }
@@ -527,8 +529,8 @@ div:focus {
       .panel-footer {
         @include flex;
 
-        margin: (20em/16) (-20em/16) 0;
-        padding: (20em/16);
+        margin: math.div(20em, 16) math.div(-20em, 16) 0;
+        padding: math.div(20em, 16);
 
         position: relative;
 
@@ -583,10 +585,10 @@ div:focus {
           display: inline-block;
 
           font-weight: $bold;
-          font-size: (17em/16);
+          font-size: math.div(17em, 16);
 
           .increased {
-            font-size: (22em/17);
+            font-size: math.div(22em, 17);
           }
         }
 
@@ -607,14 +609,14 @@ div:focus {
           &:first-of-type {
 
             span {
-              font-size: (15em/16);
+              font-size: math.div(15em, 16);
 
               &:first-of-type {
-                margin-bottom: (7em/15);
+                margin-bottom: math.div(7em, 15);
 
                 @include breakpoint($mobile) {
 
-                  margin-right: (20em/15);
+                  margin-right: math.div(20em, 15);
                 }
               }
             }
@@ -629,16 +631,16 @@ div:focus {
             }
 
             .label {
-              margin-bottom: (7em/15);
+              margin-bottom: math.div(7em, 15);
 
-              font-size: (15em/16);
+              font-size: math.div(15em, 16);
 
               @include breakpoint($mobile) {
                 width: 100%;
 
                 margin-bottom: 0;
 
-                font-size: (16em/16);
+                font-size: math.div(16em, 16);
               }
             }
           }
@@ -686,16 +688,16 @@ div:focus {
             }
 
             > span {
-              font-size: (15em/16);
+              font-size: math.div(15em, 16);
               line-height: 6px;
 
               .increased {
-                line-height: (20em/23);
-                font-size: (23em/15);
+                line-height: math.div(20em, 23);
+                font-size: math.div(23em, 15);
 
                 @include breakpoint($mobile) {
 
-                  font-size: (25em/15);
+                  font-size: math.div(25em, 15);
                 }
               }
             }
@@ -719,7 +721,7 @@ div:focus {
 
     transform: translateY(-5px);
 
-    font-size: (11em/16);
+    font-size: math.div(11em, 16);
     color: rgba(34, 114, 165, .45);
 
     opacity: 0;
@@ -736,7 +738,7 @@ div:focus {
 
     .wrap {
 
-      padding: (11em/16) (24em/16);
+      padding: math.div(11em, 16) math.div(24em, 16);
     }
 
     .btn_white {
@@ -757,7 +759,7 @@ div:focus {
   .phone-link {
     display: inline-block;
 
-    font-size: (17em/16);
+    font-size: math.div(17em, 16);
     font-weight: $regular;
     color: #3C9CF4;
 
@@ -797,7 +799,7 @@ div:focus {
 
       & + a {
 
-        margin-left: (15em/16);
+        margin-left: math.div(15em, 16);
       }
     }
 
@@ -850,7 +852,7 @@ div:focus {
   &:not(.has-time) + .bot-message,
   &:not(.has-time) + form .bot-message {
 
-    margin-top: (9em/16);
+    margin-top: math.div(9em, 16);
   }
 
   .wrap {
@@ -876,39 +878,39 @@ div:focus {
 
   .btn-container {
 
-    margin-top: (15em/16);
+    margin-top: math.div(15em, 16);
   }
 
   .btn {
-    padding: (13.5em/17) (20em/17);
+    padding: math.div(13.5em, 17) math.div(20em, 17);
 
-    font-size: (17em/16);
+    font-size: math.div(17em, 16);
 
     @include breakpoint($mobile-p) {
 
-      font-size: (15em/16);
+      font-size: math.div(15em, 16);
     }
 
     @include breakpoint($mobile-l) {
 
-      font-size: (16em/16);
+      font-size: math.div(16em, 16);
     }
 
     & + .btn {
 
-      margin-left: (15em/17);
+      margin-left: math.div(15em, 17);
     }
   }
 
   ul {
-    margin-top: (14em/16);
+    margin-top: math.div(14em, 16);
 
     > li {
       display: block;
 
       & + li {
 
-        margin-top: (7em/17);
+        margin-top: math.div(7em, 17);
       }
     }
 
@@ -920,7 +922,7 @@ div:focus {
 
     .icon {
 
-      margin-right: (15em/16);
+      margin-right: math.div(15em, 16);
     }
   }
 }
@@ -950,7 +952,7 @@ div:focus {
 
     @include breakpoint($mobile) {
 
-      padding: (13em/16) (20em/16);
+      padding: math.div(13em, 16) math.div(20em, 16);
     }
 
     &:after {
@@ -967,7 +969,7 @@ div:focus {
 
     p {
 
-      font-size: (18em/16);
+      font-size: math.div(18em, 16);
     }
   }
 
@@ -1005,7 +1007,7 @@ div:focus {
     animation: contentAppear $message-appear-time .5s linear forwards;
 
     .form-group {
-      margin-left: (16em/16);
+      margin-left: math.div(16em, 16);
 
       @include breakpoint($mobile) {
         width: 100%;
@@ -1018,22 +1020,22 @@ div:focus {
       width: 100%;
       max-width: 366px;
 
-      padding: (19.5em/24) (76em/24) (19.5em/24) (27em/24);
+      padding: math.div(19.5em, 24) math.div(76em, 24) math.div(19.5em, 24) math.div(27em, 24);
 
       border-radius: 35px;
       border-bottom: 1px solid #ADD3F5;
 
       box-shadow: 0 8px 30px -13px rgba(137, 191, 241, 0.93);
 
-      font-size: (24em/16);
+      font-size: math.div(24em, 16);
       color: #1C5377;
 
       @include breakpoint($mobile-p) {
         min-width: 290px;
 
-        padding: (17em/19) (66em/19) (17em/19) (22em/19);
+        padding: math.div(17em, 19) math.div(66em, 19) math.div(17em, 19) math.div(22em, 19);
 
-        font-size: (19em/16);
+        font-size: math.div(19em, 16);
       }
 
       @include breakpoint($iphone5-p) {
@@ -1160,7 +1162,7 @@ div:focus {
   &:not(.editing) {
 
     .form__control {
-      padding: (20em/20) (76em/20) (20em/20) (24em/20);
+      padding: (20em*0.05) (76em*0.05) (20em*0.05) (24em*0.05);
 
       border-radius: 15px 0 15px 15px;
 
@@ -1168,7 +1170,7 @@ div:focus {
 
       box-shadow: 0 4px 15px -3px rgba(4, 129, 234, 0.45);
 
-      font-size: (20em/16);
+      font-size: math.div(20em, 16);
       color: $color-secondary;
     }
   }
@@ -1199,28 +1201,28 @@ div:focus {
 
     .btn_blue {
 
-      padding: (17em/20) (30em/20);
+      padding: (17em*0.05) (30em*0.05);
 
       @include breakpoint($mobile) {
 
-        padding: (11em/16) (25em/16);
+        padding: math.div(11em, 16) math.div(25em, 16);
       }
 
       &.full-sized-mobile {
-        font-size: (20em/16);
+        font-size: math.div(20em, 16);
 
         @include breakpoint($mobile-p) {
-          padding-top: (15em/23);
-          padding-bottom: (15em/23);
-          padding-right: (46em/23);
+          padding-top: math.div(15em, 23);
+          padding-bottom: math.div(15em, 23);
+          padding-right: math.div(46em, 23);
 
-          font-size: (23em/16);
+          font-size: math.div(23em, 16);
         }
 
         @include breakpoint($mobile-l) {
-          padding: (15em/20) (30em/20);
+          padding: (15em*0.05) (30em*0.05);
 
-          font-size: (20em/16);
+          font-size: math.div(20em, 16);
         }
       }
     }
@@ -1228,11 +1230,11 @@ div:focus {
     .btn {
 
       &:not(.btn_blue) {
-        padding: (20em/20) (30em/20);
+        padding: (20em*0.05) (30em*0.05);
 
         @include breakpoint($mobile) {
 
-          padding: (14em/18) (25em/18);
+          padding: math.div(14em, 18) math.div(25em, 18);
         }
       }
     }

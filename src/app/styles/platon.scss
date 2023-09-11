@@ -2,13 +2,15 @@
 Message with Platon form styles
  */
 
+@use "sass:math";
+
 .user-message.message-card {
   $message-width: 525px;
 
   @include breakpoint($mobile) {
     float: left;
 
-    margin-top: (12em/16) !important;
+    margin-top: math.div(12em, 16) !important;
 
     text-align: left;
   }
@@ -43,8 +45,8 @@ Message with Platon form styles
     p {
 
       @include breakpoint($mobile) {
-        font-size: (16em/16);
-        line-height: (22em/16);
+        font-size: math.div(16em, 16);
+        line-height: math.div(22em, 16);
       }
     }
 
@@ -53,9 +55,9 @@ Message with Platon form styles
       @include breakpoint($mobile) {
         width: 100%;
 
-        margin-top: (17em/17);
+        margin-top: math.div(17em, 17);
 
-        font-size: (17em/16);
+        font-size: math.div(17em, 16);
       }
     }
   }

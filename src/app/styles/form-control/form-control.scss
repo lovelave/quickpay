@@ -2,6 +2,8 @@
 * Form control styles
  */
 
+@use "sass:math";
+
 $btn-action-size: 42px;
 $btn-action-size-editing: 54px;
 $password-group-border-radius: 15px;
@@ -61,19 +63,19 @@ input {
 
     .form__control {
       width: 100%;
-      padding: (22em/23) (76em/23) (22em/23) (27em/23);
+      padding: math.div(22em, 23) math.div(76em, 23) math.div(22em, 23) math.div(27em, 23);
 
       border-radius: 15px 15px 0 0;
 
       background-color: #fff;
 
-      font-size: (23em/16);
+      font-size: math.div(23em, 16);
       font-weight: $regular;
       color: #BCE0FD;
     }
 
     .btn_action {
-      padding: (15em/16) (11em/16);
+      padding: math.div(15em, 16) math.div(11em, 16);
 
       border-radius: 26px 0 0 26px;
 
@@ -111,11 +113,11 @@ input {
   .label {
     width: 100%;
 
-    padding: (3.5em/14) 0;
+    padding: math.div(3.5em, 14) 0;
 
     text-align: center;
 
-    font-size: (14em/16);
+    font-size: math.div(14em, 16);
     color: #2699FB;
 
     cursor: auto;

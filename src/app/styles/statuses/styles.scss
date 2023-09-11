@@ -2,6 +2,8 @@
 * Statuses styles
  */
 
+@use "sass:math";
+
 .status-wrap {
   @include flex;
 
@@ -9,11 +11,11 @@
   -ms-flex-pack: center;
   justify-content: center;
 
-  margin-top: (80em/16);
+  margin-top: math.div(80em, 16);
 
   @include breakpoint($mobile) {
-    margin: (20em/16) 0 (20em/16);
-    padding: 0 (18em/16);
+    margin: math.div(20em, 16) 0 math.div(20em, 16);
+    padding: 0 math.div(18em, 16);
   }
 }
 
@@ -73,34 +75,34 @@
   }
 
   h2 {
-    margin-bottom: (5em/40);
+    margin-bottom: (5em*0.025);
 
-    font-size: (40em/16);
+    font-size: math.div(40em, 16);
     color: #1D5A8E;
 
     @include breakpoint($mobile) {
-      margin-bottom: (15em/35);
+      margin-bottom: math.div(15em, 35);
 
-      font-size: (35em/16);
+      font-size: math.div(35em, 16);
     }
   }
 
   h4 {
-    margin-bottom: (22em/22);
+    margin-bottom: math.div(22em, 22);
 
-    font-size: (22em/16);
+    font-size: math.div(22em, 16);
   }
 
   > p {
-    line-height: (28em/20);
-    font-size: (19em/16);
+    line-height: (28em*0.05);
+    font-size: math.div(19em, 16);
     color: #5D8AB1;
 
     @include breakpoint($mobile) {
-      margin-bottom: (10em/18);
+      margin-bottom: math.div(10em, 18);
 
-      line-height: (23em/18);
-      font-size: (18em/16);
+      line-height: math.div(23em, 18);
+      font-size: math.div(18em, 16);
     }
 
     span {
@@ -116,14 +118,14 @@
       & + span {
 
         @include breakpoint($mobile-p) {
-          margin-top: (10em/16);
+          margin-top: math.div(10em, 16);
         }
       }
     }
   }
 
   > span {
-    font-size: (55em/16);
+    font-size: math.div(55em, 16);
   }
 
   .inline {
@@ -132,7 +134,7 @@
   }
 
   .btn-container {
-    margin-top: (25em/16);
+    margin-top: math.div(25em, 16);
 
     white-space: nowrap;
 
@@ -146,7 +148,7 @@
     @include flex;
     flex-direction: column;
 
-    margin-top: (24em/16);
+    margin-top: math.div(24em, 16);
   }
 
   .phone-link {
@@ -157,7 +159,7 @@
     color: #3C9CF4;
 
     &:first-of-type {
-      margin-bottom: (10em/21);
+      margin-bottom: math.div(10em, 21);
 
       &:after {
 
@@ -184,7 +186,7 @@
 
       & + a {
 
-        margin-left: (15em/16);
+        margin-left: math.div(15em, 16);
       }
     }
 
@@ -198,7 +200,7 @@
   }
 
   .btn {
-    font-size: (20em/16);
+    font-size: math.div(20em, 16);
 
     @include  breakpoint($mobile-p) {
 
@@ -206,22 +208,22 @@
     }
 
     & + .btn {
-      margin-left: (24em/20);
+      margin-left: (24em*0.05);
 
       @include  breakpoint($mobile-p) {
 
-        margin: (16em/20) 0 0;
+        margin: (16em*0.05) 0 0;
       }
     }
 
     &_white {
 
-      padding: (17.5em/20) (30em/20);
+      padding: (17.5em*0.05) (30em*0.05);
     }
 
     &_blue {
 
-      padding: (16.5em/20) (30em/20);
+      padding: (16.5em*0.05) (30em*0.05);
     }
 
     &_pdf {
@@ -231,7 +233,7 @@
 
       .icon {
 
-        margin-left: (13em/20);
+        margin-left: (13em*0.05);
       }
     }
 
@@ -245,23 +247,23 @@
     }
 
     .emoji {
-      margin-left: (15em/30);
+      margin-left: math.div(15em, 30);
 
-      line-height: (34em/30);
-      font-size: (30em/20);
+      line-height: math.div(34em, 30);
+      font-size: (30em*0.05);
     }
   }
 
   .counter {
     display: inline-block;
 
-    margin-top: (8em/57);
+    margin-top: math.div(8em, 57);
 
-    font-size: (57em/16);
+    font-size: math.div(57em, 16);
   }
 
   .social-list {
-    margin-top: (18em/16);
+    margin-top: math.div(18em, 16);
 
     .icon-fill {
 
@@ -272,18 +274,18 @@
   .form__group {
     width: 365px;
 
-    margin: (20em/25) auto 0 auto;
+    margin: math.div(20em, 25) auto 0 auto;
 
     position: relative;
 
     .form__control {
       width: 100%;
 
-      padding: (20em/25) (57em/25) (20em/25) (35em/25);
+      padding: math.div(20em, 25) math.div(57em, 25) math.div(20em, 25) math.div(35em, 25);
 
       border-radius: 38px;
 
-      font-size: (25em/16);
+      font-size: math.div(25em, 16);
 
       &::placeholder {
 
@@ -292,8 +294,8 @@
     }
 
     .btn-container {
-      margin-top: (6em/16);
-      margin-right: (6em/16);
+      margin-top: math.div(6em, 16);
+      margin-right: math.div(6em, 16);
 
       position: absolute;
 
@@ -305,7 +307,7 @@
         justify-content: center;
         align-items: center;
 
-        padding: (18em/16);
+        padding: math.div(18em, 16);
 
         border-radius: 50% 30% 30% 50%;
 
@@ -328,7 +330,7 @@
 
     width: auto;
 
-    padding: (15em/16);
+    padding: math.div(15em, 16);
 
     position: absolute;
 
@@ -378,7 +380,7 @@
     }
 
     span {
-      font-size: (25em/16);
+      font-size: math.div(25em, 16);
 
       color: #2699FB;
     }
@@ -388,7 +390,7 @@
 
       color: #1D5A8E;
 
-      font-size: (17em/16);
+      font-size: math.div(17em, 16);
     }
   }
 }

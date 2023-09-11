@@ -2,6 +2,8 @@
 * Menu hamburger styles
  */
 
+@use "sass:math";
+
 body {
 
   .menu-hamburger {
@@ -95,7 +97,7 @@ body {
   .label {
     display: inline-block;
 
-    margin-right: (8em/16);
+    margin-right: math.div(8em, 16);
 
     position: relative;
 

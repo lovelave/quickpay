@@ -2,6 +2,8 @@
 * Typography
 */
 
+@use "sass:math";
+
 h1,
 h2,
 h3,
@@ -26,7 +28,7 @@ h1 {
 
 h5.inner-title {
 
-  font-size: (22em/16);
+  font-size: math.div(22em, 16);
 }
 
 .numbered__list {
@@ -37,15 +39,15 @@ h5.inner-title {
   li {
     display: table;
 
-    font-size: (17em/16);
-    line-height: (24em/17);
+    font-size: math.div(17em, 16);
+    line-height: math.div(24em, 17);
 
     &:before {
       display: table-cell;
       counter-increment: counter;
       content: counter(counter) ". ";
 
-      padding-right: (15em/18);
+      padding-right: math.div(15em, 18);
     }
   }
 }
