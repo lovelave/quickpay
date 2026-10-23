@@ -1,10 +1,10 @@
 import * as React from "react";
 import { useIsMobile } from "../../hooks/use-is-mobile";
-const IconVisa = require("../svg/icon-visa.svg");
-const IconPrivat = require("../svg/icon-privat.svg");
-const IconMastercard = require("../svg/icon-mastercard.svg");
-const IconKyivstar = require("../svg/icon-kyivstar.svg");
-const IconVodafone = require("../svg/icon-vodafone.svg");
+import IconVisa from "url:../svg/icon-visa.svg";
+import IconPrivat from "url:../svg/icon-privat.svg";
+import IconMastercard from "url:../svg/icon-mastercard.svg";
+import IconKyivstar from "url:../svg/icon-kyivstar.svg";
+import IconVodafone from "url:../svg/icon-vodafone.svg";
 import { Social } from "./social";
 import { Author } from "./author";
 import classNames from "classnames";

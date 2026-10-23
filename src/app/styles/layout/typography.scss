@@ -1,3 +1,5 @@
+@use "../base/variables";
+
 /*
 * Typography
 */
@@ -11,30 +13,26 @@ h4,
 h5,
 h6,
 p {
-
   margin: 0;
 }
 
 h1,
 h2 {
-  font-family: $font-secondary;
-  color: $color-title;
+  font-family: variables.$font-secondary;
+  color: variables.$color-title;
 }
 
 h1 {
-
-  font-weight: $medium;
+  font-weight: variables.$medium;
 }
 
 h5.inner-title {
-
   font-size: math.div(22em, 16);
 }
 
 .numbered__list {
   display: table;
   counter-reset: counter;
-
 
   li {
     display: table;

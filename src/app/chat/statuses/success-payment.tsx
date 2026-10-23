@@ -69,7 +69,7 @@ export const SuccessPaymentStatus: React.FC<{ user: UserData | undefined }> = ({
 
     const overdue = getOverdue(user.returnDate);
 
-    const handleClick = React.useCallback(() => {
+    const handleClick = () => {
         dispatch(
             new Chat.FlushAction(
                 [
@@ -82,7 +82,7 @@ export const SuccessPaymentStatus: React.FC<{ user: UserData | undefined }> = ({
                 true
             )
         );
-    }, [user.debt, user.returnDate, user.prolongation, overdue, dispatch]);
+    };
 
     return (
         <div className="status-wrap">

@@ -9,7 +9,7 @@ export interface Item<O> {
     content: string;
 }
 
-export interface ButtonProps<O = any> extends Item<O> {
+export interface ButtonProps<O = unknown> extends Item<O> {
     onClick: (option: O, content: string) => void;
 }
 
@@ -22,16 +22,22 @@ const getClassNameByType = (type: ButtonProps["type"]): string => {
     }
 };
 
-export const Button: React.FC<ButtonProps> = (
-    { content, type, onClick, option }
-) => {
-
+export const Button: React.FC<ButtonProps> = ({
+    content,
+    type,
+    onClick,
+    option,
+}) => {
     const handleClick = () => {
-        onClick(option, content)
+        onClick(option, content);
     };
 
     return (
-        <button type="button" className={classNames("btn", getClassNameByType(type))} onClick={handleClick}>
+        <button
+            type="button"
+            className={classNames("btn", getClassNameByType(type))}
+            onClick={handleClick}
+        >
             {content}
         </button>
     );
@@ -39,13 +45,16 @@ export const Button: React.FC<ButtonProps> = (
 
 Button.displayName = "Chat.Menu.Button";
 
-export interface MessageProps<O = any> {
+export interface MessageProps<O = unknown> {
     items: Array<Item<O>>;
     onSelect: (option: O, content: string) => void;
 }
 
 export const Message: React.FC<MessageProps> = ({ items, onSelect }) => {
-    const handleClick = React.useCallback((option, select) => onSelect(option, select), [onSelect]);
+    const handleClick = React.useCallback<MessageProps["onSelect"]>(
+        (option, select) => onSelect(option, select),
+        [onSelect]
+    );
     return (
         <ButtonMessage source="user" className="menu-message">
             {items.map((item, i) => (

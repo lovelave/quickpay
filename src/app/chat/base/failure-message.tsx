@@ -4,10 +4,15 @@ import { WrapMessage } from "./wrap-message";
 
 export interface FailureMessageProps extends Omit<MessageProps, "source"> {
     title: React.ReactNode;
-    details: any;
+    details: unknown;
 }
 
-export const FailureMessage: React.FC<FailureMessageProps> = ({ title, details, children, ...props }) => {
+export const FailureMessage: React.FC<FailureMessageProps> = ({
+    title,
+    details,
+    children,
+    ...props
+}) => {
     const code = React.useMemo(() => {
         if ("string" === typeof details) {
             return details;
@@ -15,19 +20,17 @@ export const FailureMessage: React.FC<FailureMessageProps> = ({ title, details, 
         try {
             return JSON.stringify(details, undefined, 2);
         } catch (error) {
-            return error.toString();
+            return String(error);
         }
     }, [details]);
 
     return (
         <WrapMessage source="bot" {...props}>
-            <h4 className="m-b">
-                {title}
-            </h4>
+            <h4 className="m-b">{title}</h4>
             {children}
             <details>
                 <code>{code}</code>
             </details>
         </WrapMessage>
-    )
+    );
 };

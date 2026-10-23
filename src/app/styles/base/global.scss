@@ -1,3 +1,7 @@
+@use "breakpoint-sass/stylesheets/breakpoint";
+@use "mixins";
+@use "variables";
+
 /*
 * Global styles
  */
@@ -7,32 +11,30 @@ body,
 .main,
 .section-chat,
 .chat-stream {
-
   min-height: 100%;
 }
 
-html, body {
+html,
+body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   margin: 0;
   text-rendering: optimizeLegibility;
   scroll-behavior: smooth !important;
 }
 
 html {
-
   position: relative;
 }
 
 body {
   font-size: 16px;
-  font-family: $font-primary;
-  font-weight: $regular;
-  color: $color-primary;
+  font-family: variables.$font-primary;
+  font-weight: variables.$regular;
+  color: variables.$color-primary;
 
   &:not([data-theme]) {
-
     overflow: hidden;
   }
 
@@ -45,7 +47,6 @@ body {
     display: inline-block;
 
     &:hover {
-
       text-decoration: underline;
     }
   }
@@ -56,8 +57,7 @@ body {
   }
 
   .full-sized-mobile {
-
-    @include breakpoint($mobile-p) {
+    @include breakpoint.breakpoint(variables.$mobile-p) {
       width: 100%;
       max-width: none;
     }
@@ -90,7 +90,7 @@ body {
 }
 
 bobra-quickpay {
-  @include flex;
+  @include mixins.flex;
   -webkit-box-direction: normal;
   -moz-box-direction: normal;
   -webkit-box-orient: vertical;
@@ -106,7 +106,6 @@ bobra-quickpay {
 }
 
 .main {
-
   flex: 1;
 }
 
@@ -116,6 +115,5 @@ bobra-quickpay {
 }
 
 input[type="checkbox"] {
-
   appearance: auto !important;
 }

@@ -1,3 +1,7 @@
+@use "breakpoint-sass/stylesheets/breakpoint";
+@use "../base/mixins";
+@use "../base/variables";
+
 /*
 * Statuses styles
  */
@@ -5,7 +9,7 @@
 @use "sass:math";
 
 .status-wrap {
-  @include flex;
+  @include mixins.flex;
 
   -webkit-box-pack: center;
   -ms-flex-pack: center;
@@ -13,7 +17,7 @@
 
   margin-top: math.div(80em, 16);
 
-  @include breakpoint($mobile) {
+  @include breakpoint.breakpoint(variables.$mobile) {
     margin: math.div(20em, 16) 0 math.div(20em, 16);
     padding: 0 math.div(18em, 16);
   }
@@ -47,11 +51,14 @@
 
       border-radius: 50%;
 
-      background: radial-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0) 55%);
+      background: radial-gradient(
+        rgba(255, 255, 255, 1),
+        rgba(255, 255, 255, 0) 55%
+      );
 
       z-index: -1;
 
-      @include breakpoint($mobile) {
+      @include breakpoint.breakpoint(variables.$mobile) {
         width: 320px;
         height: 405px;
       }
@@ -61,7 +68,7 @@
       width: 275px;
       height: 275px;
 
-      @include breakpoint($mobile) {
+      @include breakpoint.breakpoint(variables.$mobile) {
         width: 225px;
         height: 225px;
       }
@@ -70,17 +77,16 @@
 
   h2,
   .btn {
-
-    font-weight: $regular;
+    font-weight: variables.$regular;
   }
 
   h2 {
-    margin-bottom: (5em*0.025);
+    margin-bottom: (5em * 0.025);
 
     font-size: math.div(40em, 16);
-    color: #1D5A8E;
+    color: #1d5a8e;
 
-    @include breakpoint($mobile) {
+    @include breakpoint.breakpoint(variables.$mobile) {
       margin-bottom: math.div(15em, 35);
 
       font-size: math.div(35em, 16);
@@ -94,11 +100,11 @@
   }
 
   > p {
-    line-height: (28em*0.05);
+    line-height: (28em * 0.05);
     font-size: math.div(19em, 16);
-    color: #5D8AB1;
+    color: #5d8ab1;
 
-    @include breakpoint($mobile) {
+    @include breakpoint.breakpoint(variables.$mobile) {
       margin-bottom: math.div(10em, 18);
 
       line-height: math.div(23em, 18);
@@ -109,15 +115,13 @@
       display: block;
 
       .phone-link {
-
-        @include breakpoint($mobile-p) {
+        @include breakpoint.breakpoint(variables.$mobile-p) {
           display: block;
         }
       }
 
       & + span {
-
-        @include breakpoint($mobile-p) {
+        @include breakpoint.breakpoint(variables.$mobile-p) {
           margin-top: math.div(10em, 16);
         }
       }
@@ -129,8 +133,7 @@
   }
 
   .inline {
-
-    font-weight: $bold;
+    font-weight: variables.$bold;
   }
 
   .btn-container {
@@ -138,14 +141,13 @@
 
     white-space: nowrap;
 
-    @include  breakpoint($mobile-p) {
-
+    @include breakpoint.breakpoint(variables.$mobile-p) {
       white-space: initial;
     }
   }
 
   .phones {
-    @include flex;
+    @include mixins.flex;
     flex-direction: column;
 
     margin-top: math.div(24em, 16);
@@ -155,14 +157,13 @@
     align-self: center;
 
     line-height: 1em;
-    font-weight: $regular;
-    color: #3C9CF4;
+    font-weight: variables.$regular;
+    color: #3c9cf4;
 
     &:first-of-type {
       margin-bottom: math.div(10em, 21);
 
       &:after {
-
         content: ", ";
       }
     }
@@ -182,19 +183,16 @@
 
       background-color: #fff;
 
-      box-shadow: 0 9px 24px -8px rgba(137,191,241,.8);
+      box-shadow: 0 9px 24px -8px rgba(137, 191, 241, 0.8);
 
       & + a {
-
         margin-left: math.div(15em, 16);
       }
     }
 
     .icon {
-
       &-fill {
-
-        fill: $color-primary;
+        fill: variables.$color-primary;
       }
     }
   }
@@ -202,28 +200,24 @@
   .btn {
     font-size: math.div(20em, 16);
 
-    @include  breakpoint($mobile-p) {
-
+    @include breakpoint.breakpoint(variables.$mobile-p) {
       width: 100%;
     }
 
     & + .btn {
-      margin-left: (24em*0.05);
+      margin-left: (24em * 0.05);
 
-      @include  breakpoint($mobile-p) {
-
-        margin: (16em*0.05) 0 0;
+      @include breakpoint.breakpoint(variables.$mobile-p) {
+        margin: (16em * 0.05) 0 0;
       }
     }
 
     &_white {
-
-      padding: (17.5em*0.05) (30em*0.05);
+      padding: (17.5em * 0.05) (30em * 0.05);
     }
 
     &_blue {
-
-      padding: (16.5em*0.05) (30em*0.05);
+      padding: (16.5em * 0.05) (30em * 0.05);
     }
 
     &_pdf {
@@ -232,8 +226,7 @@
       width: auto;
 
       .icon {
-
-        margin-left: (13em*0.05);
+        margin-left: (13em * 0.05);
       }
     }
 
@@ -241,7 +234,6 @@
       padding: 0;
 
       .icon_pdf {
-
         margin: 0;
       }
     }
@@ -250,7 +242,7 @@
       margin-left: math.div(15em, 30);
 
       line-height: math.div(34em, 30);
-      font-size: (30em*0.05);
+      font-size: (30em * 0.05);
     }
   }
 
@@ -266,8 +258,7 @@
     margin-top: math.div(18em, 16);
 
     .icon-fill {
-
-      fill: $color-primary;
+      fill: variables.$color-primary;
     }
   }
 
@@ -281,15 +272,15 @@
     .form__control {
       width: 100%;
 
-      padding: math.div(20em, 25) math.div(57em, 25) math.div(20em, 25) math.div(35em, 25);
+      padding: math.div(20em, 25) math.div(57em, 25) math.div(20em, 25)
+        math.div(35em, 25);
 
       border-radius: 38px;
 
       font-size: math.div(25em, 16);
 
       &::placeholder {
-
-        color: #BCE0FD;
+        color: #bce0fd;
       }
     }
 
@@ -303,7 +294,7 @@
       right: 0;
 
       a {
-        @include flex;
+        @include mixins.flex;
         justify-content: center;
         align-items: center;
 
@@ -311,13 +302,11 @@
 
         border-radius: 50% 30% 30% 50%;
 
-        box-shadow: -3px 0 3px rgba(0,117,216,.15);
+        box-shadow: -3px 0 3px rgba(0, 117, 216, 0.15);
       }
 
       .icon {
-
         &_message {
-
           width: 24px;
           height: 21px;
         }
@@ -326,7 +315,7 @@
   }
 
   .tooltip {
-    @include flex;
+    @include mixins.flex;
 
     width: auto;
 
@@ -347,16 +336,16 @@
     transform: translate(-50%, 50%);
 
     animation-name: tooltip-appearance, tooltip-up-down;
-    animation-duration: .5s, 3s;
+    animation-duration: 0.5s, 3s;
     animation-delay: 1s, 1s;
     animation-fill-mode: forwards, none;
     animation-iteration-count: 1, infinite;
 
-    box-shadow: 0 3px 8px rgba(0,128,237,.18);
+    box-shadow: 0 3px 8px rgba(0, 128, 237, 0.18);
 
     z-index: 1;
 
-    @include breakpoint($mobile) {
+    @include breakpoint.breakpoint(variables.$mobile) {
       top: 40px;
       left: 170px;
     }
@@ -382,13 +371,13 @@
     span {
       font-size: math.div(25em, 16);
 
-      color: #2699FB;
+      color: #2699fb;
     }
 
     p {
       min-width: 295px;
 
-      color: #1D5A8E;
+      color: #1d5a8e;
 
       font-size: math.div(17em, 16);
     }
@@ -396,7 +385,6 @@
 }
 
 @keyframes tooltip-appearance {
-
   from {
     opacity: 0;
 

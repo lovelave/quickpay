@@ -3,7 +3,7 @@ import * as ErrorBot from "../bot/error";
 import * as Chat from "../chat-logic";
 import { getPaymentDetailsUrl } from "../../utils/payment-details-url";
 
-export const ErrorStatus: React.FC<{}> = React.memo(() => {
+export const ErrorStatus: React.FC = React.memo(() => {
     const dispatch = Chat.useDispatchContext();
 
     const url = getPaymentDetailsUrl();

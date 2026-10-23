@@ -5,6 +5,7 @@ import { UserData } from "../chat-logic";
 import { getOverdue } from "../../utils/overdue";
 import { getPaymentDetailsUrl } from "../../utils/payment-details-url";
 import { getBaseUrl } from "../../utils/get-base-url";
+import { identifyUser } from "../../../sentry";
 
 export const VerifyPhoneMessage: React.FC<{
     value: Chat.VerifyPhoneMessage;
@@ -33,28 +34,19 @@ export const VerifyPhoneMessage: React.FC<{
                                 new Chat.InvalidPhoneRequestMessage(),
                             ]),
                         ]);
-                        return Promise.reject(undefined);
+                        return;
                     case 200:
                         return response.json();
                     default:
                         dispatch(new Chat.StateTypeAction("error"));
-                        return Promise.reject(undefined);
+                        return;
                 }
             })
-            .then((user: UserData) => {
-                if (
-                    "LogRocket" in window &&
-                    "object" === typeof (window as any).LogRocket
-                ) {
-                    console.log("LogRocket identify");
-                    const { debt, returnDate, name, prolongation } = user;
-                    (window as any).LogRocket.identify(value.phone, {
-                        name,
-                        debt,
-                        returnDate,
-                        prolongation,
-                    });
+            .then((user?: UserData) => {
+                if (!user) {
+                    return;
                 }
+                identifyUser(value.phone, user);
 
                 const overdue = getOverdue(user.returnDate);
 
@@ -72,7 +64,7 @@ export const VerifyPhoneMessage: React.FC<{
             });
 
         return () => controller && controller.abort();
-    }, [value.phone, value.type, dispatch]);
+    }, [value, dispatch]);
 
     return <Base.LoadMessage />;
 };

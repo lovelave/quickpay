@@ -1,10 +1,12 @@
 import * as React from "react";
 import * as Chat from "../chat-logic";
 import * as Base from "../base";
-import {UserData} from "../chat-logic";
-import {getBaseUrl} from "../../utils/get-base-url";
+import { UserData } from "../chat-logic";
+import { getBaseUrl } from "../../utils/get-base-url";
 
-export const LoadResultMessage: React.FC<{value: Chat.LoadResultMessage}> = ({value}) => {
+export const LoadResultMessage: React.FC<{ value: Chat.LoadResultMessage }> = ({
+    value,
+}) => {
     const dispatch = Chat.useDispatchContext();
 
     React.useEffect(() => {
@@ -14,8 +16,8 @@ export const LoadResultMessage: React.FC<{value: Chat.LoadResultMessage}> = ({va
         requestUrl.pathname = "/v3/quick-pay";
         requestUrl.searchParams.append("id", value.phone);
 
-        fetch(requestUrl.toString(), {signal: controller.signal})
-            .then(response => {
+        fetch(requestUrl.toString(), { signal: controller.signal })
+            .then((response) => {
                 controller = undefined;
 
                 switch (response.status) {
@@ -26,7 +28,7 @@ export const LoadResultMessage: React.FC<{value: Chat.LoadResultMessage}> = ({va
                             new Chat.StateInputDataAction("amount", undefined),
                             new Chat.StateTypeAction("pay-success"),
                         ]);
-                        return Promise.reject(undefined);
+                        return;
                     case 200:
                         return response.json();
                     default:
@@ -34,20 +36,28 @@ export const LoadResultMessage: React.FC<{value: Chat.LoadResultMessage}> = ({va
                             new Chat.StateUserAction(NaN, "", ""),
                             new Chat.StateTypeAction("pay-success"),
                         ]);
-                        return Promise.reject(undefined);
+                        return;
                 }
             })
-            .then((user: UserData) => {
+            .then((user?: UserData) => {
+                if (!user) {
+                    return;
+                }
                 dispatch([
                     new Chat.RemoveAction(value),
                     new Chat.StateInputDataAction("amount", undefined),
-                    new Chat.StateUserAction(user.debt, user.returnDate, user.name, user.prolongation),
+                    new Chat.StateUserAction(
+                        user.debt,
+                        user.returnDate,
+                        user.name,
+                        user.prolongation
+                    ),
                     new Chat.StateTypeAction("pay-success"),
                 ]);
             });
 
         return () => controller && controller.abort();
-    }, [value.phone, value.type, dispatch]);
+    }, [value, dispatch]);
 
-    return <Base.LoadMessage/>;
-}
+    return <Base.LoadMessage />;
+};

@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
-    "baseUrl": "./src",
     "target": "esnext",
     "jsx": "react",
     "module": "esnext",
     "strict": true,
-    "sourceMap": true,
-    "removeComments": false,
-    "moduleResolution": "node",
+    "types": ["node"],
+    "noEmit": true,
+    "isolatedModules": true,
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
@@ -16,10 +16,5 @@
     "experimentalDecorators": true,
     "strictNullChecks": true
   },
-  "exclude": [
-    "node_modules",
-    "tests",
-    "build",
-    "config"
-  ]
+  "include": ["src"]
 }

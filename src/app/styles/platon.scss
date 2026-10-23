@@ -1,3 +1,6 @@
+@use "breakpoint-sass/stylesheets/breakpoint";
+@use "base/variables";
+
 /*
 Message with Platon form styles
  */
@@ -7,7 +10,7 @@ Message with Platon form styles
 .user-message.message-card {
   $message-width: 525px;
 
-  @include breakpoint($mobile) {
+  @include breakpoint.breakpoint(variables.$mobile) {
     float: left;
 
     margin-top: math.div(12em, 16) !important;
@@ -20,39 +23,36 @@ Message with Platon form styles
     max-width: $message-width;
     height: 450px;
 
-    @include breakpoint($mobile) {
+    @include breakpoint.breakpoint(variables.$mobile) {
       width: auto;
       height: 395px;
 
       padding: 15px 5px;
 
-      color: $color-title;
+      color: variables.$color-title;
     }
 
     &:after {
       border-radius: 18px 0 18px 18px;
 
-      background-color: $color-secondary;
+      background-color: variables.$color-secondary;
 
-      box-shadow: 0 6px 16px -10px rgba(0,128,237,.45);
+      box-shadow: 0 6px 16px -10px rgba(0, 128, 237, 0.45);
 
-      @include breakpoint($mobile) {
-
+      @include breakpoint.breakpoint(variables.$mobile) {
         border-radius: 18px;
       }
     }
 
     p {
-
-      @include breakpoint($mobile) {
+      @include breakpoint.breakpoint(variables.$mobile) {
         font-size: math.div(16em, 16);
         line-height: math.div(22em, 16);
       }
     }
 
     .btn {
-
-      @include breakpoint($mobile) {
+      @include breakpoint.breakpoint(variables.$mobile) {
         width: 100%;
 
         margin-top: math.div(17em, 17);

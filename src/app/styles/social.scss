@@ -6,19 +6,17 @@
 
 .social-list {
   margin-top: math.div(16em, 16);
-  
+
   a {
     display: inline-block;
 
     vertical-align: middle;
 
     & + a {
-      
       margin-left: math.div(10em, 16);
     }
 
     & + .button_instagram {
-
       margin-left: math.div(4em, 16);
     }
   }
@@ -36,19 +34,16 @@
     text-align: center;
 
     &:hover {
-
       span {
         width: 110%;
         height: 110%;
       }
 
       path {
-
         fill: #fff;
       }
 
       circle {
-
         fill: #fff;
       }
     }
@@ -68,7 +63,9 @@
 
       border-radius: 50%;
 
-      transition: width .3s, height .3s;
+      transition:
+        width 0.3s,
+        height 0.3s;
     }
 
     svg {
@@ -87,22 +84,16 @@
 
     &_facebook,
     &_telegram {
-
       &:hover {
-
         span {
-
           background: #0e8fff;
         }
       }
     }
 
     &_instagram {
-
       &:hover {
-
         span {
-
           background: #d94f5a;
         }
       }

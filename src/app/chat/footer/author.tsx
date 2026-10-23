@@ -1,6 +1,6 @@
 import * as React from "react";
-const IconSho = require("../svg/icon-sho.svg");
-const IconBobra = require("../svg/icon-bobra.svg");
+import IconSho from "url:../svg/icon-sho.svg";
+import IconBobra from "url:../svg/icon-bobra.svg";
 
 export const Author = () => {
     return (

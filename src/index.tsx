@@ -1,5 +1,10 @@
 import React from "react";
-import { render } from "react-dom";
+import { createRoot } from "react-dom/client";
 import { App } from "./app";
+import { initSentry } from "./sentry";
 
-render(<App />, document.querySelector("bobra-quickpay"));
+const rootOptions = initSentry();
+
+createRoot(document.querySelector("bobra-quickpay")!, rootOptions).render(
+    <App />
+);

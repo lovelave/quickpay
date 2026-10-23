@@ -1,3 +1,6 @@
+@use "breakpoint-sass/stylesheets/breakpoint";
+@use "base/variables";
+
 /*
 * Menu hamburger styles
  */
@@ -5,10 +8,8 @@
 @use "sass:math";
 
 body {
-
   .menu-hamburger {
-
-    @include breakpoint($mobile) {
+    @include breakpoint.breakpoint(variables.$mobile) {
       border-color: transparent;
 
       background: transparent;
@@ -17,17 +18,14 @@ body {
     }
 
     &.active {
-
       .line {
-
-        stroke: $color-secondary;
+        stroke: variables.$color-secondary;
       }
     }
   }
 }
 
 .menu-hamburger {
-
   .bg_menu {
     width: 0;
     height: 0;
@@ -39,7 +37,7 @@ body {
 
     pointer-events: none;
 
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
 
     opacity: 1;
 
@@ -47,19 +45,20 @@ body {
 
     background-color: #2699fb;
 
-    transition: width .8s cubic-bezier(1,0,0,1), height .8s cubic-bezier(1,0,0,1);
+    transition:
+      width 0.8s cubic-bezier(1, 0, 0, 1),
+      height 0.8s cubic-bezier(1, 0, 0, 1);
 
     z-index: -1;
   }
 
   .hamburger,
   .label {
-
     vertical-align: middle;
   }
 
   .hamburger {
-    opacity: .6;
+    opacity: 0.6;
 
     width: 16px;
 
@@ -77,7 +76,7 @@ body {
 
     z-index: 1;
 
-    @include breakpoint($mobile) {
+    @include breakpoint.breakpoint(variables.$mobile) {
       width: 22px;
 
       opacity: 1;
@@ -101,7 +100,7 @@ body {
 
     position: relative;
 
-    color: $color-secondary;
+    color: variables.$color-secondary;
 
     z-index: 1;
   }
@@ -110,10 +109,9 @@ body {
     width: 48px;
     height: 48px;
 
-    box-shadow: 0 2px 6px rgba(13,112,196,.33);
+    box-shadow: 0 2px 6px rgba(13, 112, 196, 0.33);
 
     &:after {
-
       content: none;
     }
   }
@@ -121,11 +119,11 @@ body {
 
 @keyframes hide-button-bg {
   from {
-    background: linear-gradient(#39a3ff,#0e8fff);
+    background: linear-gradient(#39a3ff, #0e8fff);
 
     border-color: #3dabff transparent #0072d4;
 
-    box-shadow: 0 5px 11px -4px rgba(0,130,251,.6);
+    box-shadow: 0 5px 11px -4px rgba(0, 130, 251, 0.6);
   }
   to {
     background: transparent;

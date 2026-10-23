@@ -4,7 +4,7 @@ import dayjs from "dayjs";
 import { plural } from "../../utils/plural";
 import { Time } from "../base/time";
 
-const dashedLine = require("../svg/dashed-line.svg");
+import dashedLine from "url:../svg/dashed-line.svg";
 
 export interface Item {
     value: string;

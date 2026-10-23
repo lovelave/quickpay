@@ -1,19 +1,23 @@
 import * as React from "react";
-import * as Chat from "app/chat/chat-logic";
+import * as Chat from "../chat-logic";
 import classNames from "classnames";
-import { ClassValue } from "classnames/types";
 import { Time } from "./time";
 
 export interface MessageProps {
     isDebug?: boolean;
-    className?: ClassValue;
+    className?: classNames.Argument;
     source: Chat.MessageSource;
     at?: string;
+    children?: React.ReactNode;
 }
 
-export const Message: React.FC<MessageProps> = (
-    { source, className, at, isDebug, children }
-) => {
+export const Message: React.FC<MessageProps> = ({
+    source,
+    className,
+    at,
+    isDebug,
+    children,
+}) => {
     className = classNames(
         "message",
         getSourceClassName(source),
@@ -25,7 +29,7 @@ export const Message: React.FC<MessageProps> = (
     return (
         <div className={className}>
             {children}
-            {at && <Time value={at}/>}
+            {at && <Time value={at} />}
         </div>
     );
 };

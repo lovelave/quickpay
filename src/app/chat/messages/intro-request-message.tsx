@@ -4,31 +4,34 @@ import { PhoneInput } from "@ua-opendata/react-phone-input";
 import classNames from "classnames";
 import * as Chat from "../chat-logic";
 
-const IconAirplane = require("../svg/icon-airplane.svg");
+import IconAirplane from "url:../svg/icon-airplane.svg";
 
-export const IntroRequestMessage: React.FC<{}> = React.memo(() => {
+export const IntroRequestMessage: React.FC = React.memo(() => {
     const dispatch = Chat.useDispatchContext();
     const [value, handleChange] = useInputState();
 
-    const rawValue = value.replace(/\D/g, '');
+    const rawValue = value.replace(/\D/g, "");
 
     const isSubmitEnable = rawValue.length === 12;
 
-    const handleSubmit = React.useCallback((e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+    const handleSubmit = React.useCallback(
+        (e: React.FormEvent<HTMLFormElement>) => {
+            e.preventDefault();
 
-        if (!isSubmitEnable) {
-            return false;
-        }
+            if (!isSubmitEnable) {
+                return false;
+            }
 
-        dispatch([
-            new Chat.StateInputDataAction("phone", rawValue),
-            new Chat.ReplaceAction([
-                new Chat.TextMessage(value, "user"),
-                new Chat.VerifyPhoneMessage(rawValue),
-            ]),
-        ]);
-    },[rawValue, value, dispatch]);
+            dispatch([
+                new Chat.StateInputDataAction("phone", rawValue),
+                new Chat.ReplaceAction([
+                    new Chat.TextMessage(value, "user"),
+                    new Chat.VerifyPhoneMessage(rawValue),
+                ]),
+            ]);
+        },
+        [isSubmitEnable, rawValue, value, dispatch]
+    );
 
     return (
         <form onSubmit={handleSubmit}>
@@ -47,13 +50,20 @@ export const IntroRequestMessage: React.FC<{}> = React.memo(() => {
                         <button
                             id="sign-phone-submit"
                             type="submit"
-                            className={classNames("btn btn_action", isSubmitEnable ? "enabled" : "disabled")}
+                            className={classNames(
+                                "btn btn_action",
+                                isSubmitEnable ? "enabled" : "disabled"
+                            )}
                         >
-                            <img src={IconAirplane} alt="icon" className="icon icon_airplane"/>
+                            <img
+                                src={IconAirplane}
+                                alt="icon"
+                                className="icon icon_airplane"
+                            />
                         </button>
                     </div>
                 </div>
             </div>
         </form>
-    )
+    );
 });

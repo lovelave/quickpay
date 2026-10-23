@@ -1,5 +1,5 @@
 import { Message } from "./message";
-import {InputData, StateType} from "./reducer";
+import { InputData, StateType } from "./reducer";
 
 // State user action
 export class StateUserAction {
@@ -9,7 +9,7 @@ export class StateUserAction {
         public readonly debt: number,
         public readonly returnDate: string,
         public readonly name: string,
-        public readonly prolongation?: number,
+        public readonly prolongation?: number
     ) {}
 }
 
@@ -21,7 +21,7 @@ export class ClearUserDataAction {
 export class StateInputDataAction {
     constructor(
         public readonly type: keyof InputData,
-        public readonly value?: string,
+        public readonly value?: string
     ) {}
 }
 
@@ -61,7 +61,7 @@ export class ReplaceAction {
 
     constructor(
         public readonly messages: Array<Message>,
-        public readonly target?: Message | number,
+        public readonly target?: Message | number
     ) {}
 }
 
@@ -70,11 +70,12 @@ export class FlushAction {
 
     constructor(
         public readonly messages: Array<Message>,
-        public readonly leaveState?: true,
+        public readonly leaveState?: true
     ) {}
 }
 
-export type Action = PushAction
+export type Action =
+    | PushAction
     | StateUserAction
     | ClearUserDataAction
     | StateInputDataAction
