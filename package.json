@@ -21,6 +21,7 @@
   "homepage": "https://github.com/lovelave/quickpay",
   "dependencies": {
     "@horat1us/react-hooks": "^1.14.1",
+    "@sentry/react": "^11.9.0",
     "@ua-opendata/react-phone-input": "^2.0.1",
     "breakpoint-sass": "^3.0.0",
     "classnames": "^2.5.1",

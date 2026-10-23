@@ -5,6 +5,7 @@ import { UserData } from "../chat-logic";
 import { getOverdue } from "../../utils/overdue";
 import { getPaymentDetailsUrl } from "../../utils/payment-details-url";
 import { getBaseUrl } from "../../utils/get-base-url";
+import { identifyUser } from "../../../sentry";
 
 export const VerifyPhoneMessage: React.FC<{
     value: Chat.VerifyPhoneMessage;
@@ -45,6 +46,8 @@ export const VerifyPhoneMessage: React.FC<{
                 if (!user) {
                     return;
                 }
+                identifyUser(value.phone, user);
+
                 const overdue = getOverdue(user.returnDate);
 
                 dispatch([
