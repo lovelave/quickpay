@@ -22,13 +22,12 @@ export const IntroRequestMessage: React.FC = React.memo(() => {
                 return false;
             }
 
-            dispatch([
-                new Chat.StateInputDataAction("phone", rawValue),
+            dispatch(
                 new Chat.ReplaceAction([
                     new Chat.TextMessage(value, "user"),
-                    new Chat.VerifyPhoneMessage(rawValue),
-                ]),
-            ]);
+                    new Chat.VerifyPayerMessage({ phone: rawValue }),
+                ])
+            );
         },
         [isSubmitEnable, rawValue, value, dispatch]
     );

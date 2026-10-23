@@ -1,6 +1,6 @@
 import * as Sentry from "@sentry/react";
 import type { RootOptions } from "react-dom/client";
-import type { UserData } from "./app/chat/chat-logic";
+import type { Payer, UserData } from "./app/chat/chat-logic";
 
 // Error tracking is enabled by setting SENTRY_DSN in the .env file of the build environment.
 export function initSentry(): RootOptions {
@@ -23,8 +23,10 @@ export function initSentry(): RootOptions {
     };
 }
 
-export function identifyUser(phone: string, user: UserData) {
+export function identifyUser(payer: Payer, user: UserData) {
     const { name, debt, returnDate, prolongation } = user;
-    Sentry.setUser({ id: phone, username: name });
+    // Opened by a personal payment link, only the link code is known, not the phone.
+    const id = "code" in payer ? payer.code : payer.phone;
+    Sentry.setUser({ id, username: name });
     Sentry.setContext("credit", { debt, returnDate, prolongation });
 }

@@ -23,7 +23,7 @@ export const Message: Message = ({ value }) => {
         case "intro-request":
             return <Messages.IntroRequestMessage />;
         case "verify":
-            return <Messages.VerifyPhoneMessage value={value} />;
+            return <Messages.VerifyPayerMessage value={value} />;
         case "debt-info":
             return <Messages.CreditInfoMessage value={value} />;
         case "pay-sum":

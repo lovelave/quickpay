@@ -7,8 +7,8 @@ import { getPaymentDetailsUrl } from "../../utils/payment-details-url";
 import { getBaseUrl } from "../../utils/get-base-url";
 import { identifyUser } from "../../../sentry";
 
-export const VerifyPhoneMessage: React.FC<{
-    value: Chat.VerifyPhoneMessage;
+export const VerifyPayerMessage: React.FC<{
+    value: Chat.VerifyPayerMessage;
 }> = ({ value }) => {
     const dispatch = Chat.useDispatchContext();
 
@@ -17,7 +17,7 @@ export const VerifyPhoneMessage: React.FC<{
 
         const requestUrl = getBaseUrl();
         requestUrl.pathname = "v3/quick-pay";
-        requestUrl.searchParams.append("id", value.phone);
+        Chat.appendPayerParam(requestUrl, value.payer, "id");
 
         fetch(requestUrl.toString(), { signal: controller.signal })
             .then((response) => {
@@ -27,12 +27,22 @@ export const VerifyPhoneMessage: React.FC<{
                     case 404:
                         dispatch([
                             new Chat.RemoveAction(value),
-                            new Chat.PushAction([
-                                new Chat.TextMessage(
-                                    "Хмм.. На цьому номері немає активного кредиту."
-                                ),
-                                new Chat.InvalidPhoneRequestMessage(),
-                            ]),
+                            new Chat.PushAction(
+                                "code" in value.payer
+                                    ? [
+                                          new Chat.TextMessage([
+                                              "Посилання застаріло або кредит уже погашено.",
+                                              "Щоб сплатити кредит, вкажіть номер мобільного телефону.",
+                                          ]),
+                                          new Chat.IntroRequestMessage(),
+                                      ]
+                                    : [
+                                          new Chat.TextMessage(
+                                              "Хмм.. На цьому номері немає активного кредиту."
+                                          ),
+                                          new Chat.InvalidPhoneRequestMessage(),
+                                      ]
+                            ),
                         ]);
                         return;
                     case 200:
@@ -46,14 +56,15 @@ export const VerifyPhoneMessage: React.FC<{
                 if (!user) {
                     return;
                 }
-                identifyUser(value.phone, user);
+                identifyUser(value.payer, user);
 
                 const overdue = getOverdue(user.returnDate);
 
                 dispatch([
+                    new Chat.StatePayerAction(value.payer),
                     new Chat.RemoveAction(value),
                     new Chat.PushAction([
-                        new Chat.ResultPhoneMessage(overdue),
+                        new Chat.ResultPhoneMessage(overdue, value.payer),
                         new Chat.CreditInfoMessage(user, overdue),
                         new Chat.PaymentSumMessage(
                             user.debt,

@@ -5,7 +5,7 @@ import { useDispatchContext } from "../chat-logic";
 import { getBaseUrl } from "../../utils/get-base-url";
 
 export const LoadIframeMessage: React.FC<{ value: Chat.LoadIframeMessage }> = ({
-    value: { phone, amount },
+    value: { payer, amount },
 }) => {
     const dispatch = useDispatchContext();
 
@@ -16,7 +16,7 @@ export const LoadIframeMessage: React.FC<{ value: Chat.LoadIframeMessage }> = ({
 
         const requestUrl = getBaseUrl();
         requestUrl.pathname = "v3/payment/platon/order/repayment";
-        requestUrl.searchParams.append("phone", phone);
+        Chat.appendPayerParam(requestUrl, payer, "phone");
 
         fetch(requestUrl.toString(), {
             signal: controller.signal,
@@ -48,7 +48,7 @@ export const LoadIframeMessage: React.FC<{ value: Chat.LoadIframeMessage }> = ({
             });
 
         return () => controller && controller.abort();
-    }, [phone, amount, dispatch]);
+    }, [payer, amount, dispatch]);
 
     return <Base.LoadMessage />;
 };

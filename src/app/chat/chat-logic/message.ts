@@ -1,4 +1,5 @@
 import { UserData } from "./reducer";
+import { Payer } from "./payer";
 
 export class FailureMessage {
     public readonly type = "info:failure";
@@ -31,12 +32,10 @@ export class IntroRequestMessage {
     public readonly type = "intro-request";
 }
 
-export class VerifyPhoneMessage {
+export class VerifyPayerMessage {
     public readonly type = "verify";
 
-    constructor(public readonly phone: string) {
-        this.phone = this.phone.replace(/\D/g, "");
-    }
+    constructor(public readonly payer: Payer) {}
 }
 
 export class CreditInfoMessage {
@@ -71,7 +70,7 @@ export class LoadIframeMessage {
     public readonly type = "load-iframe";
 
     constructor(
-        public readonly phone: string,
+        public readonly payer: Payer,
         public readonly amount: string
     ) {}
 }
@@ -88,7 +87,10 @@ export class IframeMessage {
 export class ResultPhoneMessage {
     public readonly type = "result-phone";
 
-    constructor(public readonly overdue: number) {}
+    constructor(
+        public readonly overdue: number,
+        public readonly payer: Payer
+    ) {}
 }
 
 export class InvalidPhoneRequestMessage {
@@ -98,7 +100,7 @@ export class InvalidPhoneRequestMessage {
 export class LoadResultMessage {
     public readonly type = "load-result";
 
-    constructor(public readonly phone: string) {}
+    constructor(public readonly payer: Payer) {}
 }
 
 export class PaymentErrorRequestMessage {
@@ -112,7 +114,7 @@ export type Message =
     | TextMessage
     | DelayMessage
     | IntroMessage
-    | VerifyPhoneMessage
+    | VerifyPayerMessage
     | IntroRequestMessage
     | CreditInfoMessage
     | PaymentSumMessage

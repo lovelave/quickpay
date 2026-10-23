@@ -36,3 +36,7 @@ Build-time variables are read from the environment and from `.env.${NODE_ENV}`:
 Every push to `master` deploys the test site (`NODE_ENV=test`) to
 [pay.test.l-l.cloud](https://pay.test.l-l.cloud) and production to
 [pay.lovilave.com.ua](https://pay.lovilave.com.ua).
+
+Personal payment links open the site at `/pay/{code}`. GitHub Pages has no rewrite rules,
+so the build also writes `dist/404.html`, a copy of `index.html` that Pages serves for unknown paths,
+and references assets by absolute URLs (`--public-url=/`).

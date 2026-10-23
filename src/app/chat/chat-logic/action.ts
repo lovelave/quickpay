@@ -1,5 +1,6 @@
 import { Message } from "./message";
 import { InputData, StateType } from "./reducer";
+import { Payer } from "./payer";
 
 // State user action
 export class StateUserAction {
@@ -15,6 +16,13 @@ export class StateUserAction {
 
 export class ClearUserDataAction {
     public readonly type = "clear-user-data";
+}
+
+// State payer action
+export class StatePayerAction {
+    public readonly type = "payer";
+
+    constructor(public readonly payer: Payer) {}
 }
 
 // State input data action
@@ -78,6 +86,7 @@ export type Action =
     | PushAction
     | StateUserAction
     | ClearUserDataAction
+    | StatePayerAction
     | StateInputDataAction
     | StateTypeAction
     | RemoveAction
