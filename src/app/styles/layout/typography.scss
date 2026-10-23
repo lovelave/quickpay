@@ -13,7 +13,6 @@ h4,
 h5,
 h6,
 p {
-
   margin: 0;
 }
 
@@ -24,19 +23,16 @@ h2 {
 }
 
 h1 {
-
   font-weight: variables.$medium;
 }
 
 h5.inner-title {
-
   font-size: math.div(22em, 16);
 }
 
 .numbered__list {
   display: table;
   counter-reset: counter;
-
 
   li {
     display: table;

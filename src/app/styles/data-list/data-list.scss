@@ -13,7 +13,6 @@
   max-width: 312px;
 
   @include breakpoint.breakpoint(variables.$mobile-p) {
-
     max-width: none;
   }
 
@@ -21,7 +20,6 @@
     max-width: 414px;
 
     @include breakpoint.breakpoint(variables.$mobile-l) {
-
       padding-right: math.div(34em, 16);
     }
   }
@@ -40,21 +38,17 @@
     padding: math.div(8em, 16) 0;
 
     &:not(:last-of-type) {
-
-      border-bottom: 1px solid rgba(28,83,119,.12);
+      border-bottom: 1px solid rgba(28, 83, 119, 0.12);
     }
 
     &.unbordered {
-
       span {
-
         font-size: math.div(15em, 16);
       }
     }
 
     &.bolder {
-
-      border-bottom: 1px solid rgba(255,255,255,.65);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.65);
     }
 
     &.indented {
@@ -62,15 +56,13 @@
       margin-bottom: math.div(22em, 16);
       padding: 0;
 
-      @include breakpoint.breakpoint (variables.$mobile-p) {
-
+      @include breakpoint.breakpoint(variables.$mobile-p) {
         margin-bottom: math.div(10em, 16);
       }
     }
 
     &.data-list__title {
-
-        padding: 0;
+      padding: 0;
     }
 
     span {
@@ -80,38 +72,31 @@
         font-size: math.div(20em, 16);
 
         @include breakpoint.breakpoint(variables.$tablet-p) {
-
           font-size: math.div(19em, 16);
         }
 
         @include breakpoint.breakpoint(variables.$mobile) {
-
           font-size: math.div(19em, 16);
         }
 
         &:first-of-type {
-
           @include breakpoint.breakpoint(variables.$mobile) {
-            padding-right: (20em*0.05);
+            padding-right: (20em * 0.05);
 
             text-align: left;
           }
 
           @include breakpoint.breakpoint(variables.$tablet-p) {
-
             padding-right: math.div(30em, 16);
           }
         }
 
         &:last-child {
-
           @include breakpoint.breakpoint(variables.$mobile) {
-
             text-align: right;
           }
 
           @include breakpoint.breakpoint(variables.$tablet-p) {
-
             white-space: nowrap;
           }
         }
@@ -119,9 +104,7 @@
     }
 
     a {
-
       span {
-
         font-size: math.div(15em, 18);
       }
     }

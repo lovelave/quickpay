@@ -5,4 +5,6 @@ import { initSentry } from "./sentry";
 
 const rootOptions = initSentry();
 
-createRoot(document.querySelector("bobra-quickpay")!, rootOptions).render(<App />);
+createRoot(document.querySelector("bobra-quickpay")!, rootOptions).render(
+    <App />
+);

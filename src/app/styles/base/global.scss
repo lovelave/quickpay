@@ -11,21 +11,20 @@ body,
 .main,
 .section-chat,
 .chat-stream {
-
   min-height: 100%;
 }
 
-html, body {
+html,
+body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   margin: 0;
   text-rendering: optimizeLegibility;
   scroll-behavior: smooth !important;
 }
 
 html {
-
   position: relative;
 }
 
@@ -36,7 +35,6 @@ body {
   color: variables.$color-primary;
 
   &:not([data-theme]) {
-
     overflow: hidden;
   }
 
@@ -49,7 +47,6 @@ body {
     display: inline-block;
 
     &:hover {
-
       text-decoration: underline;
     }
   }
@@ -60,7 +57,6 @@ body {
   }
 
   .full-sized-mobile {
-
     @include breakpoint.breakpoint(variables.$mobile-p) {
       width: 100%;
       max-width: none;
@@ -110,7 +106,6 @@ bobra-quickpay {
 }
 
 .main {
-
   flex: 1;
 }
 
@@ -120,6 +115,5 @@ bobra-quickpay {
 }
 
 input[type="checkbox"] {
-
   appearance: auto !important;
 }

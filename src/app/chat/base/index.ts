@@ -1,5 +1,5 @@
 import * as Menu from "./menu";
-import {ControlMessage} from "./form/control-message";
+import { ControlMessage } from "./form/control-message";
 
 export { Menu, ControlMessage };
 

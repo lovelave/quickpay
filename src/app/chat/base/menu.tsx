@@ -22,16 +22,22 @@ const getClassNameByType = (type: ButtonProps["type"]): string => {
     }
 };
 
-export const Button: React.FC<ButtonProps> = (
-    { content, type, onClick, option }
-) => {
-
+export const Button: React.FC<ButtonProps> = ({
+    content,
+    type,
+    onClick,
+    option,
+}) => {
     const handleClick = () => {
-        onClick(option, content)
+        onClick(option, content);
     };
 
     return (
-        <button type="button" className={classNames("btn", getClassNameByType(type))} onClick={handleClick}>
+        <button
+            type="button"
+            className={classNames("btn", getClassNameByType(type))}
+            onClick={handleClick}
+        >
             {content}
         </button>
     );
@@ -45,7 +51,10 @@ export interface MessageProps<O = any> {
 }
 
 export const Message: React.FC<MessageProps> = ({ items, onSelect }) => {
-    const handleClick = React.useCallback<MessageProps["onSelect"]>((option, select) => onSelect(option, select), [onSelect]);
+    const handleClick = React.useCallback<MessageProps["onSelect"]>(
+        (option, select) => onSelect(option, select),
+        [onSelect]
+    );
     return (
         <ButtonMessage source="user" className="menu-message">
             {items.map((item, i) => (

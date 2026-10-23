@@ -11,9 +11,13 @@ export interface MessageProps {
     children?: React.ReactNode;
 }
 
-export const Message: React.FC<MessageProps> = (
-    { source, className, at, isDebug, children }
-) => {
+export const Message: React.FC<MessageProps> = ({
+    source,
+    className,
+    at,
+    isDebug,
+    children,
+}) => {
     className = classNames(
         "message",
         getSourceClassName(source),
@@ -25,7 +29,7 @@ export const Message: React.FC<MessageProps> = (
     return (
         <div className={className}>
             {children}
-            {at && <Time value={at}/>}
+            {at && <Time value={at} />}
         </div>
     );
 };

@@ -37,16 +37,14 @@ Message with Platon form styles
 
       background-color: variables.$color-secondary;
 
-      box-shadow: 0 6px 16px -10px rgba(0,128,237,.45);
+      box-shadow: 0 6px 16px -10px rgba(0, 128, 237, 0.45);
 
       @include breakpoint.breakpoint(variables.$mobile) {
-
         border-radius: 18px;
       }
     }
 
     p {
-
       @include breakpoint.breakpoint(variables.$mobile) {
         font-size: math.div(16em, 16);
         line-height: math.div(22em, 16);
@@ -54,7 +52,6 @@ Message with Platon form styles
     }
 
     .btn {
-
       @include breakpoint.breakpoint(variables.$mobile) {
         width: 100%;
 

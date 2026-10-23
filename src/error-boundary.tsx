@@ -1,17 +1,19 @@
 import * as React from "react";
-import {ErrorStatus} from "./app/chat/statuses/error";
+import { ErrorStatus } from "./app/chat/statuses/error";
 
-export type ErrorBoundaryState = {} | {error: Error};
+export type ErrorBoundaryState = {} | { error: Error };
 
-export class ErrorBoundary extends React.Component<React.PropsWithChildren, ErrorBoundaryState> {
+export class ErrorBoundary extends React.Component<
+    React.PropsWithChildren,
+    ErrorBoundaryState
+> {
     public readonly state: ErrorBoundaryState = {};
 
     static getDerivedStateFromError(error: Error) {
-        return {error};
+        return { error };
     }
 
-    componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
-    }
+    componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {}
 
     public render() {
         if ("error" in this.state) {

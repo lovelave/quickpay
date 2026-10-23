@@ -1,7 +1,7 @@
 import * as React from "react";
-import {IconFacebook} from "./icon-facebook";
-import {IconInstagram} from "./icon-instagram";
-import {IconTelegram} from "./icon-telegram";
+import { IconFacebook } from "./icon-facebook";
+import { IconInstagram } from "./icon-instagram";
+import { IconTelegram } from "./icon-telegram";
 
 export const Social = () => {
     return (
@@ -27,11 +27,11 @@ export const Social = () => {
                 className="button button_telegram"
                 target="_blank"
             >
-                <IconTelegram/>
-                <span/>
+                <IconTelegram />
+                <span />
             </a>
         </div>
-    )
+    );
 };
 
 Social.displayName = "Social.Layout";

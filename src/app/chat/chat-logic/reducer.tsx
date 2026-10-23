@@ -5,27 +5,26 @@ import * as Messages from "./message";
 export type StateType = "error" | "pay-success";
 
 export interface UserData {
-    debt: number
-    returnDate: string
-    name: string
-    prolongation?: number
+    debt: number;
+    returnDate: string;
+    name: string;
+    prolongation?: number;
 }
 
 export interface InputData {
-    phone?: string
-    amount?: string
+    phone?: string;
+    amount?: string;
 }
 
 export interface State {
-    messages: Array<Messages.Message>
-    user?: UserData
-    inputData?: InputData
-    type?: StateType
+    messages: Array<Messages.Message>;
+    user?: UserData;
+    inputData?: InputData;
+    type?: StateType;
 }
 
 export type Reducer = React.Reducer<State, Action>;
 export const Reducer: Reducer = (state, action): State => {
-
     if (Array.isArray(action)) {
         return action.reduce(Reducer, state);
     }
@@ -69,7 +68,7 @@ export const Reducer: Reducer = (state, action): State => {
                 inputData: {
                     ...state.inputData,
                     [action.type]: action.value,
-                }
+                },
             };
 
         // Custom message actions
@@ -79,7 +78,13 @@ export const Reducer: Reducer = (state, action): State => {
             }
             return {
                 ...state,
-                messages: [...state.messages, new Messages.LoadIframeMessage(state.inputData.phone, state.inputData.amount)],
+                messages: [
+                    ...state.messages,
+                    new Messages.LoadIframeMessage(
+                        state.inputData.phone,
+                        state.inputData.amount
+                    ),
+                ],
             };
         case "load-payment-result":
             if (!state.inputData?.phone) {
@@ -87,7 +92,10 @@ export const Reducer: Reducer = (state, action): State => {
             }
             return {
                 ...state,
-                messages: [...state.messages, new Messages.LoadResultMessage(state.inputData.phone)],
+                messages: [
+                    ...state.messages,
+                    new Messages.LoadResultMessage(state.inputData.phone),
+                ],
             };
 
         // Default message actions
@@ -107,18 +115,20 @@ export const Reducer: Reducer = (state, action): State => {
         case "message:delete":
             state.messages.pop();
             return {
-                ...state
+                ...state,
             };
         case "message:replace":
-            const index = ("object" === typeof action.target)
-                ? state.messages.findIndex((m) => m === action.target)
-                : state.messages.length - (action.target ?? 1);
+            const index =
+                "object" === typeof action.target
+                    ? state.messages.findIndex((m) => m === action.target)
+                    : state.messages.length - (action.target ?? 1);
             if (index === -1) {
                 return state;
             }
             return {
                 ...state,
-                messages: state.messages.slice(0, index)
+                messages: state.messages
+                    .slice(0, index)
                     .concat(...action.messages)
                     .concat(...state.messages.slice(index + 1)),
             };
@@ -128,7 +138,7 @@ export const Reducer: Reducer = (state, action): State => {
                     ...state,
                     type: undefined,
                     messages: action.messages,
-                }
+                };
             }
             return {
                 messages: action.messages,
@@ -138,10 +148,7 @@ export const Reducer: Reducer = (state, action): State => {
 };
 
 export const initialState = {
-    messages: [
-        new Messages.IntroMessage(),
-        new Messages.IntroRequestMessage(),
-    ],
+    messages: [new Messages.IntroMessage(), new Messages.IntroRequestMessage()],
 };
 
 export function useReducer(): [State, Dispatch] {

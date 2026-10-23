@@ -2,7 +2,7 @@ name: Jekyll landing CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
 
 env:
   CHAT_ID: ${{ secrets.CHAT_ID }}

@@ -3,15 +3,18 @@ import * as React from "react";
 export type IframePaymentProps = Omit<IframePaymentFormProps, "target"> & {
     onComplete: (e: Event) => void;
     onError?: (e: Event) => void;
-}
+};
 
 type IframePaymentFormProps = Omit<React.HTMLProps<HTMLFormElement>, "data"> & {
     action: string;
     target: string | "_blank";
     data: Array<[string, string]>;
-}
+};
 
-export const IframePaymentForm: React.FC<IframePaymentFormProps> = ({data, ...props}) => {
+export const IframePaymentForm: React.FC<IframePaymentFormProps> = ({
+    data,
+    ...props
+}) => {
     const ref = React.useRef<HTMLFormElement>(null);
 
     React.useEffect(() => {
@@ -24,17 +27,20 @@ export const IframePaymentForm: React.FC<IframePaymentFormProps> = ({data, ...pr
     return (
         <form method="post" {...props} ref={ref}>
             {data.map(([k, v]) => (
-                <input type="hidden" name={k} key={k} value={v}/>
+                <input type="hidden" name={k} key={k} value={v} />
             ))}
             {props.children}
         </form>
-    )
+    );
 };
 
 const iframeName = "chat-card-platon";
 
-export const IframePayment: React.FC<IframePaymentProps> = ({onComplete, onError, ...props}) => {
-
+export const IframePayment: React.FC<IframePaymentProps> = ({
+    onComplete,
+    onError,
+    ...props
+}) => {
     React.useEffect(() => {
         window.addEventListener("iframe.complete", onComplete);
         return () => window.removeEventListener("iframe.complete", onComplete);
@@ -51,7 +57,7 @@ export const IframePayment: React.FC<IframePaymentProps> = ({onComplete, onError
 
     return (
         <IframePaymentForm {...props} target={iframeName}>
-            <iframe id={iframeName} name={iframeName}/>
+            <iframe id={iframeName} name={iframeName} />
         </IframePaymentForm>
     );
 };

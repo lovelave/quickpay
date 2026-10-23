@@ -9,28 +9,25 @@
 @use "sass:math";
 
 .footer {
-  background: linear-gradient(#EFF8FF, #CEE1F0);
+  background: linear-gradient(#eff8ff, #cee1f0);
 
   color: variables.$color-primary;
 
   @include breakpoint.breakpoint(variables.$mobile-p) {
-
     display: none;
   }
 
   @include breakpoint.breakpoint(variables.$mobile-l) {
-
-    background: rgba(195,218,236,.33);
+    background: rgba(195, 218, 236, 0.33);
   }
 
   .payment-systems {
     @include mixins.flex;
     align-items: center;
 
-    opacity: .33;
+    opacity: 0.33;
 
     .icon {
-
       & + .icon {
         margin-left: 15px;
       }
@@ -59,21 +56,18 @@
 
   &.mobile {
     display: none;
-    
+
     color: variables.$color-primary;
 
     &:not(.hide) {
-
       @include breakpoint.breakpoint(variables.$mobile) {
-
         display: block;
       }
     }
 
     .footer {
-
       &-below {
-        background-color: rgba(195,218,236,.25);
+        background-color: rgba(195, 218, 236, 0.25);
 
         .container {
           padding: math.div(15em, 16) 0;
@@ -86,7 +80,6 @@
         }
 
         .author {
-
           margin-top: math.div(7em, 16);
         }
       }
@@ -96,7 +89,7 @@
   &-above {
     padding: math.div(22em, 16);
 
-    color: #1D5A8E;
+    color: #1d5a8e;
 
     @include breakpoint.breakpoint(variables.$laptop) {
       padding-right: math.div(33em, 16);
@@ -110,7 +103,6 @@
 
     > .container,
     .right {
-
       @include mixins.justify-content;
     }
   }
@@ -118,7 +110,7 @@
   &-below {
     padding: 0 math.div(22em, 16);
 
-    background-color: rgba(195,218,236,.33);
+    background-color: rgba(195, 218, 236, 0.33);
 
     @include breakpoint.breakpoint(variables.$laptop) {
       padding-right: math.div(33em, 16);
@@ -131,7 +123,6 @@
     }
 
     @include breakpoint.breakpoint(variables.$mobile) {
-
       background: none;
     }
 
@@ -144,12 +135,10 @@
       padding: math.div(23em, 16) 0;
 
       &:before {
-
         content: none;
       }
 
       @include breakpoint.breakpoint(variables.$mobile-p) {
-
         display: block;
       }
     }
@@ -161,24 +150,22 @@
 
       line-height: math.div(16em, 11);
       font-size: math.div(11em, 16);
-      color: #1C5377;
+      color: #1c5377;
 
-      opacity: .34;
+      opacity: 0.34;
 
       @include breakpoint.breakpoint(variables.$mobile-p) {
-
         width: 100%;
       }
 
       @include breakpoint.breakpoint(variables.$tablet) {
-
         width: 100%;
       }
 
       @include breakpoint.breakpoint(variables.$mobile) {
         text-align: center;
 
-        opacity: .4;
+        opacity: 0.4;
       }
     }
   }
@@ -191,7 +178,7 @@
 
       text-align: initial;
     }
-    
+
     @include breakpoint.breakpoint(variables.$mobile-p) {
       @include mixins.justify-content;
 
@@ -213,7 +200,6 @@
       }
 
       @include breakpoint.breakpoint(variables.$tablet) {
-
         margin-left: math.div(30em, 16);
       }
     }
@@ -228,7 +214,6 @@
     }
 
     @include breakpoint.breakpoint(variables.$tablet) {
-
       align-self: flex-end;
     }
 
@@ -248,7 +233,6 @@
       }
 
       @include breakpoint.breakpoint(variables.$tablet) {
-
         display: none;
       }
     }
@@ -259,19 +243,16 @@
     max-width: 385px;
 
     @include breakpoint.breakpoint(variables.$mobile) {
-
       max-width: none;
     }
 
     @include breakpoint.breakpoint(variables.$mobile-l) {
-
       padding-right: math.div(24em, 16);
     }
 
     > span {
       font-size: math.div(13em, 16);
       font-weight: variables.$semi-bold;
-
     }
 
     > p {
@@ -279,30 +260,25 @@
 
       line-height: 1.5em;
       font-size: 11px;
-      opacity: .7;
+      opacity: 0.7;
     }
   }
 
   .support,
   .social-list {
-
     display: inline-block;
   }
 
   .support {
-
     @include breakpoint.breakpoint(variables.$mobile-p) {
-
       width: 55%;
     }
 
     @include breakpoint.breakpoint(variables.$tablet) {
-
       line-height: math.div(17em, 16);
     }
 
     .btn_blue {
-
       display: none;
     }
   }
@@ -311,13 +287,11 @@
     margin-top: math.div(10em, 16);
 
     .icon-fill {
-
-      fill: #1D5A8E;
+      fill: #1d5a8e;
     }
   }
 
   .support {
-
     .sub-title {
       margin-bottom: math.div(5em, 11);
     }
@@ -331,34 +305,30 @@
     font-size: math.div(11em, 16);
     font-weight: variables.$bold;
 
-    opacity: .45;
+    opacity: 0.45;
   }
 
   .author {
     display: flex;
 
     @include breakpoint.breakpoint(variables.$mobile-p) {
-
       margin-top: math.div(18em, 16);
     }
 
     @include breakpoint.breakpoint(variables.$tablet) {
-
       display: none;
     }
 
     a {
-
       line-height: 1px;
     }
 
     .icon {
-      opacity: .4;
+      opacity: 0.4;
 
-      transition: opacity .2s linear;
+      transition: opacity 0.2s linear;
 
       &:hover {
-
         opacity: 1;
       }
 
@@ -383,7 +353,7 @@
 
       background-color: #1d5a8e;
 
-      opacity: .4;
+      opacity: 0.4;
     }
   }
 }
@@ -399,28 +369,23 @@
   font-weight: variables.$semi-bold;
 
   &:hover {
-
     span {
-
       color: #53a2d6;
     }
-
   }
 
   &:first-of-type {
-
     margin-bottom: math.div(5em, 16);
   }
 
   & + span {
-
     font-size: math.div(11em, 16);
   }
 
   span {
     vertical-align: middle;
 
-    transition: color .2s ease;
+    transition: color 0.2s ease;
 
     line-height: 1px;
   }
@@ -443,7 +408,6 @@
 
 .main-nav,
 .footer {
-
   .btn-container {
     @include mixins.flex;
     flex-direction: column;

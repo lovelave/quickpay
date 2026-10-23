@@ -1,4 +1,4 @@
-import {useWindowWidth} from "@horat1us/react-hooks";
+import { useWindowWidth } from "@horat1us/react-hooks";
 
 export function isMobile(width: number | undefined) {
     if (width === undefined) {

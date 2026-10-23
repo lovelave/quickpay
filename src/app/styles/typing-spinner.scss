@@ -23,27 +23,25 @@ Typing spinner styles
 
     border-radius: 50%;
 
-    background-color: #2699FB;
+    background-color: #2699fb;
 
     &:not(:last-child) {
-
       margin-right: 6px;
     }
 
     &:first-child {
-
-      animation: dot .9s linear infinite;
+      animation: dot 0.9s linear infinite;
     }
 
     &:nth-child(2) {
-      opacity: .62;
-      animation: dot .9s .225s linear infinite;
+      opacity: 0.62;
+      animation: dot 0.9s 0.225s linear infinite;
     }
 
     &:last-child {
-      opacity: .4;
+      opacity: 0.4;
 
-      animation: dot .9s .45s linear infinite;
+      animation: dot 0.9s 0.45s linear infinite;
     }
   }
 }
