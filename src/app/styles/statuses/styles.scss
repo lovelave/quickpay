@@ -1,3 +1,7 @@
+@use "breakpoint-sass/stylesheets/breakpoint";
+@use "../base/mixins";
+@use "../base/variables";
+
 /*
 * Statuses styles
  */
@@ -5,7 +9,7 @@
 @use "sass:math";
 
 .status-wrap {
-  @include flex;
+  @include mixins.flex;
 
   -webkit-box-pack: center;
   -ms-flex-pack: center;
@@ -13,7 +17,7 @@
 
   margin-top: math.div(80em, 16);
 
-  @include breakpoint($mobile) {
+  @include breakpoint.breakpoint(variables.$mobile) {
     margin: math.div(20em, 16) 0 math.div(20em, 16);
     padding: 0 math.div(18em, 16);
   }
@@ -51,7 +55,7 @@
 
       z-index: -1;
 
-      @include breakpoint($mobile) {
+      @include breakpoint.breakpoint(variables.$mobile) {
         width: 320px;
         height: 405px;
       }
@@ -61,7 +65,7 @@
       width: 275px;
       height: 275px;
 
-      @include breakpoint($mobile) {
+      @include breakpoint.breakpoint(variables.$mobile) {
         width: 225px;
         height: 225px;
       }
@@ -71,7 +75,7 @@
   h2,
   .btn {
 
-    font-weight: $regular;
+    font-weight: variables.$regular;
   }
 
   h2 {
@@ -80,7 +84,7 @@
     font-size: math.div(40em, 16);
     color: #1D5A8E;
 
-    @include breakpoint($mobile) {
+    @include breakpoint.breakpoint(variables.$mobile) {
       margin-bottom: math.div(15em, 35);
 
       font-size: math.div(35em, 16);
@@ -98,7 +102,7 @@
     font-size: math.div(19em, 16);
     color: #5D8AB1;
 
-    @include breakpoint($mobile) {
+    @include breakpoint.breakpoint(variables.$mobile) {
       margin-bottom: math.div(10em, 18);
 
       line-height: math.div(23em, 18);
@@ -110,14 +114,14 @@
 
       .phone-link {
 
-        @include breakpoint($mobile-p) {
+        @include breakpoint.breakpoint(variables.$mobile-p) {
           display: block;
         }
       }
 
       & + span {
 
-        @include breakpoint($mobile-p) {
+        @include breakpoint.breakpoint(variables.$mobile-p) {
           margin-top: math.div(10em, 16);
         }
       }
@@ -130,7 +134,7 @@
 
   .inline {
 
-    font-weight: $bold;
+    font-weight: variables.$bold;
   }
 
   .btn-container {
@@ -138,14 +142,14 @@
 
     white-space: nowrap;
 
-    @include  breakpoint($mobile-p) {
+    @include  breakpoint.breakpoint(variables.$mobile-p) {
 
       white-space: initial;
     }
   }
 
   .phones {
-    @include flex;
+    @include mixins.flex;
     flex-direction: column;
 
     margin-top: math.div(24em, 16);
@@ -155,7 +159,7 @@
     align-self: center;
 
     line-height: 1em;
-    font-weight: $regular;
+    font-weight: variables.$regular;
     color: #3C9CF4;
 
     &:first-of-type {
@@ -194,7 +198,7 @@
 
       &-fill {
 
-        fill: $color-primary;
+        fill: variables.$color-primary;
       }
     }
   }
@@ -202,7 +206,7 @@
   .btn {
     font-size: math.div(20em, 16);
 
-    @include  breakpoint($mobile-p) {
+    @include  breakpoint.breakpoint(variables.$mobile-p) {
 
       width: 100%;
     }
@@ -210,7 +214,7 @@
     & + .btn {
       margin-left: (24em*0.05);
 
-      @include  breakpoint($mobile-p) {
+      @include  breakpoint.breakpoint(variables.$mobile-p) {
 
         margin: (16em*0.05) 0 0;
       }
@@ -267,7 +271,7 @@
 
     .icon-fill {
 
-      fill: $color-primary;
+      fill: variables.$color-primary;
     }
   }
 
@@ -303,7 +307,7 @@
       right: 0;
 
       a {
-        @include flex;
+        @include mixins.flex;
         justify-content: center;
         align-items: center;
 
@@ -326,7 +330,7 @@
   }
 
   .tooltip {
-    @include flex;
+    @include mixins.flex;
 
     width: auto;
 
@@ -356,7 +360,7 @@
 
     z-index: 1;
 
-    @include breakpoint($mobile) {
+    @include breakpoint.breakpoint(variables.$mobile) {
       top: 40px;
       left: 170px;
     }

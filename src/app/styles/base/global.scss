@@ -1,3 +1,7 @@
+@use "breakpoint-sass/stylesheets/breakpoint";
+@use "mixins";
+@use "variables";
+
 /*
 * Global styles
  */
@@ -27,9 +31,9 @@ html {
 
 body {
   font-size: 16px;
-  font-family: $font-primary;
-  font-weight: $regular;
-  color: $color-primary;
+  font-family: variables.$font-primary;
+  font-weight: variables.$regular;
+  color: variables.$color-primary;
 
   &:not([data-theme]) {
 
@@ -57,7 +61,7 @@ body {
 
   .full-sized-mobile {
 
-    @include breakpoint($mobile-p) {
+    @include breakpoint.breakpoint(variables.$mobile-p) {
       width: 100%;
       max-width: none;
     }
@@ -90,7 +94,7 @@ body {
 }
 
 bobra-quickpay {
-  @include flex;
+  @include mixins.flex;
   -webkit-box-direction: normal;
   -moz-box-direction: normal;
   -webkit-box-orient: vertical;

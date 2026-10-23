@@ -1,3 +1,7 @@
+@use "breakpoint-sass/stylesheets/breakpoint";
+@use "base/mixins";
+@use "base/variables";
+
 /*
 * Data panel styles
  */
@@ -43,7 +47,7 @@
   .panel-body {
     padding: 0 math.div(43em, 16);
 
-    @include breakpoint($mobile) {
+    @include breakpoint.breakpoint(variables.$mobile) {
 
       padding: 0;
     }
@@ -55,7 +59,7 @@
 
     .form-group,
     .input-group {
-      @include flex;
+      @include mixins.flex;
 
       width: 100%;
 
@@ -76,7 +80,7 @@
       margin-top: math.div(10em, 16);
 
       span {
-        font-weight: $bold;
+        font-weight: variables.$bold;
 
         &:last-child {
           padding-left: math.div(10em, 24);
@@ -107,8 +111,8 @@
       min-width: 238px;
 
       font-size: math.div(17em, 16);
-      font-weight: $bold;
-      color: $color-primary;
+      font-weight: variables.$bold;
+      color: variables.$color-primary;
     }
 
     .value {

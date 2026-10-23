@@ -1,3 +1,7 @@
+@use "sass:map";
+@use "breakpoint-sass/stylesheets/breakpoint";
+@use "base/variables";
+
 /*
 * Chat bot styles
  */
@@ -16,9 +20,9 @@
 
   background-color: rgba(0,0,0,.1);
 
-  @include breakpoint($mobile) {
+  @include breakpoint.breakpoint(variables.$mobile) {
 
-    z-index: map_get($zindex, main-nav) + 1;
+    z-index: map.get(variables.$zindex, main-nav) + 1;
   }
 
   &:after {
@@ -40,7 +44,7 @@
 
     z-index: -1;
 
-    @include breakpoint($mobile) {
+    @include breakpoint.breakpoint(variables.$mobile) {
 
       content: none;
     }
@@ -57,7 +61,7 @@
 
     z-index: 1;
 
-    @include breakpoint($mobile) {
+    @include breakpoint.breakpoint(variables.$mobile) {
       width: 110px;
       height: 110px;
 

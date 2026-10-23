@@ -1,8 +1,10 @@
+@use "bot-turned";
+
 /*
 Bot full face styles
  */
 
-$click-animation-time: 2.5s;
+bot-turned.$click-animation-time: 2.5s;
 
 .animation-container {
 
@@ -10,23 +12,23 @@ $click-animation-time: 2.5s;
     animation: bot-up-down 3s ease-in-out infinite;
 
     #eye-left {
-      animation: eye-left-blink-bot-full-face $click-animation-time infinite;
+      animation: eye-left-blink-bot-full-face bot-turned.$click-animation-time infinite;
     }
 
     #eye-right {
-      animation: eye-right-blink-bot-full-face $click-animation-time infinite;
+      animation: eye-right-blink-bot-full-face bot-turned.$click-animation-time infinite;
     }
 
     #mouth {
-      animation: mouth-close-open-bot-full-face $click-animation-time infinite;
+      animation: mouth-close-open-bot-full-face bot-turned.$click-animation-time infinite;
     }
 
     #ear-left {
-      animation: ear-left-bot-full-face $click-animation-time infinite;
+      animation: ear-left-bot-full-face bot-turned.$click-animation-time infinite;
     }
 
     #ear-right {
-      animation: ear-right-bot-full-face $click-animation-time infinite;
+      animation: ear-right-bot-full-face bot-turned.$click-animation-time infinite;
     }
   }
 

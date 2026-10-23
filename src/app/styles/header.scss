@@ -1,3 +1,8 @@
+@use "sass:map";
+@use "breakpoint-sass/stylesheets/breakpoint";
+@use "base/mixins";
+@use "base/variables";
+
 /*
 Header styles
  */
@@ -15,7 +20,7 @@ Header styles
 
   background: linear-gradient(45deg, #f6faff, #eff8ff);;
 
-  z-index: map-get($zindex, header);
+  z-index: map.get(variables.$zindex, header);
 
   &:after {
     content: "";
@@ -34,7 +39,7 @@ Header styles
 
     z-index: -2;
 
-    @include breakpoint($mobile) {
+    @include breakpoint.breakpoint(variables.$mobile) {
 
       background: linear-gradient(#f4f9ff 0%, #f4f9ff 5%, rgba(255, 255, 255, 0) 100%);
     }
@@ -42,31 +47,31 @@ Header styles
 
   &.static {
 
-    @include breakpoint($mobile) {
+    @include breakpoint.breakpoint(variables.$mobile) {
       position: relative;
     }
   }
 
   > .container {
-    @include justify-content;
-    @include valign-center;
+    @include mixins.justify-content;
+    @include mixins.valign-center;
 
     max-width: math.div(1324em, 16);
 
     padding: math.div(20em, 16) math.div(12em, 16) 0;
 
-    @include breakpoint($laptop) {
+    @include breakpoint.breakpoint(variables.$laptop) {
       max-width: 1366px;
 
       padding: math.div(20em, 16) math.div(33em, 16);
     }
 
-    @include breakpoint($tablet) {
+    @include breakpoint.breakpoint(variables.$tablet) {
 
       padding: math.div(20em, 16) math.div(30em, 16);
     }
 
-    @include breakpoint($mobile) {
+    @include breakpoint.breakpoint(variables.$mobile) {
       padding: math.div(15em, 16) math.div(12em, 16) 0;
     }
   }
@@ -76,7 +81,7 @@ Header styles
 
     &:not(.show) {
 
-      @include breakpoint($mobile) {
+      @include breakpoint.breakpoint(variables.$mobile) {
         opacity: 0;
 
         pointer-events: none;
@@ -87,7 +92,7 @@ Header styles
       width: 136px;
       height: 34px;
 
-      @include breakpoint($mobile) {
+      @include breakpoint.breakpoint(variables.$mobile) {
         width: 110px;
         height: 28px;
       }
@@ -95,7 +100,7 @@ Header styles
   }
 
   .btn_white {
-    @include flex;
+    @include mixins.flex;
     align-items: center;
     align-self: flex-start;
 
@@ -107,7 +112,7 @@ Header styles
 
     color: #3186c3;
 
-    @include breakpoint($mobile) {
+    @include breakpoint.breakpoint(variables.$mobile) {
       justify-content: center;
 
       width: 40px;
@@ -177,8 +182,8 @@ Header styles
 
     &_human {
 
-      @include breakpoint($mobile-p) {
-        @include flex;
+      @include breakpoint.breakpoint(variables.$mobile-p) {
+        @include mixins.flex;
         justify-content: center;
       }
 
@@ -215,7 +220,7 @@ Header styles
 
     vertical-align: middle;
 
-    @include breakpoint($mobile) {
+    @include breakpoint.breakpoint(variables.$mobile) {
       margin-left: math.div(6em, 16);
       padding: math.div(3em, 16) math.div(7em, 16);
 
@@ -229,7 +234,7 @@ Header styles
     &:hover {
       border-color: #60baff transparent #007de8;
 
-      @include breakpoint($mobile) {
+      @include breakpoint.breakpoint(variables.$mobile) {
 
         border-color: transparent;
       }
@@ -237,7 +242,7 @@ Header styles
       &:after {
         opacity: 1;
 
-        @include breakpoint($mobile) {
+        @include breakpoint.breakpoint(variables.$mobile) {
 
           opacity: 0;
         }
@@ -267,7 +272,7 @@ Header styles
 
     .label {
 
-      @include breakpoint($mobile) {
+      @include breakpoint.breakpoint(variables.$mobile) {
 
         display: none;
       }
@@ -278,7 +283,7 @@ Header styles
 
     .line {
 
-      @include breakpoint($mobile) {
+      @include breakpoint.breakpoint(variables.$mobile) {
 
         fill: #3c9cf4;
       }
@@ -286,7 +291,7 @@ Header styles
   }
 
   .header-controls {
-    @include flex;
+    @include mixins.flex;
     align-items: center;
 
     position: relative;

@@ -1,3 +1,6 @@
+@use "breakpoint-sass/stylesheets/breakpoint";
+@use "base/variables";
+
 /*
 * Menu hamburger styles
  */
@@ -8,7 +11,7 @@ body {
 
   .menu-hamburger {
 
-    @include breakpoint($mobile) {
+    @include breakpoint.breakpoint(variables.$mobile) {
       border-color: transparent;
 
       background: transparent;
@@ -20,7 +23,7 @@ body {
 
       .line {
 
-        stroke: $color-secondary;
+        stroke: variables.$color-secondary;
       }
     }
   }
@@ -77,7 +80,7 @@ body {
 
     z-index: 1;
 
-    @include breakpoint($mobile) {
+    @include breakpoint.breakpoint(variables.$mobile) {
       width: 22px;
 
       opacity: 1;
@@ -101,7 +104,7 @@ body {
 
     position: relative;
 
-    color: $color-secondary;
+    color: variables.$color-secondary;
 
     z-index: 1;
   }

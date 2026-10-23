@@ -1,3 +1,5 @@
+@use "../base/variables";
+
 /*
 * Typography
 */
@@ -17,13 +19,13 @@ p {
 
 h1,
 h2 {
-  font-family: $font-secondary;
-  color: $color-title;
+  font-family: variables.$font-secondary;
+  color: variables.$color-title;
 }
 
 h1 {
 
-  font-weight: $medium;
+  font-weight: variables.$medium;
 }
 
 h5.inner-title {

@@ -1,3 +1,6 @@
+@use "../base/mixins";
+@use "../base/variables";
+
 /*
 * Form control styles
  */
@@ -34,7 +37,7 @@ input {
 
   white-space: nowrap;
   text-overflow: ellipsis;
-  color: $color-primary;
+  color: variables.$color-primary;
 
   transition: box-shadow .2s ease-in-out, color .2s ease-in-out;
 }
@@ -70,7 +73,7 @@ input {
       background-color: #fff;
 
       font-size: math.div(23em, 16);
-      font-weight: $regular;
+      font-weight: variables.$regular;
       color: #BCE0FD;
     }
 
@@ -105,7 +108,7 @@ input {
 }
 
 .difficulty-indicators {
-  @include justify-content;
+  @include mixins.justify-content;
 
   border-radius: 0 0 $password-group-border-radius $password-group-border-radius;
   border: 1px solid #EDF8FF;
@@ -130,7 +133,7 @@ input {
 
       background-color: #2699FB;
 
-      color: $color-secondary;
+      color: variables.$color-secondary;
 
       &:first-child {
 

@@ -1,3 +1,5 @@
+@use "base/variables";
+
 /*
 * Buttons styles
  */
@@ -16,7 +18,7 @@ button {
 
   padding: math.div(11em, 16) math.div(23em, 16);
 
-  border-radius: $btn-border-radius;
+  border-radius: variables.$btn-border-radius;
 
   .icon,
   span {
@@ -68,7 +70,7 @@ button {
       bottom: 0;
       left: 0;
 
-      border-radius: $btn-border-radius;
+      border-radius: variables.$btn-border-radius;
 
       background: linear-gradient(180deg, rgba(34, 147, 244, 1) 0%, rgba(64, 164, 250, 1) 100%);
 
@@ -92,7 +94,7 @@ button {
 
       > span {
 
-        color: $color-secondary;
+        color: variables.$color-secondary;
       }
 
       &:before {
@@ -151,7 +153,7 @@ button {
       bottom: 0;
       right: 0;
 
-      border-radius: $btn-border-radius;
+      border-radius: variables.$btn-border-radius;
     }
 
     &:after {

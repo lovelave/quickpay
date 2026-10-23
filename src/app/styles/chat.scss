@@ -1,3 +1,7 @@
+@use "breakpoint-sass/stylesheets/breakpoint";
+@use "base/mixins";
+@use "base/variables";
+
 /*
 * Chat styles
  */
@@ -7,16 +11,16 @@
 $message-appear-time: .4s;
 
 body {
-  background-color: $home-chat-bg-color;
+  background-color: variables.$home-chat-bg-color;
 
-  @include breakpoint($mobile) {
+  @include breakpoint.breakpoint(variables.$mobile) {
 
     height: 100%;
   }
 
   bobra-quickpay {
 
-    @include breakpoint($mobile) {
+    @include breakpoint.breakpoint(variables.$mobile) {
 
       height: 100%;
     }
@@ -24,7 +28,7 @@ body {
 
   .main {
 
-    @include breakpoint($mobile) {
+    @include breakpoint.breakpoint(variables.$mobile) {
 
       min-height: auto;
     }
@@ -37,7 +41,7 @@ div:focus {
 }
 
 .section-chat {
-  @include flex;
+  @include mixins.flex;
 
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -60,19 +64,19 @@ div:focus {
 
     scroll-behavior: smooth;
 
-    @include breakpoint($mobile) {
+    @include breakpoint.breakpoint(variables.$mobile) {
 
-      padding: math.div(80em, 16) $section-content-indent-x-mob math.div(16em, 16);
+      padding: math.div(80em, 16) variables.$section-content-indent-x-mob math.div(16em, 16);
     }
 
-    @include breakpoint($iphone5-p) {
+    @include breakpoint.breakpoint(variables.$iphone5-p) {
 
       padding: math.div(80em, 16) math.div(15em, 16) math.div(16em, 16);
     }
 
-    @include breakpoint($tablet-p) {
+    @include breakpoint.breakpoint(variables.$tablet-p) {
 
-      padding: math.div(94em, 16) $section-content-indent-x-mob math.div(124em, 16);
+      padding: math.div(94em, 16) variables.$section-content-indent-x-mob math.div(124em, 16);
     }
   }
 
@@ -112,9 +116,9 @@ div:focus {
 
   z-index: 1;
 
-  @include breakpoint($mobile) {
+  @include breakpoint.breakpoint(variables.$mobile) {
 
-    @include clearfix;
+    @include mixins.clearfix;
   }
 
   .form-group {
@@ -130,7 +134,7 @@ div:focus {
 
         margin: auto;
 
-        @include breakpoint($mobile) {
+        @include breakpoint.breakpoint(variables.$mobile) {
           top: 49%;
           right: 5px;
         }
@@ -145,7 +149,7 @@ div:focus {
       & + .btn {
         margin-left: math.div(14em, 16);
 
-        @include breakpoint($mobile) {
+        @include breakpoint.breakpoint(variables.$mobile) {
 
           margin-left: math.div(6em, 16);
         }
@@ -171,9 +175,9 @@ div:focus {
   }
 
   .btn_outline {
-    border-color: $color-primary;
+    border-color: variables.$color-primary;
 
-    box-shadow: inset 0 0 1px 0 $color-primary, 0 0 1px 0 $color-primary;
+    box-shadow: inset 0 0 1px 0 variables.$color-primary, 0 0 1px 0 variables.$color-primary;
   }
 
   .btn_white {
@@ -279,7 +283,7 @@ div:focus {
 
     padding: math.div(18em, 16) math.div(22em, 16);
 
-    @include breakpoint($mobile) {
+    @include breakpoint.breakpoint(variables.$mobile) {
 
       padding: math.div(10em, 16) math.div(15em, 16);
     }
@@ -323,7 +327,7 @@ div:focus {
       line-height: math.div(23em, 17);
       font-size: math.div(17em, 16);
 
-      @include breakpoint($mobile) {
+      @include breakpoint.breakpoint(variables.$mobile) {
         line-height: math.div(22em, 16);
         font-size: math.div(16em, 16);
       }
@@ -360,14 +364,14 @@ div:focus {
 
           .form-group {
 
-            @include breakpoint($mobile) {
+            @include breakpoint.breakpoint(variables.$mobile) {
 
               flex-direction: row;
             }
 
             .label {
 
-              @include breakpoint($mobile) {
+              @include breakpoint.breakpoint(variables.$mobile) {
 
                 min-width: 110px;
               }
@@ -382,7 +386,7 @@ div:focus {
 
       padding: math.div(25em, 16) math.div(20em, 16);
 
-      @include breakpoint($mobile) {
+      @include breakpoint.breakpoint(variables.$mobile) {
 
         padding: math.div(25em, 16) math.div(20em, 16);
       }
@@ -391,10 +395,10 @@ div:focus {
         margin-left: 0;
 
         font-size: math.div(24em, 16);
-        font-weight: $regular;
+        font-weight: variables.$regular;
         color: #1c5377;
 
-        @include breakpoint($mobile) {
+        @include breakpoint.breakpoint(variables.$mobile) {
 
           font-size: math.div(23em, 16);
         }
@@ -405,7 +409,7 @@ div:focus {
 
         padding: 0;
 
-        @include breakpoint($mobile) {
+        @include breakpoint.breakpoint(variables.$mobile) {
 
           margin-top: math.div(10em, 16);
         }
@@ -418,7 +422,7 @@ div:focus {
 
               &:last-of-type {
 
-                @include breakpoint($mobile) {
+                @include breakpoint.breakpoint(variables.$mobile) {
 
                   border-bottom: none;
                 }
@@ -429,7 +433,7 @@ div:focus {
           & + .half {
             margin-top: math.div(10em, 16);
 
-            @include breakpoint($mobile) {
+            @include breakpoint.breakpoint(variables.$mobile) {
 
               margin-top: 0;
             }
@@ -439,9 +443,9 @@ div:focus {
         .transparent {
           color: rgba(28, 83, 119, .27);
           font-size: math.div(13em, 16);
-          font-weight: $bold;
+          font-weight: variables.$bold;
 
-          @include breakpoint($mobile) {
+          @include breakpoint.breakpoint(variables.$mobile) {
 
             display: none;
           }
@@ -454,8 +458,8 @@ div:focus {
 
           transition: border-bottom .2s linear;
 
-          @include breakpoint($mobile-p) {
-            @include flex;
+          @include breakpoint.breakpoint(variables.$mobile-p) {
+            @include mixins.flex;
             align-items: normal;
 
             padding: math.div(6em, 16) 0;
@@ -481,7 +485,7 @@ div:focus {
           &:last-of-type {
             border-bottom: none;
 
-            @include breakpoint($mobile) {
+            @include breakpoint.breakpoint(variables.$mobile) {
 
               border-bottom: 1px solid rgba(28, 83, 119, .12);
             }
@@ -495,7 +499,7 @@ div:focus {
           .label {
             min-width: 122px;
 
-            @include breakpoint($mobile) {
+            @include breakpoint.breakpoint(variables.$mobile) {
 
               min-width: 85px;
             }
@@ -504,7 +508,7 @@ div:focus {
           span {
             font-size: math.div(14em, 16);
 
-            @include breakpoint($mobile) {
+            @include breakpoint.breakpoint(variables.$mobile) {
 
               font-size: math.div(15em, 16);
             }
@@ -514,7 +518,7 @@ div:focus {
         .total {
           margin-top: 10px;
 
-          @include breakpoint($mobile) {
+          @include breakpoint.breakpoint(variables.$mobile) {
 
             margin-top: math.div(15em, 16);
           }
@@ -527,7 +531,7 @@ div:focus {
       }
 
       .panel-footer {
-        @include flex;
+        @include mixins.flex;
 
         margin: math.div(20em, 16) math.div(-20em, 16) 0;
         padding: math.div(20em, 16);
@@ -538,7 +542,7 @@ div:focus {
 
         background: rgba(242, 249, 255, .35);
 
-        @include breakpoint($mobile) {
+        @include breakpoint.breakpoint(variables.$mobile) {
 
           flex-direction: column;
         }
@@ -584,7 +588,7 @@ div:focus {
         .solid {
           display: inline-block;
 
-          font-weight: $bold;
+          font-weight: variables.$bold;
           font-size: math.div(17em, 16);
 
           .increased {
@@ -593,13 +597,13 @@ div:focus {
         }
 
         .half {
-          @include flex;
+          @include mixins.flex;
           flex-wrap: wrap;
           flex-direction: column;
 
           width: 50%;
 
-          @include breakpoint($mobile) {
+          @include breakpoint.breakpoint(variables.$mobile) {
             flex-direction: row;
             flex-wrap: nowrap;
 
@@ -614,7 +618,7 @@ div:focus {
               &:first-of-type {
                 margin-bottom: math.div(7em, 15);
 
-                @include breakpoint($mobile) {
+                @include breakpoint.breakpoint(variables.$mobile) {
 
                   margin-right: math.div(20em, 15);
                 }
@@ -623,9 +627,9 @@ div:focus {
           }
 
           &:last-of-type {
-            font-weight: $bold;
+            font-weight: variables.$bold;
 
-            @include breakpoint($mobile) {
+            @include breakpoint.breakpoint(variables.$mobile) {
 
               flex-wrap: wrap;
             }
@@ -635,7 +639,7 @@ div:focus {
 
               font-size: math.div(15em, 16);
 
-              @include breakpoint($mobile) {
+              @include breakpoint.breakpoint(variables.$mobile) {
                 width: 100%;
 
                 margin-bottom: 0;
@@ -646,10 +650,10 @@ div:focus {
           }
 
           .total {
-            @include justify-content;
+            @include mixins.justify-content;
             align-items: center;
 
-            @include breakpoint($mobile) {
+            @include breakpoint.breakpoint(variables.$mobile) {
 
               width: 100%;
             }
@@ -695,7 +699,7 @@ div:focus {
                 line-height: math.div(20em, 23);
                 font-size: math.div(23em, 15);
 
-                @include breakpoint($mobile) {
+                @include breakpoint.breakpoint(variables.$mobile) {
 
                   font-size: math.div(25em, 15);
                 }
@@ -731,7 +735,7 @@ div:focus {
 
   &.timeout {
 
-    @include breakpoint($mobile) {
+    @include breakpoint.breakpoint(variables.$mobile) {
 
       width: auto;
     }
@@ -760,7 +764,7 @@ div:focus {
     display: inline-block;
 
     font-size: math.div(17em, 16);
-    font-weight: $regular;
+    font-weight: variables.$regular;
     color: #3C9CF4;
 
     &:hover {
@@ -815,7 +819,7 @@ div:focus {
 
       &-fill {
 
-        fill: $color-primary;
+        fill: variables.$color-primary;
       }
     }
   }
@@ -832,7 +836,7 @@ div:focus {
   width: auto;
   max-width: 450px;
 
-  @include breakpoint($mobile) {
+  @include breakpoint.breakpoint(variables.$mobile) {
 
     max-width: 90%;
   }
@@ -886,12 +890,12 @@ div:focus {
 
     font-size: math.div(17em, 16);
 
-    @include breakpoint($mobile-p) {
+    @include breakpoint.breakpoint(variables.$mobile-p) {
 
       font-size: math.div(15em, 16);
     }
 
-    @include breakpoint($mobile-l) {
+    @include breakpoint.breakpoint(variables.$mobile-l) {
 
       font-size: math.div(16em, 16);
     }
@@ -930,7 +934,7 @@ div:focus {
 .user-message {
   text-align: right;
 
-  @include breakpoint($mobile-p) {
+  @include breakpoint.breakpoint(variables.$mobile-p) {
 
     float: right;
   }
@@ -950,7 +954,7 @@ div:focus {
 
     color: #fff;
 
-    @include breakpoint($mobile) {
+    @include breakpoint.breakpoint(variables.$mobile) {
 
       padding: math.div(13em, 16) math.div(20em, 16);
     }
@@ -981,7 +985,7 @@ div:focus {
     button + button {
       margin-left: 16px;
 
-      @include breakpoint($mobile) {
+      @include breakpoint.breakpoint(variables.$mobile) {
         margin-top: 10px;
         margin-left: 10px;
       }
@@ -989,7 +993,7 @@ div:focus {
 
     button + .long {
 
-      @include breakpoint($mobile-p) {
+      @include breakpoint.breakpoint(variables.$mobile-p) {
 
         margin-top: 10px;
       }
@@ -1009,7 +1013,7 @@ div:focus {
     .form-group {
       margin-left: math.div(16em, 16);
 
-      @include breakpoint($mobile) {
+      @include breakpoint.breakpoint(variables.$mobile) {
         width: 100%;
 
         margin-left: 0;
@@ -1030,7 +1034,7 @@ div:focus {
       font-size: math.div(24em, 16);
       color: #1C5377;
 
-      @include breakpoint($mobile-p) {
+      @include breakpoint.breakpoint(variables.$mobile-p) {
         min-width: 290px;
 
         padding: math.div(17em, 19) math.div(66em, 19) math.div(17em, 19) math.div(22em, 19);
@@ -1038,7 +1042,7 @@ div:focus {
         font-size: math.div(19em, 16);
       }
 
-      @include breakpoint($iphone5-p) {
+      @include breakpoint.breakpoint(variables.$iphone5-p) {
         min-width: 250px;
 
         margin-right: 0;
@@ -1073,7 +1077,7 @@ div:focus {
         transition-duration: .2s;
         transition-timing-function: linear;
 
-        @include breakpoint($mobile) {
+        @include breakpoint.breakpoint(variables.$mobile) {
           width: 48px;
           height: 48px;
         }
@@ -1171,7 +1175,7 @@ div:focus {
       box-shadow: 0 4px 15px -3px rgba(4, 129, 234, 0.45);
 
       font-size: math.div(20em, 16);
-      color: $color-secondary;
+      color: variables.$color-secondary;
     }
   }
 
@@ -1193,7 +1197,7 @@ div:focus {
 
     &.m-b {
 
-      @include breakpoint($mobile-p) {
+      @include breakpoint.breakpoint(variables.$mobile-p) {
 
         margin-bottom: 16px;
       }
@@ -1203,7 +1207,7 @@ div:focus {
 
       padding: (17em*0.05) (30em*0.05);
 
-      @include breakpoint($mobile) {
+      @include breakpoint.breakpoint(variables.$mobile) {
 
         padding: math.div(11em, 16) math.div(25em, 16);
       }
@@ -1211,7 +1215,7 @@ div:focus {
       &.full-sized-mobile {
         font-size: math.div(20em, 16);
 
-        @include breakpoint($mobile-p) {
+        @include breakpoint.breakpoint(variables.$mobile-p) {
           padding-top: math.div(15em, 23);
           padding-bottom: math.div(15em, 23);
           padding-right: math.div(46em, 23);
@@ -1219,7 +1223,7 @@ div:focus {
           font-size: math.div(23em, 16);
         }
 
-        @include breakpoint($mobile-l) {
+        @include breakpoint.breakpoint(variables.$mobile-l) {
           padding: (15em*0.05) (30em*0.05);
 
           font-size: math.div(20em, 16);
@@ -1232,7 +1236,7 @@ div:focus {
       &:not(.btn_blue) {
         padding: (20em*0.05) (30em*0.05);
 
-        @include breakpoint($mobile) {
+        @include breakpoint.breakpoint(variables.$mobile) {
 
           padding: math.div(14em, 18) math.div(25em, 18);
         }

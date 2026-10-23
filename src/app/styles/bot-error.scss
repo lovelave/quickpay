@@ -1,8 +1,10 @@
+@use "bot-turned";
+
 /*
 Bot error styles
  */
 
-$click-animation-time: 3.5s;
+bot-turned.$click-animation-time: 3.5s;
 
 .animation-container {
   animation: bot-up-down 3s ease-in-out infinite;
@@ -10,43 +12,43 @@ $click-animation-time: 3.5s;
   .bot_error {
 
     #eyes {
-      animation: eyes-bot-error $click-animation-time infinite;
+      animation: eyes-bot-error bot-turned.$click-animation-time infinite;
     }
 
     #eye-left {
-      animation: eye-left-bot-error $click-animation-time infinite;
+      animation: eye-left-bot-error bot-turned.$click-animation-time infinite;
     }
 
     #eye-right {
-      animation: eye-right-bot-error $click-animation-time infinite;
+      animation: eye-right-bot-error bot-turned.$click-animation-time infinite;
     }
 
     #mouth {
-      animation: mouth-bot-error $click-animation-time infinite;
+      animation: mouth-bot-error bot-turned.$click-animation-time infinite;
     }
 
     #mouth-scale {
-      animation: mouth-scale-bot-error $click-animation-time infinite;
+      animation: mouth-scale-bot-error bot-turned.$click-animation-time infinite;
     }
 
     #antenna-left {
-      animation: antenna-left-bot-error $click-animation-time infinite;
+      animation: antenna-left-bot-error bot-turned.$click-animation-time infinite;
     }
 
     #antenna-right {
-      animation: antenna-right-bot-error $click-animation-time infinite;
+      animation: antenna-right-bot-error bot-turned.$click-animation-time infinite;
     }
 
     #ear-left {
-      animation: ear-left-bot-error $click-animation-time infinite;
+      animation: ear-left-bot-error bot-turned.$click-animation-time infinite;
     }
 
     #ear-right {
-      animation: ear-right-bot-error $click-animation-time infinite;
+      animation: ear-right-bot-error bot-turned.$click-animation-time infinite;
     }
 
     #forhead {
-      animation: forhead-bot-error $click-animation-time infinite;
+      animation: forhead-bot-error bot-turned.$click-animation-time infinite;
     }
   }
 

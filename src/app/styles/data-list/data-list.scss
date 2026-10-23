@@ -1,3 +1,7 @@
+@use "breakpoint-sass/stylesheets/breakpoint";
+@use "../base/mixins";
+@use "../base/variables";
+
 /*
 * Data list styles
 */
@@ -8,7 +12,7 @@
   width: 100%;
   max-width: 312px;
 
-  @include breakpoint($mobile-p) {
+  @include breakpoint.breakpoint(variables.$mobile-p) {
 
     max-width: none;
   }
@@ -16,7 +20,7 @@
   &.wider {
     max-width: 414px;
 
-    @include breakpoint($mobile-l) {
+    @include breakpoint.breakpoint(variables.$mobile-l) {
 
       padding-right: math.div(34em, 16);
     }
@@ -26,12 +30,12 @@
     margin-bottom: math.div(8em, 18);
 
     font-size: math.div(18em, 16);
-    font-weight: $bold;
+    font-weight: variables.$bold;
   }
 
   > li {
-    @include justify-content;
-    @include valign-center;
+    @include mixins.justify-content;
+    @include mixins.valign-center;
 
     padding: math.div(8em, 16) 0;
 
@@ -58,7 +62,7 @@
       margin-bottom: math.div(22em, 16);
       padding: 0;
 
-      @include breakpoint ($mobile-p) {
+      @include breakpoint.breakpoint (variables.$mobile-p) {
 
         margin-bottom: math.div(10em, 16);
       }
@@ -75,25 +79,25 @@
       &.increased {
         font-size: math.div(20em, 16);
 
-        @include breakpoint($tablet-p) {
+        @include breakpoint.breakpoint(variables.$tablet-p) {
 
           font-size: math.div(19em, 16);
         }
 
-        @include breakpoint($mobile) {
+        @include breakpoint.breakpoint(variables.$mobile) {
 
           font-size: math.div(19em, 16);
         }
 
         &:first-of-type {
 
-          @include breakpoint($mobile) {
+          @include breakpoint.breakpoint(variables.$mobile) {
             padding-right: (20em*0.05);
 
             text-align: left;
           }
 
-          @include breakpoint($tablet-p) {
+          @include breakpoint.breakpoint(variables.$tablet-p) {
 
             padding-right: math.div(30em, 16);
           }
@@ -101,12 +105,12 @@
 
         &:last-child {
 
-          @include breakpoint($mobile) {
+          @include breakpoint.breakpoint(variables.$mobile) {
 
             text-align: right;
           }
 
-          @include breakpoint($tablet-p) {
+          @include breakpoint.breakpoint(variables.$tablet-p) {
 
             white-space: nowrap;
           }
@@ -126,6 +130,6 @@
   p {
     line-height: math.div(23em, 15);
     font-size: math.div(15em, 16);
-    font-weight: $regular;
+    font-weight: variables.$regular;
   }
 }

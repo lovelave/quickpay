@@ -1,3 +1,7 @@
+@use "breakpoint-sass/stylesheets/breakpoint";
+@use "base/mixins";
+@use "base/variables";
+
 /*
 * footer
  */
@@ -7,20 +11,20 @@
 .footer {
   background: linear-gradient(#EFF8FF, #CEE1F0);
 
-  color: $color-primary;
+  color: variables.$color-primary;
 
-  @include breakpoint($mobile-p) {
+  @include breakpoint.breakpoint(variables.$mobile-p) {
 
     display: none;
   }
 
-  @include breakpoint($mobile-l) {
+  @include breakpoint.breakpoint(variables.$mobile-l) {
 
     background: rgba(195,218,236,.33);
   }
 
   .payment-systems {
-    @include flex;
+    @include mixins.flex;
     align-items: center;
 
     opacity: .33;
@@ -48,7 +52,7 @@
   }
 
   .container {
-    @include flex-wrap;
+    @include mixins.flex-wrap;
 
     max-width: math.div(1300em, 16);
   }
@@ -56,11 +60,11 @@
   &.mobile {
     display: none;
     
-    color: $color-primary;
+    color: variables.$color-primary;
 
     &:not(.hide) {
 
-      @include breakpoint($mobile) {
+      @include breakpoint.breakpoint(variables.$mobile) {
 
         display: block;
       }
@@ -74,8 +78,8 @@
         .container {
           padding: math.div(15em, 16) 0;
 
-          @include breakpoint($mobile) {
-            @include flex;
+          @include breakpoint.breakpoint(variables.$mobile) {
+            @include mixins.flex;
             flex-direction: column;
             align-items: center;
           }
@@ -94,12 +98,12 @@
 
     color: #1D5A8E;
 
-    @include breakpoint($laptop) {
+    @include breakpoint.breakpoint(variables.$laptop) {
       padding-right: math.div(33em, 16);
       padding-left: math.div(33em, 16);
     }
 
-    @include breakpoint($tablet) {
+    @include breakpoint.breakpoint(variables.$tablet) {
       padding-right: math.div(30em, 16);
       padding-left: math.div(30em, 16);
     }
@@ -107,7 +111,7 @@
     > .container,
     .right {
 
-      @include justify-content;
+      @include mixins.justify-content;
     }
   }
 
@@ -116,23 +120,23 @@
 
     background-color: rgba(195,218,236,.33);
 
-    @include breakpoint($laptop) {
+    @include breakpoint.breakpoint(variables.$laptop) {
       padding-right: math.div(33em, 16);
       padding-left: math.div(33em, 16);
     }
 
-    @include breakpoint($tablet) {
+    @include breakpoint.breakpoint(variables.$tablet) {
       padding-right: math.div(30em, 16);
       padding-left: math.div(30em, 16);
     }
 
-    @include breakpoint($mobile) {
+    @include breakpoint.breakpoint(variables.$mobile) {
 
       background: none;
     }
 
     > .container {
-      @include justify-content;
+      @include mixins.justify-content;
       align-items: center;
 
       position: relative;
@@ -144,7 +148,7 @@
         content: none;
       }
 
-      @include breakpoint($mobile-p) {
+      @include breakpoint.breakpoint(variables.$mobile-p) {
 
         display: block;
       }
@@ -161,17 +165,17 @@
 
       opacity: .34;
 
-      @include breakpoint($mobile-p) {
+      @include breakpoint.breakpoint(variables.$mobile-p) {
 
         width: 100%;
       }
 
-      @include breakpoint($tablet) {
+      @include breakpoint.breakpoint(variables.$tablet) {
 
         width: 100%;
       }
 
-      @include breakpoint($mobile) {
+      @include breakpoint.breakpoint(variables.$mobile) {
         text-align: center;
 
         opacity: .4;
@@ -182,19 +186,19 @@
   .right {
     text-align: right;
 
-    @include breakpoint($mobile) {
+    @include breakpoint.breakpoint(variables.$mobile) {
       margin-top: math.div(18em, 16);
 
       text-align: initial;
     }
     
-    @include breakpoint($mobile-p) {
-      @include justify-content;
+    @include breakpoint.breakpoint(variables.$mobile-p) {
+      @include mixins.justify-content;
 
       width: 100%;
     }
 
-    @include breakpoint($tablet-p) {
+    @include breakpoint.breakpoint(variables.$tablet-p) {
       margin-top: math.div(16em, 16);
 
       text-align: initial;
@@ -203,12 +207,12 @@
     .wrap {
       margin-left: math.div(45em, 16);
 
-      @include breakpoint($mobile-p) {
+      @include breakpoint.breakpoint(variables.$mobile-p) {
         margin-left: 0;
         text-align: right;
       }
 
-      @include breakpoint($tablet) {
+      @include breakpoint.breakpoint(variables.$tablet) {
 
         margin-left: math.div(30em, 16);
       }
@@ -218,12 +222,12 @@
   .panel-simple {
     display: inline-block;
 
-    @include breakpoint($mobile-l) {
-      @include justify-content;
+    @include breakpoint.breakpoint(variables.$mobile-l) {
+      @include mixins.justify-content;
       align-items: flex-end;
     }
 
-    @include breakpoint($tablet) {
+    @include breakpoint.breakpoint(variables.$tablet) {
 
       align-self: flex-end;
     }
@@ -238,12 +242,12 @@
     .panel-aside {
       padding-left: math.div(4em, 16);
 
-      @include breakpoint($mobile-p) {
+      @include breakpoint.breakpoint(variables.$mobile-p) {
         margin-top: math.div(12em, 16);
         padding-left: 0;
       }
 
-      @include breakpoint($tablet) {
+      @include breakpoint.breakpoint(variables.$tablet) {
 
         display: none;
       }
@@ -254,19 +258,19 @@
     width: 100%;
     max-width: 385px;
 
-    @include breakpoint($mobile) {
+    @include breakpoint.breakpoint(variables.$mobile) {
 
       max-width: none;
     }
 
-    @include breakpoint($mobile-l) {
+    @include breakpoint.breakpoint(variables.$mobile-l) {
 
       padding-right: math.div(24em, 16);
     }
 
     > span {
       font-size: math.div(13em, 16);
-      font-weight: $semi-bold;
+      font-weight: variables.$semi-bold;
 
     }
 
@@ -287,12 +291,12 @@
 
   .support {
 
-    @include breakpoint($mobile-p) {
+    @include breakpoint.breakpoint(variables.$mobile-p) {
 
       width: 55%;
     }
 
-    @include breakpoint($tablet) {
+    @include breakpoint.breakpoint(variables.$tablet) {
 
       line-height: math.div(17em, 16);
     }
@@ -325,7 +329,7 @@
     margin-top: 0;
 
     font-size: math.div(11em, 16);
-    font-weight: $bold;
+    font-weight: variables.$bold;
 
     opacity: .45;
   }
@@ -333,12 +337,12 @@
   .author {
     display: flex;
 
-    @include breakpoint($mobile-p) {
+    @include breakpoint.breakpoint(variables.$mobile-p) {
 
       margin-top: math.div(18em, 16);
     }
 
-    @include breakpoint($tablet) {
+    @include breakpoint.breakpoint(variables.$tablet) {
 
       display: none;
     }
@@ -392,7 +396,7 @@
   font-size: math.div(16em, 16);
   line-height: 1px;
 
-  font-weight: $semi-bold;
+  font-weight: variables.$semi-bold;
 
   &:hover {
 
@@ -441,7 +445,7 @@
 .footer {
 
   .btn-container {
-    @include flex;
+    @include mixins.flex;
     flex-direction: column;
   }
 }
