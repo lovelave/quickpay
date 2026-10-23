@@ -4,7 +4,7 @@ import * as Base from "../base";
 
 export const ResultPhoneMessage: React.FC<{
     value: Chat.ResultPhoneMessage;
-}> = ({ value: { overdue } }) => {
+}> = ({ value: { overdue, payer } }) => {
     if (overdue === 0) {
         return (
             <Base.TextMessage
@@ -37,7 +37,9 @@ export const ResultPhoneMessage: React.FC<{
                 value={{
                     author: "bot",
                     content: [
-                        "За цим номером є активний кредит.",
+                        "code" in payer
+                            ? "За вашим договором є активний кредит."
+                            : "За цим номером є активний кредит.",
                         "Будь ласка, введіть суму для погашення.",
                     ],
                     time: null,

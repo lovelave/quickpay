@@ -16,7 +16,7 @@ export const ErrorStatus: React.FC = React.memo(() => {
     }, []);
 
     const handleClick = React.useCallback(() => {
-        dispatch(new Chat.FlushAction(Chat.initialState.messages));
+        dispatch(new Chat.FlushAction(Chat.getInitialState().messages));
     }, [dispatch]);
 
     return (

@@ -87,7 +87,10 @@ export class IframeMessage {
 export class ResultPhoneMessage {
     public readonly type = "result-phone";
 
-    constructor(public readonly overdue: number) {}
+    constructor(
+        public readonly overdue: number,
+        public readonly payer: Payer
+    ) {}
 }
 
 export class InvalidPhoneRequestMessage {

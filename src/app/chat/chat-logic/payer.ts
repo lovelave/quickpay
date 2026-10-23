@@ -15,3 +15,12 @@ export function appendPayerParam(
         url.searchParams.append(phoneParam, payer.phone);
     }
 }
+
+// Personal payment links open the site at /pay/{code}.
+// Only the backend can check the code, so it is not validated beyond the format.
+const linkPathPattern = /^\/pay\/([0-9a-zA-Z]{3,12})\/?$/;
+
+export function getLinkPayer(pathname: string): Payer | undefined {
+    const code = linkPathPattern.exec(pathname)?.[1];
+    return code === undefined ? undefined : { code };
+}

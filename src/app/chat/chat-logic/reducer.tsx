@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Action } from "./action";
 import * as Messages from "./message";
-import { Payer } from "./payer";
+import { getLinkPayer, Payer } from "./payer";
 
 export type StateType = "error" | "pay-success";
 
@@ -155,12 +155,25 @@ export const Reducer: Reducer = (state, action): State => {
     return state;
 };
 
-export const initialState = {
+// Phone flow: greeting and phone input.
+export const initialState: State = {
     messages: [new Messages.IntroMessage(), new Messages.IntroRequestMessage()],
 };
 
+// Opened by a personal payment link, the debt is loaded by the link code
+// without asking for the phone.
+export function getInitialState(): State {
+    const payer = getLinkPayer(window.location.pathname);
+    if (!payer) {
+        return initialState;
+    }
+    return {
+        messages: [new Messages.VerifyPayerMessage(payer)],
+    };
+}
+
 export function useReducer(): [State, Dispatch] {
-    return React.useReducer(Reducer, initialState);
+    return React.useReducer(Reducer, undefined, getInitialState);
 }
 
 export type Dispatch = React.Dispatch<Action>;
