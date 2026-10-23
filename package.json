@@ -4,7 +4,9 @@
   "description": "Site for payment on another domain",
   "scripts": {
     "start": "parcel ./src/index.html",
-    "build": "parcel build --public-url=./ --no-source-maps ./src/index.html"
+    "build": "parcel build --public-url=./ --no-source-maps ./src/index.html",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "repository": {
     "type": "git",
@@ -41,6 +43,7 @@
     "@types/react-dom": "^19.3.0",
     "parcel": "^2.16.4",
     "parcel-reporter-static-files-copy": "^1.5.3",
+    "prettier": "^3.9.10",
     "sass": "^1.106.1",
     "typescript": "~6.0.3"
   },

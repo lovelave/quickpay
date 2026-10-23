@@ -1,0 +1,10 @@
+{
+  "tabWidth": 4,
+  "trailingComma": "es5",
+  "overrides": [
+    {
+      "files": ["*.scss", "*.json", "*.yml"],
+      "options": { "tabWidth": 2 }
+    }
+  ]
+}
