@@ -57,7 +57,7 @@ export const LoadResultMessage: React.FC<{ value: Chat.LoadResultMessage }> = ({
             });
 
         return () => controller && controller.abort();
-    }, [value.phone, value.type, dispatch]);
+    }, [value, dispatch]);
 
     return <Base.LoadMessage />;
 };

@@ -13,6 +13,6 @@ export const DelayMessage: React.FC<MessageProps<Chat.DelayMessage>> = (
             props.value.timeout
         );
         return () => clearTimeout(id);
-    }, [props.value.children, props.value.timeout]);
+    }, [props.value.children, props.value.timeout, dispatch]);
     return <Base.LoadMessage />;
 };

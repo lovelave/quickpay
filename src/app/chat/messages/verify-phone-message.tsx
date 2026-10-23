@@ -64,7 +64,7 @@ export const VerifyPhoneMessage: React.FC<{
             });
 
         return () => controller && controller.abort();
-    }, [value.phone, value.type, dispatch]);
+    }, [value, dispatch]);
 
     return <Base.LoadMessage />;
 };

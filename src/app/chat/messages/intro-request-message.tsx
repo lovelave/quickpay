@@ -30,7 +30,7 @@ export const IntroRequestMessage: React.FC<{}> = React.memo(() => {
                 ]),
             ]);
         },
-        [rawValue, value, dispatch]
+        [isSubmitEnable, rawValue, value, dispatch]
     );
 
     return (

@@ -22,7 +22,7 @@ export const IframePaymentForm: React.FC<IframePaymentFormProps> = ({
             return;
         }
         ref.current.submit();
-    }, [ref.current, props.target]);
+    }, [props.target]);
 
     return (
         <form method="post" {...props} ref={ref}>
