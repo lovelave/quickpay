@@ -1,6 +1,7 @@
 node_modules/
 build/
 .idea/
+.cache/
 .parcel-cache/
 dist/
 .DS_Store
