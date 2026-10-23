@@ -5,7 +5,7 @@
   "scripts": {
     "start": "parcel ./src/index.html",
     "prebuild": "rm -rf dist",
-    "build": "parcel build --public-url=./ --no-source-maps ./src/index.html",
+    "build": "parcel build --no-cache --public-url=./ --no-source-maps ./src/index.html",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "eslint",
