@@ -6,7 +6,8 @@
     "start": "parcel ./src/index.html",
     "build": "parcel build --public-url=./ --no-source-maps ./src/index.html",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "lint": "eslint"
   },
   "repository": {
     "type": "git",
@@ -37,15 +38,20 @@
     "> 0.5% in UA"
   ],
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@parcel/transformer-sass": "^2.16.4",
     "@types/node": "^24.19.2",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
+    "eslint": "^10.13.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.13.0",
     "parcel": "^2.16.4",
     "parcel-reporter-static-files-copy": "^1.5.3",
     "prettier": "^3.9.10",
     "sass": "^1.106.1",
-    "typescript": "~6.0.3"
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.72.0"
   },
   "staticFiles": {
     "staticPath": "src/static"
