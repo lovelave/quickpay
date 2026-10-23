@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Action } from "./action";
 import * as Messages from "./message";
+import { Payer } from "./payer";
 
 export type StateType = "error" | "pay-success";
 
@@ -12,13 +13,13 @@ export interface UserData {
 }
 
 export interface InputData {
-    phone?: string;
     amount?: string;
 }
 
 export interface State {
     messages: Array<Messages.Message>;
     user?: UserData;
+    payer?: Payer;
     inputData?: InputData;
     type?: StateType;
 }
@@ -60,9 +61,15 @@ export const Reducer: Reducer = (state, action): State => {
                 user: undefined,
             };
 
+        // State payer action
+        case "payer":
+            return {
+                ...state,
+                payer: action.payer,
+            };
+
         // State input data action
         case "amount":
-        case "phone":
             return {
                 ...state,
                 inputData: {
@@ -73,7 +80,7 @@ export const Reducer: Reducer = (state, action): State => {
 
         // Custom message actions
         case "platon":
-            if (!state.inputData?.amount || !state.inputData.phone) {
+            if (!state.inputData?.amount || !state.payer) {
                 return state;
             }
             return {
@@ -81,20 +88,20 @@ export const Reducer: Reducer = (state, action): State => {
                 messages: [
                     ...state.messages,
                     new Messages.LoadIframeMessage(
-                        state.inputData.phone,
+                        state.payer,
                         state.inputData.amount
                     ),
                 ],
             };
         case "load-payment-result":
-            if (!state.inputData?.phone) {
+            if (!state.payer) {
                 return state;
             }
             return {
                 ...state,
                 messages: [
                     ...state.messages,
-                    new Messages.LoadResultMessage(state.inputData.phone),
+                    new Messages.LoadResultMessage(state.payer),
                 ],
             };
 

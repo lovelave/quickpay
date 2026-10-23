@@ -14,7 +14,7 @@ export const LoadResultMessage: React.FC<{ value: Chat.LoadResultMessage }> = ({
 
         const requestUrl = getBaseUrl();
         requestUrl.pathname = "/v3/quick-pay";
-        requestUrl.searchParams.append("id", value.phone);
+        Chat.appendPayerParam(requestUrl, value.payer, "id");
 
         fetch(requestUrl.toString(), { signal: controller.signal })
             .then((response) => {
