@@ -145,7 +145,7 @@ export const initialState = {
 };
 
 export function useReducer(): [State, Dispatch] {
-    return React.useReducer<Reducer>(Reducer, initialState);
+    return React.useReducer(Reducer, initialState);
 }
 
 export type Dispatch = React.Dispatch<Action>;

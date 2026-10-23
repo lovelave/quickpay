@@ -3,7 +3,7 @@ import {ErrorStatus} from "./app/chat/statuses/error";
 
 export type ErrorBoundaryState = {} | {error: Error};
 
-export class ErrorBoundary extends React.Component<{}, ErrorBoundaryState> {
+export class ErrorBoundary extends React.Component<React.PropsWithChildren, ErrorBoundaryState> {
     public readonly state: ErrorBoundaryState = {};
 
     static getDerivedStateFromError(error: Error) {

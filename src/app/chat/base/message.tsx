@@ -8,6 +8,7 @@ export interface MessageProps {
     className?: classNames.Argument;
     source: Chat.MessageSource;
     at?: string;
+    children?: React.ReactNode;
 }
 
 export const Message: React.FC<MessageProps> = (

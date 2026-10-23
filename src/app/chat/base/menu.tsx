@@ -45,7 +45,7 @@ export interface MessageProps<O = any> {
 }
 
 export const Message: React.FC<MessageProps> = ({ items, onSelect }) => {
-    const handleClick = React.useCallback((option, select) => onSelect(option, select), [onSelect]);
+    const handleClick = React.useCallback<MessageProps["onSelect"]>((option, select) => onSelect(option, select), [onSelect]);
     return (
         <ButtonMessage source="user" className="menu-message">
             {items.map((item, i) => (
