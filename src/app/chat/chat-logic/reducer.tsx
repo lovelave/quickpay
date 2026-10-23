@@ -117,7 +117,7 @@ export const Reducer: Reducer = (state, action): State => {
             return {
                 ...state,
             };
-        case "message:replace":
+        case "message:replace": {
             const index =
                 "object" === typeof action.target
                     ? state.messages.findIndex((m) => m === action.target)
@@ -132,6 +132,7 @@ export const Reducer: Reducer = (state, action): State => {
                     .concat(...action.messages)
                     .concat(...state.messages.slice(index + 1)),
             };
+        }
         case "message:flush":
             if (action.leaveState) {
                 return {

@@ -5,7 +5,7 @@ import { TextMessage } from "../base";
 import { FailureMessage } from "./failure-message";
 import { DelayMessage } from "./delay-message";
 
-export interface MessageProps<M extends Chat.Message = any> {
+export interface MessageProps<M extends Chat.Message = Chat.Message> {
     value: M;
     i?: number;
 }

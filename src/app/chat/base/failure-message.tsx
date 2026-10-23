@@ -4,7 +4,7 @@ import { WrapMessage } from "./wrap-message";
 
 export interface FailureMessageProps extends Omit<MessageProps, "source"> {
     title: React.ReactNode;
-    details: any;
+    details: unknown;
 }
 
 export const FailureMessage: React.FC<FailureMessageProps> = ({

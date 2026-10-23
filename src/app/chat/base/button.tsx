@@ -3,7 +3,7 @@ import classNames from "classnames";
 
 export type ButtonTheme = "primary" | "secondary";
 export type ButtonProps = React.DetailedHTMLProps<
-    React.HTMLProps<HTMLButtonElement>,
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
     HTMLButtonElement
 > & {
     theme: ButtonTheme;
@@ -24,7 +24,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         return (
             <button
                 {...props}
-                type={(props.type as any) ?? "button"}
+                type={props.type ?? "button"}
                 className={classNames(
                     "btn",
                     getClassNameByTheme(props.theme),

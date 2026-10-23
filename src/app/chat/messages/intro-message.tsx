@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as Base from "../base";
 
-export const IntroMessage: React.FC<{}> = React.memo(() => {
+export const IntroMessage: React.FC = React.memo(() => {
     return (
         <>
             <Base.WrapMessage source={"bot"}>

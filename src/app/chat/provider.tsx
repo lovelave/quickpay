@@ -9,7 +9,7 @@ import { Header } from "./header/layout";
 import { Footer } from "./footer/layout";
 import { ErrorBoundary } from "../../error-boundary";
 
-export const Provider: React.FC<{}> = () => {
+export const Provider: React.FC = () => {
     const [state, dispatch] = Chat.useReducer();
 
     return (

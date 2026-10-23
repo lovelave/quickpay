@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ErrorStatus } from "./app/chat/statuses/error";
 
-export type ErrorBoundaryState = {} | { error: Error };
+export type ErrorBoundaryState = { error?: Error };
 
 export class ErrorBoundary extends React.Component<
     React.PropsWithChildren,
@@ -12,8 +12,6 @@ export class ErrorBoundary extends React.Component<
     static getDerivedStateFromError(error: Error) {
         return { error };
     }
-
-    componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {}
 
     public render() {
         if ("error" in this.state) {

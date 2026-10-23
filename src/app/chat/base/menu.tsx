@@ -9,7 +9,7 @@ export interface Item<O> {
     content: string;
 }
 
-export interface ButtonProps<O = any> extends Item<O> {
+export interface ButtonProps<O = unknown> extends Item<O> {
     onClick: (option: O, content: string) => void;
 }
 
@@ -45,7 +45,7 @@ export const Button: React.FC<ButtonProps> = ({
 
 Button.displayName = "Chat.Menu.Button";
 
-export interface MessageProps<O = any> {
+export interface MessageProps<O = unknown> {
     items: Array<Item<O>>;
     onSelect: (option: O, content: string) => void;
 }

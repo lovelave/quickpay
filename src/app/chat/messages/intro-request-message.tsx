@@ -6,7 +6,7 @@ import * as Chat from "../chat-logic";
 
 import IconAirplane from "url:../svg/icon-airplane.svg";
 
-export const IntroRequestMessage: React.FC<{}> = React.memo(() => {
+export const IntroRequestMessage: React.FC = React.memo(() => {
     const dispatch = Chat.useDispatchContext();
     const [value, handleChange] = useInputState();
 
