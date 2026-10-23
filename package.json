@@ -45,5 +45,8 @@
   },
   "staticFiles": {
     "staticPath": "src/static"
+  },
+  "@parcel/resolver-default": {
+    "packageExports": true
   }
 }
