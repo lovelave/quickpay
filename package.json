@@ -8,7 +8,8 @@
     "build": "parcel build --public-url=./ --no-source-maps ./src/index.html",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "lint": "eslint"
+    "lint": "eslint",
+    "typecheck": "tsc"
   },
   "repository": {
     "type": "git",
