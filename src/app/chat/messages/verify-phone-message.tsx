@@ -33,15 +33,18 @@ export const VerifyPhoneMessage: React.FC<{
                                 new Chat.InvalidPhoneRequestMessage(),
                             ]),
                         ]);
-                        return Promise.reject(undefined);
+                        return;
                     case 200:
                         return response.json();
                     default:
                         dispatch(new Chat.StateTypeAction("error"));
-                        return Promise.reject(undefined);
+                        return;
                 }
             })
-            .then((user: UserData) => {
+            .then((user?: UserData) => {
+                if (!user) {
+                    return;
+                }
                 const overdue = getOverdue(user.returnDate);
 
                 dispatch([

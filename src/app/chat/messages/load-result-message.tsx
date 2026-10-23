@@ -26,7 +26,7 @@ export const LoadResultMessage: React.FC<{value: Chat.LoadResultMessage}> = ({va
                             new Chat.StateInputDataAction("amount", undefined),
                             new Chat.StateTypeAction("pay-success"),
                         ]);
-                        return Promise.reject(undefined);
+                        return;
                     case 200:
                         return response.json();
                     default:
@@ -34,10 +34,13 @@ export const LoadResultMessage: React.FC<{value: Chat.LoadResultMessage}> = ({va
                             new Chat.StateUserAction(NaN, "", ""),
                             new Chat.StateTypeAction("pay-success"),
                         ]);
-                        return Promise.reject(undefined);
+                        return;
                 }
             })
-            .then((user: UserData) => {
+            .then((user?: UserData) => {
+                if (!user) {
+                    return;
+                }
                 dispatch([
                     new Chat.RemoveAction(value),
                     new Chat.StateInputDataAction("amount", undefined),
