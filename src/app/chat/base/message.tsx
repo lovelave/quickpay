@@ -1,12 +1,11 @@
 import * as React from "react";
-import * as Chat from "app/chat/chat-logic";
+import * as Chat from "../chat-logic";
 import classNames from "classnames";
-import { ClassValue } from "classnames/types";
 import { Time } from "./time";
 
 export interface MessageProps {
     isDebug?: boolean;
-    className?: ClassValue;
+    className?: classNames.Argument;
     source: Chat.MessageSource;
     at?: string;
 }

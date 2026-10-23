@@ -22,7 +22,6 @@
   "dependencies": {
     "@horat1us/react-hooks": "^1.11.0",
     "@types/classnames": "^2.2.10",
-    "@types/node": "^14.0.27",
     "@types/react": "^16.9.46",
     "@types/react-dom": "^16.9.8",
     "@types/react-input-mask": "^2.0.5",
@@ -36,16 +35,17 @@
     "react-dom": "^16.13.1",
     "react-input-mask": "^2.0.4",
     "resets.css": "^1.1.0",
-    "sass": "^1.26.10",
-    "typescript": "^3.9.7"
+    "sass": "^1.26.10"
   },
   "browserslist": [
     "> 0.5% in UA"
   ],
   "devDependencies": {
     "@parcel/transformer-sass": "^2.16.4",
+    "@types/node": "^24.19.2",
     "parcel": "^2.16.4",
-    "parcel-reporter-static-files-copy": "^1.5.3"
+    "parcel-reporter-static-files-copy": "^1.5.3",
+    "typescript": "~6.0.3"
   },
   "staticFiles": {
     "staticPath": "src/static"

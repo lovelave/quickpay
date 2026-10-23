@@ -52,7 +52,7 @@ export const PaymentSumMessage: React.FC<{ value: Chat.PaymentSumMessage }> = ({
                     className="form__control"
                     value={value}
                     onChange={handleChange}
-                    autoFocus={!useIsMobile() ?? true}
+                    autoFocus={!useIsMobile()}
                     placeholder="Введіть суму"
                 />
                 <div className="btn-container v-align">

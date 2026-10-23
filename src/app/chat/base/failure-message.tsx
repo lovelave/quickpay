@@ -15,7 +15,7 @@ export const FailureMessage: React.FC<FailureMessageProps> = ({ title, details, 
         try {
             return JSON.stringify(details, undefined, 2);
         } catch (error) {
-            return error.toString();
+            return String(error);
         }
     }, [details]);
 
