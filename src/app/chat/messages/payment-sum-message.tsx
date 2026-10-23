@@ -6,7 +6,7 @@ import { useIsMobile } from "../../hooks/use-is-mobile";
 import { useInputState } from "@horat1us/react-hooks";
 import { moneyInputFilter } from "../../utils/money-input-filter";
 
-const IconAirplane = require("../svg/icon-airplane.svg");
+import IconAirplane from "url:../svg/icon-airplane.svg";
 
 export const PaymentSumMessage: React.FC<{ value: Chat.PaymentSumMessage }> = ({
     value: { sum, agreement },

@@ -4,7 +4,7 @@ import { PhoneInput } from "@ua-opendata/react-phone-input";
 import classNames from "classnames";
 import * as Chat from "../chat-logic";
 
-const IconAirplane = require("../svg/icon-airplane.svg");
+import IconAirplane from "url:../svg/icon-airplane.svg";
 
 export const IntroRequestMessage: React.FC<{}> = React.memo(() => {
     const dispatch = Chat.useDispatchContext();

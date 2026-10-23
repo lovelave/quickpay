@@ -2,7 +2,6 @@
   "name": "quickpay",
   "version": "1.0.0",
   "description": "Site for payment on another domain",
-  "main": "index.js",
   "scripts": {
     "start": "parcel ./src/index.html",
     "build": "parcel build --public-url=./ --no-source-maps ./src/index.html"
@@ -19,9 +18,6 @@
   "bugs": {
     "url": "https://github.com/lovelave/quickpay/issues"
   },
-  "includePaths": [
-    "node_modules"
-  ],
   "homepage": "https://github.com/lovelave/quickpay",
   "dependencies": {
     "@horat1us/react-hooks": "^1.11.0",
@@ -36,8 +32,6 @@
     "compass-mixins": "^0.12.10",
     "dayjs": "^1.8.34",
     "normalize.css": "^8.0.1",
-    "parcel-bundler": "^1.12.4",
-    "parcel-plugin-asset-copier": "^1.1.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-input-mask": "^2.0.4",
@@ -48,5 +42,12 @@
   "browserslist": [
     "> 0.5% in UA"
   ],
-  "assetsPath": "./src/static/"
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.16.4",
+    "parcel": "^2.16.4",
+    "parcel-reporter-static-files-copy": "^1.5.3"
+  },
+  "staticFiles": {
+    "staticPath": "src/static"
+  }
 }
