@@ -17,6 +17,14 @@ export const VerifyPayerMessage: React.FC<{
         requestUrl.pathname = "v3/quick-pay";
         Chat.appendPayerParam(requestUrl, value.payer, "id");
 
+        // The payer is kept with the error, so "try again" repeats this lookup
+        // instead of asking for the phone again.
+        const showError = () =>
+            dispatch([
+                new Chat.StatePayerAction(value.payer),
+                new Chat.StateTypeAction("error"),
+            ]);
+
         fetch(requestUrl.toString(), { signal: controller.signal })
             .then((response) => {
                 controller = undefined;
@@ -46,7 +54,7 @@ export const VerifyPayerMessage: React.FC<{
                     case 200:
                         return response.json();
                     default:
-                        dispatch(new Chat.StateTypeAction("error"));
+                        showError();
                         return;
                 }
             })
@@ -82,7 +90,7 @@ export const VerifyPayerMessage: React.FC<{
                 if (controller?.signal.aborted) {
                     return;
                 }
-                dispatch(new Chat.StateTypeAction("error"));
+                showError();
             });
 
         return () => controller && controller.abort();

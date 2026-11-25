@@ -5,21 +5,52 @@ import { usePayment } from "../use-payment";
 import { formatMoney } from "../../utils/format";
 import { getPaymentDetailsUrl } from "../../utils/payment-details-url";
 
-// Platon returned the borrower with a failed or cancelled payment.
-export const PaymentFailStatus: React.FC<{
+// Same amount again, straight to Platon.
+const RetryPaymentButton: React.FC<{
     payer: Chat.Payer;
     payment: Chat.StartedPayment;
+    onBusy: (busy: boolean) => void;
+}> = ({ payer, payment, onBusy }) => {
+    const { busy, pay, form } = usePayment(payer, payment.debtBefore);
+    React.useEffect(() => onBusy(busy), [busy, onBusy]);
+
+    return (
+        <>
+            <button
+                className="btn btn_blue"
+                onClick={() => pay(payment.amount)}
+                disabled={busy}
+                aria-busy={busy}
+            >
+                <span>
+                    {busy ? "Переходимо до оплати…" : "Спробувати ще раз"}
+                </span>
+            </button>
+            {form}
+        </>
+    );
+};
+
+/**
+ * Platon returned the borrower with a failed or cancelled payment.
+ * The payment (amount) and the payer come from session storage and may be missing
+ * (storage blocked or cleared): the retry then starts over from the debt or the phone.
+ */
+export const PaymentFailStatus: React.FC<{
+    payer?: Chat.Payer;
+    payment?: Chat.StartedPayment;
 }> = ({ payer, payment }) => {
     const dispatch = Chat.useDispatchContext();
-    const { busy, pay, form } = usePayment(payer, payment.debtBefore);
+    const [busy, setBusy] = React.useState(false);
 
-    const handleRetry = () => pay(payment.amount);
-    const handleChangeAmount = () => {
+    const startOver = (mode?: Chat.PaymentPanelMode) => {
         dispatch(
-            new Chat.FlushAction(
-                [new Chat.VerifyPayerMessage(payer, "part")],
-                true
-            )
+            payer
+                ? new Chat.FlushAction(
+                      [new Chat.VerifyPayerMessage(payer, mode)],
+                      true
+                  )
+                : new Chat.FlushAction(Chat.initialState.messages)
         );
     };
 
@@ -31,7 +62,9 @@ export const PaymentFailStatus: React.FC<{
                 </div>
                 <h2>Оплату не завершено</h2>
                 <p>
-                    <span>Сума: {formatMoney(payment.amount)}.</span>
+                    {payment && (
+                        <span>Сума: {formatMoney(payment.amount)}.</span>
+                    )}
                     <span>
                         Спробуйте ще раз або сплатіть через банк за реквізитами.
                     </span>
@@ -46,28 +79,31 @@ export const PaymentFailStatus: React.FC<{
                     >
                         <span>Оплата в банку</span>
                     </a>
-                    <button
-                        className="btn btn_blue"
-                        onClick={handleRetry}
-                        disabled={busy}
-                        aria-busy={busy}
-                    >
-                        <span>
-                            {busy
-                                ? "Переходимо до оплати…"
-                                : "Спробувати ще раз"}
-                        </span>
-                    </button>
+                    {payer && payment ? (
+                        <RetryPaymentButton
+                            payer={payer}
+                            payment={payment}
+                            onBusy={setBusy}
+                        />
+                    ) : (
+                        <button
+                            className="btn btn_blue"
+                            onClick={() => startOver()}
+                        >
+                            <span>Спробувати ще раз</span>
+                        </button>
+                    )}
                 </div>
-                <button
-                    type="button"
-                    className="btn-link"
-                    onClick={handleChangeAmount}
-                    disabled={busy}
-                >
-                    Змінити суму
-                </button>
-                {form}
+                {payer && payment && (
+                    <button
+                        type="button"
+                        className="btn-link"
+                        onClick={() => startOver("part")}
+                        disabled={busy}
+                    >
+                        Змінити суму
+                    </button>
+                )}
             </div>
         </div>
     );

@@ -38,15 +38,12 @@ function getProviderLayout(state: Chat.State) {
                 <SuccessPaymentStatus user={state.user} payer={state.payer} />
             );
         case "pay-fail":
-            if (state.payer && state.payment) {
-                return (
-                    <PaymentFailStatus
-                        payer={state.payer}
-                        payment={state.payment}
-                    />
-                );
-            }
-            return <ErrorStatus />;
+            return (
+                <PaymentFailStatus
+                    payer={state.payer}
+                    payment={state.payment}
+                />
+            );
         default:
             return (
                 <Section>

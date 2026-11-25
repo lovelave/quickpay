@@ -144,9 +144,9 @@ export function getInitialState(): State {
                   }
                 : { messages: [], user: unknownUser, type: "pay-success" };
         }
-        if (payer && payment) {
-            return { messages: [], payer, payment, type: "pay-fail" };
-        }
+        // Without stored data (storage blocked or cleared) the failure is still shown;
+        // its retry then starts over.
+        return { messages: [], payer, payment, type: "pay-fail" };
     }
 
     const payer = getLinkPayer(window.location.pathname);
