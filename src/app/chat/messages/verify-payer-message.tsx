@@ -2,8 +2,6 @@ import * as React from "react";
 import * as Chat from "../chat-logic";
 import * as Base from "../base";
 import { UserData } from "../chat-logic";
-import { getOverdue } from "../../utils/overdue";
-import { getPaymentDetailsUrl } from "../../utils/payment-details-url";
 import { getBaseUrl } from "../../utils/get-base-url";
 import { identifyUser } from "../../../sentry";
 
@@ -18,6 +16,14 @@ export const VerifyPayerMessage: React.FC<{
         const requestUrl = getBaseUrl();
         requestUrl.pathname = "v3/quick-pay";
         Chat.appendPayerParam(requestUrl, value.payer, "id");
+
+        // The payer is kept with the error, so "try again" repeats this lookup
+        // instead of asking for the phone again.
+        const showError = () =>
+            dispatch([
+                new Chat.StatePayerAction(value.payer),
+                new Chat.StateTypeAction("error"),
+            ]);
 
         fetch(requestUrl.toString(), { signal: controller.signal })
             .then((response) => {
@@ -38,7 +44,7 @@ export const VerifyPayerMessage: React.FC<{
                                       ]
                                     : [
                                           new Chat.TextMessage(
-                                              "Хмм.. На цьому номері немає активного кредиту."
+                                              "Хм… На цьому номері немає активного кредиту."
                                           ),
                                           new Chat.InvalidPhoneRequestMessage(),
                                       ]
@@ -48,7 +54,7 @@ export const VerifyPayerMessage: React.FC<{
                     case 200:
                         return response.json();
                     default:
-                        dispatch(new Chat.StateTypeAction("error"));
+                        showError();
                         return;
                 }
             })
@@ -58,20 +64,33 @@ export const VerifyPayerMessage: React.FC<{
                 }
                 identifyUser(value.payer, user);
 
-                const overdue = getOverdue(user.returnDate);
-
+                // The panel replaces the whole chat (greeting, phone prompt), so the debt and
+                // the payment buttons start at the top of the screen in both flows.
                 dispatch([
+                    new Chat.FlushAction(
+                        [
+                            new Chat.PaymentPanelMessage(
+                                user,
+                                value.payer,
+                                value.mode
+                            ),
+                        ],
+                        true
+                    ),
                     new Chat.StatePayerAction(value.payer),
-                    new Chat.RemoveAction(value),
-                    new Chat.PushAction([
-                        new Chat.ResultPhoneMessage(overdue, value.payer),
-                        new Chat.CreditInfoMessage(user, overdue),
-                        new Chat.PaymentSumMessage(
-                            user.debt,
-                            getPaymentDetailsUrl()
-                        ),
-                    ]),
+                    new Chat.StateUserAction(
+                        user.debt,
+                        user.returnDate,
+                        user.name,
+                        user.prolongation
+                    ),
                 ]);
+            })
+            .catch(() => {
+                if (controller?.signal.aborted) {
+                    return;
+                }
+                showError();
             });
 
         return () => controller && controller.abort();

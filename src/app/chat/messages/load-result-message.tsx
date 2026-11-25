@@ -4,6 +4,7 @@ import * as Base from "../base";
 import { UserData } from "../chat-logic";
 import { getBaseUrl } from "../../utils/get-base-url";
 
+// Debt after the return from Platon: repaid (404), decreased, or not posted yet.
 export const LoadResultMessage: React.FC<{ value: Chat.LoadResultMessage }> = ({
     value,
 }) => {
@@ -16,26 +17,35 @@ export const LoadResultMessage: React.FC<{ value: Chat.LoadResultMessage }> = ({
         requestUrl.pathname = "/v3/quick-pay";
         Chat.appendPayerParam(requestUrl, value.payer, "id");
 
+        const showResult = (user: UserData | undefined) => {
+            Chat.forgetPayment();
+            dispatch([
+                new Chat.RemoveAction(value),
+                new Chat.StatePayerAction(value.payer),
+                user
+                    ? new Chat.StateUserAction(
+                          user.debt,
+                          user.returnDate,
+                          user.name,
+                          user.prolongation
+                      )
+                    : new Chat.ClearUserDataAction(),
+                new Chat.StateTypeAction("pay-success"),
+            ]);
+        };
+
         fetch(requestUrl.toString(), { signal: controller.signal })
             .then((response) => {
                 controller = undefined;
 
                 switch (response.status) {
                     case 404:
-                        dispatch([
-                            new Chat.RemoveAction(value),
-                            new Chat.ClearUserDataAction(),
-                            new Chat.StateInputDataAction("amount", undefined),
-                            new Chat.StateTypeAction("pay-success"),
-                        ]);
+                        showResult(undefined);
                         return;
                     case 200:
                         return response.json();
                     default:
-                        dispatch([
-                            new Chat.StateUserAction(NaN, "", ""),
-                            new Chat.StateTypeAction("pay-success"),
-                        ]);
+                        showResult(Chat.unknownUser);
                         return;
                 }
             })
@@ -43,17 +53,18 @@ export const LoadResultMessage: React.FC<{ value: Chat.LoadResultMessage }> = ({
                 if (!user) {
                     return;
                 }
-                dispatch([
-                    new Chat.RemoveAction(value),
-                    new Chat.StateInputDataAction("amount", undefined),
-                    new Chat.StateUserAction(
-                        user.debt,
-                        user.returnDate,
-                        user.name,
-                        user.prolongation
-                    ),
-                    new Chat.StateTypeAction("pay-success"),
-                ]);
+                // Platon reports the payment to the backend on its own: until then the debt is the same.
+                // Without the debt before the payment (another tab, cleared storage) it can't be told apart.
+                const isPosted =
+                    value.debtBefore !== undefined &&
+                    user.debt < value.debtBefore - 0.005;
+                showResult(isPosted ? user : Chat.unknownUser);
+            })
+            .catch(() => {
+                if (controller?.signal.aborted) {
+                    return;
+                }
+                showResult(Chat.unknownUser);
             });
 
         return () => controller && controller.abort();

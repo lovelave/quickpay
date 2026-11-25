@@ -32,79 +32,40 @@ export class IntroRequestMessage {
     public readonly type = "intro-request";
 }
 
+// What the payment panel opens with: the two main buttons or the partial amount input.
+export type PaymentPanelMode = "actions" | "part";
+
 export class VerifyPayerMessage {
     public readonly type = "verify";
 
-    constructor(public readonly payer: Payer) {}
+    constructor(
+        public readonly payer: Payer,
+        public readonly mode: PaymentPanelMode = "actions"
+    ) {}
 }
 
-export class CreditInfoMessage {
-    public readonly type = "debt-info";
+// Loaded debt: status, credit card with bank/prolongation links and the pay in full/part buttons.
+export class PaymentPanelMessage {
+    public readonly type = "pay-panel";
 
     constructor(
         public readonly user: UserData,
-        public readonly overdue: number
-    ) {}
-}
-
-export class PaymentSumMessage {
-    public readonly type = "pay-sum";
-
-    constructor(
-        public readonly sum: number,
-        public readonly agreement: string
-    ) {}
-}
-
-export class PaymentRequestMessage {
-    public readonly type = "pay-request";
-
-    constructor(public readonly agreement: string) {}
-}
-
-export class HomeLinkMessage {
-    public readonly type = "home-link";
-}
-
-export class LoadIframeMessage {
-    public readonly type = "load-iframe";
-
-    constructor(
         public readonly payer: Payer,
-        public readonly amount: string
+        public readonly mode: PaymentPanelMode = "actions"
     ) {}
-}
-
-export class IframeMessage {
-    public readonly type = "iframe";
-
-    public constructor(
-        public readonly action: string,
-        public readonly data: Array<[string, string]>
-    ) {}
-}
-
-export class ResultPhoneMessage {
-    public readonly type = "result-phone";
-
-    constructor(
-        public readonly overdue: number,
-        public readonly payer: Payer
-    ) {}
-}
-
-export class InvalidPhoneRequestMessage {
-    public readonly type = "invalid-phone";
 }
 
 export class LoadResultMessage {
     public readonly type = "load-result";
 
-    constructor(public readonly payer: Payer) {}
+    constructor(
+        public readonly payer: Payer,
+        public readonly debtBefore?: number
+    ) {}
 }
 
-export class PaymentErrorRequestMessage {
-    public readonly type = "payment-error";
+export class InvalidPhoneRequestMessage {
+    public readonly type = "invalid-phone";
 }
 
 export type MessageSource = "bot" | "user";
@@ -116,13 +77,6 @@ export type Message =
     | IntroMessage
     | VerifyPayerMessage
     | IntroRequestMessage
-    | CreditInfoMessage
-    | PaymentSumMessage
-    | PaymentRequestMessage
-    | HomeLinkMessage
-    | LoadIframeMessage
-    | IframeMessage
+    | PaymentPanelMessage
     | LoadResultMessage
-    | ResultPhoneMessage
-    | InvalidPhoneRequestMessage
-    | PaymentErrorRequestMessage;
+    | InvalidPhoneRequestMessage;
