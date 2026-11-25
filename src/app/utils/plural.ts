@@ -1,22 +1,21 @@
-export function plural(num: number, title: "years" | "days") {
-    let value: string[];
+// Ukrainian plural forms: 1 день, 2 дні, 5 днів (11–14 днів, 21 день).
+const forms = {
+    days: ["день", "дні", "днів"],
+} as const;
 
-    switch (title) {
-        case "years":
-            value = ["год", "года", "лет"];
-            break;
-        case "days":
-            value = ["день", "дня", "дней"];
+export function plural(num: number, title: keyof typeof forms): string {
+    const [one, few, many] = forms[title];
+    const mod10 = num % 10;
+    const mod100 = num % 100;
+
+    let form: string = many;
+    if (mod100 < 11 || mod100 > 14) {
+        if (mod10 === 1) {
+            form = one;
+        } else if (mod10 >= 2 && mod10 <= 4) {
+            form = few;
+        }
     }
 
-    const cases = [2, 0, 1, 1, 1, 2];
-    return (
-        num +
-        " " +
-        value[
-            num % 100 > 4 && num % 100 < 20
-                ? 2
-                : cases[num % 10 < 5 ? num % 10 : 5]
-        ]
-    );
+    return num + " " + form;
 }

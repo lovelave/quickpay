@@ -2,8 +2,6 @@ import * as React from "react";
 import * as Chat from "../chat-logic";
 import * as Base from "../base";
 import { UserData } from "../chat-logic";
-import { getOverdue } from "../../utils/overdue";
-import { getPaymentDetailsUrl } from "../../utils/payment-details-url";
 import { getBaseUrl } from "../../utils/get-base-url";
 import { identifyUser } from "../../../sentry";
 
@@ -38,7 +36,7 @@ export const VerifyPayerMessage: React.FC<{
                                       ]
                                     : [
                                           new Chat.TextMessage(
-                                              "Хмм.. На цьому номері немає активного кредиту."
+                                              "Хм… На цьому номері немає активного кредиту."
                                           ),
                                           new Chat.InvalidPhoneRequestMessage(),
                                       ]
@@ -58,20 +56,33 @@ export const VerifyPayerMessage: React.FC<{
                 }
                 identifyUser(value.payer, user);
 
-                const overdue = getOverdue(user.returnDate);
-
+                // The panel replaces the whole chat (greeting, phone prompt), so the debt and
+                // the payment buttons start at the top of the screen in both flows.
                 dispatch([
+                    new Chat.FlushAction(
+                        [
+                            new Chat.PaymentPanelMessage(
+                                user,
+                                value.payer,
+                                value.mode
+                            ),
+                        ],
+                        true
+                    ),
                     new Chat.StatePayerAction(value.payer),
-                    new Chat.RemoveAction(value),
-                    new Chat.PushAction([
-                        new Chat.ResultPhoneMessage(overdue, value.payer),
-                        new Chat.CreditInfoMessage(user, overdue),
-                        new Chat.PaymentSumMessage(
-                            user.debt,
-                            getPaymentDetailsUrl()
-                        ),
-                    ]),
+                    new Chat.StateUserAction(
+                        user.debt,
+                        user.returnDate,
+                        user.name,
+                        user.prolongation
+                    ),
                 ]);
+            })
+            .catch(() => {
+                if (controller?.signal.aborted) {
+                    return;
+                }
+                dispatch(new Chat.StateTypeAction("error"));
             });
 
         return () => controller && controller.abort();

@@ -5,6 +5,7 @@ import { Layout as TurnedBot } from "./bot/turned";
 import { Section } from "./section";
 import { ErrorStatus } from "./statuses/error";
 import { SuccessPaymentStatus } from "./statuses/success-payment";
+import { PaymentFailStatus } from "./statuses/payment-fail";
 import { Header } from "./header/layout";
 import { Footer } from "./footer/layout";
 import { ErrorBoundary } from "../../error-boundary";
@@ -31,9 +32,21 @@ export const Provider: React.FC = () => {
 function getProviderLayout(state: Chat.State) {
     switch (state.type) {
         case "error":
-            return <ErrorStatus />;
+            return <ErrorStatus payer={state.payer} />;
         case "pay-success":
-            return <SuccessPaymentStatus user={state.user} />;
+            return (
+                <SuccessPaymentStatus user={state.user} payer={state.payer} />
+            );
+        case "pay-fail":
+            if (state.payer && state.payment) {
+                return (
+                    <PaymentFailStatus
+                        payer={state.payer}
+                        payment={state.payment}
+                    />
+                );
+            }
+            return <ErrorStatus />;
         default:
             return (
                 <Section>

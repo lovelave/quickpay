@@ -2,8 +2,9 @@ import * as React from "react";
 import { Action } from "./action";
 import * as Messages from "./message";
 import { getLinkPayer, Payer } from "./payer";
+import { StartedPayment, takePaymentReturn } from "./payment-return";
 
-export type StateType = "error" | "pay-success";
+export type StateType = "error" | "pay-success" | "pay-fail";
 
 export interface UserData {
     debt: number;
@@ -12,15 +13,15 @@ export interface UserData {
     prolongation?: number;
 }
 
-export interface InputData {
-    amount?: string;
-}
+// Result screen after a payment whose posting can't be confirmed yet.
+export const unknownUser: UserData = { debt: NaN, returnDate: "", name: "" };
 
 export interface State {
     messages: Array<Messages.Message>;
     user?: UserData;
     payer?: Payer;
-    inputData?: InputData;
+    // Failed payment, offered again on the "pay-fail" screen.
+    payment?: StartedPayment;
     type?: StateType;
 }
 
@@ -33,8 +34,10 @@ export const Reducer: Reducer = (state, action): State => {
     switch (action.type) {
         // State type actions
         case "error":
+            // The payer is kept, so "try again" reloads the debt without asking for the phone.
             return {
                 messages: [],
+                payer: state.payer,
                 type: "error",
             };
         case "pay-success":
@@ -66,43 +69,6 @@ export const Reducer: Reducer = (state, action): State => {
             return {
                 ...state,
                 payer: action.payer,
-            };
-
-        // State input data action
-        case "amount":
-            return {
-                ...state,
-                inputData: {
-                    ...state.inputData,
-                    [action.type]: action.value,
-                },
-            };
-
-        // Custom message actions
-        case "platon":
-            if (!state.inputData?.amount || !state.payer) {
-                return state;
-            }
-            return {
-                ...state,
-                messages: [
-                    ...state.messages,
-                    new Messages.LoadIframeMessage(
-                        state.payer,
-                        state.inputData.amount
-                    ),
-                ],
-            };
-        case "load-payment-result":
-            if (!state.payer) {
-                return state;
-            }
-            return {
-                ...state,
-                messages: [
-                    ...state.messages,
-                    new Messages.LoadResultMessage(state.payer),
-                ],
             };
 
         // Default message actions
@@ -161,8 +127,28 @@ export const initialState: State = {
 };
 
 // Opened by a personal payment link, the debt is loaded by the link code
-// without asking for the phone.
+// without asking for the phone. Back from Platon, the payment result is shown.
 export function getInitialState(): State {
+    const paymentReturn = takePaymentReturn();
+    if (paymentReturn) {
+        const { result, payer, payment } = paymentReturn;
+        if (result === "success") {
+            return payer
+                ? {
+                      messages: [
+                          new Messages.LoadResultMessage(
+                              payer,
+                              payment?.debtBefore
+                          ),
+                      ],
+                  }
+                : { messages: [], user: unknownUser, type: "pay-success" };
+        }
+        if (payer && payment) {
+            return { messages: [], payer, payment, type: "pay-fail" };
+        }
+    }
+
     const payer = getLinkPayer(window.location.pathname);
     if (!payer) {
         return initialState;

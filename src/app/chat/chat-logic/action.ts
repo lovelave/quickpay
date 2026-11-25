@@ -1,5 +1,5 @@
 import { Message } from "./message";
-import { InputData, StateType } from "./reducer";
+import { StateType } from "./reducer";
 import { Payer } from "./payer";
 
 // State user action
@@ -25,26 +25,10 @@ export class StatePayerAction {
     constructor(public readonly payer: Payer) {}
 }
 
-// State input data action
-export class StateInputDataAction {
-    constructor(
-        public readonly type: keyof InputData,
-        public readonly value?: string
-    ) {}
-}
-
 // State type action
+// The "pay-fail" screen is only opened on return from Platon, see getInitialState().
 export class StateTypeAction {
-    constructor(public readonly type: StateType) {}
-}
-
-// Custom message actions
-export class PlatonAction {
-    public readonly type = "platon";
-}
-
-export class LoadPaymentResultAction {
-    public readonly type = "load-payment-result";
+    constructor(public readonly type: Exclude<StateType, "pay-fail">) {}
 }
 
 // Default state actions
@@ -87,12 +71,9 @@ export type Action =
     | StateUserAction
     | ClearUserDataAction
     | StatePayerAction
-    | StateInputDataAction
     | StateTypeAction
     | RemoveAction
     | DeleteAction
     | ReplaceAction
     | FlushAction
-    | PlatonAction
-    | LoadPaymentResultAction
     | Array<Action>;
