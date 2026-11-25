@@ -22,11 +22,17 @@ export interface PaymentReturn {
 }
 
 interface StoredPayment extends StartedPayment {
-    phone?: string;
+    payer?: Payer;
 }
 
-export function getPaymentReturnUrls(): { goodUrl: string; badUrl: string } {
-    const url = new URL(window.location.pathname, window.location.origin);
+// The page of the payer: /pay/{code} for a link, / for a phone. A phone entered on /pay/{code}
+// (expired link) comes back to /, so the dead code in the path is not used for the result.
+export function getPaymentReturnUrls(payer: Payer): {
+    goodUrl: string;
+    badUrl: string;
+} {
+    const path = "code" in payer ? `/pay/${payer.code}` : "/";
+    const url = new URL(path, window.location.origin);
     url.searchParams.set(resultParam, "success");
     const goodUrl = url.toString();
     url.searchParams.set(resultParam, "fail");
@@ -36,10 +42,7 @@ export function getPaymentReturnUrls(): { goodUrl: string; badUrl: string } {
 // The phone is never put into the return URL. The phone flow keeps it in sessionStorage,
 // which belongs to the browser tab and is cleared when the tab is closed.
 export function rememberPayment(payer: Payer, payment: StartedPayment): void {
-    const value: StoredPayment = {
-        ...payment,
-        phone: "phone" in payer ? payer.phone : undefined,
-    };
+    const value: StoredPayment = { ...payment, payer };
     try {
         sessionStorage.setItem(storageKey, JSON.stringify(value));
     } catch {
@@ -64,6 +67,13 @@ function readStoredPayment(): StoredPayment | undefined {
             typeof value.amount === "number" &&
             typeof value.debtBefore === "number"
         ) {
+            const payer = value.payer;
+            const isPayer =
+                typeof payer?.phone === "string" ||
+                typeof payer?.code === "string";
+            if (!isPayer) {
+                delete value.payer;
+            }
             return value as StoredPayment;
         }
     } catch {
@@ -89,10 +99,11 @@ export function takePaymentReturn(): PaymentReturn | undefined {
         url.pathname + url.search + url.hash
     );
 
+    // The payment of this tab knows its payer; the link code in the path is the fallback
+    // for a return without session storage.
     const stored = readStoredPayment();
-    const linkPayer = getLinkPayer(url.pathname);
     const payer: Payer | undefined =
-        linkPayer ?? (stored?.phone ? { phone: stored.phone } : undefined);
+        stored?.payer ?? getLinkPayer(url.pathname);
     const payment: StartedPayment | undefined = stored && {
         amount: stored.amount,
         debtBefore: stored.debtBefore,

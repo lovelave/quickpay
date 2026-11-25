@@ -26,7 +26,7 @@ export async function createOrder(
             headers: { "Content-type": "application/json" },
             method: "POST",
             body: JSON.stringify({
-                Order: { ...getPaymentReturnUrls(), amount },
+                Order: { ...getPaymentReturnUrls(payer), amount },
             }),
         });
         if (!response.ok) {
