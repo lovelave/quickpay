@@ -49,6 +49,7 @@ export const IntroRequestMessage: React.FC = React.memo(() => {
                         <button
                             id="sign-phone-submit"
                             type="submit"
+                            aria-label="Далі"
                             className={classNames(
                                 "btn btn_action",
                                 isSubmitEnable ? "enabled" : "disabled"
@@ -56,7 +57,7 @@ export const IntroRequestMessage: React.FC = React.memo(() => {
                         >
                             <img
                                 src={IconAirplane}
-                                alt="icon"
+                                alt=""
                                 className="icon icon_airplane"
                             />
                         </button>

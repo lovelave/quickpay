@@ -1,6 +1,5 @@
 import * as React from "react";
 import * as Chat from "../chat-logic";
-import dayjs from "dayjs";
 import * as HappyBot from "../bot/happy";
 import * as FrontBot from "../bot/front";
 import { getBaseUrl } from "../../utils/get-base-url";
@@ -69,6 +68,7 @@ export const SuccessPaymentStatus: React.FC<{
     }
 
     const handleClick = () => {
+        window.scrollTo(0, 0);
         dispatch(
             new Chat.FlushAction(
                 [new Chat.PaymentPanelMessage(user, payer)],
@@ -85,10 +85,7 @@ export const SuccessPaymentStatus: React.FC<{
                 </div>
                 <h2>Оплата успішна</h2>
                 <p>
-                    <span>
-                        Залишок до сплати: {formatMoney(user.debt)} до{" "}
-                        {dayjs(user.returnDate).format("DD.MM.YYYY")}
-                    </span>
+                    <span>Залишок до сплати: {formatMoney(user.debt)}</span>
                     <span>Бажаєте сплатити ще?</span>
                 </p>
                 <div className="btn-container">

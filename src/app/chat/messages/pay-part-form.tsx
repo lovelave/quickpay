@@ -32,7 +32,10 @@ export const PayPartForm: React.FC<PayPartFormProps> = ({
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const filtered = moneyInputFilter(e.target.value);
-        const exceeds = parseFloat(filtered) > debt;
+        // Compared before filtering: "4780.549" is filtered down to "4780.54", still over the debt.
+        const exceeds =
+            parseFloat(e.target.value.replace(",", ".")) > debt ||
+            parseFloat(filtered) > debt;
         setValue(exceeds ? (+debt.toFixed(2)).toString() : filtered);
         setClamped(exceeds);
     };
@@ -51,7 +54,7 @@ export const PayPartForm: React.FC<PayPartFormProps> = ({
     if (busy) {
         help = "Переходимо до оплати…";
     } else if (isClamped) {
-        help = `Більше за борг сплатити не можна — встановлено ${formatMoney(debt)}`;
+        help = `Не більше за борг: ${formatMoney(debt)}`;
     }
 
     return (

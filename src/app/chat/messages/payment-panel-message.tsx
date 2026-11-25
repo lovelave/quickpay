@@ -193,8 +193,6 @@ export const PaymentPanelMessage: React.FC<{
                                     className="btn btn_white qp-btn-xs"
                                     onClick={openProlong}
                                     disabled={busy}
-                                    aria-expanded={false}
-                                    aria-controls="qp-prolong-note"
                                     ref={prolongButtonRef}
                                 >
                                     Продовжити строк
@@ -222,7 +220,8 @@ export const PaymentPanelMessage: React.FC<{
                                 busy && "is-busy"
                             )}
                             onClick={() => pay(user.debt)}
-                            disabled={busy}
+                            // Not disabled while busy, so keyboard focus stays on it; usePayment ignores repeats.
+                            aria-disabled={busy}
                             aria-busy={busy}
                             aria-label={
                                 busy

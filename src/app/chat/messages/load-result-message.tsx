@@ -54,8 +54,9 @@ export const LoadResultMessage: React.FC<{ value: Chat.LoadResultMessage }> = ({
                     return;
                 }
                 // Platon reports the payment to the backend on its own: until then the debt is the same.
+                // Without the debt before the payment (another tab, cleared storage) it can't be told apart.
                 const isPosted =
-                    value.debtBefore === undefined ||
+                    value.debtBefore !== undefined &&
                     user.debt < value.debtBefore - 0.005;
                 showResult(isPosted ? user : Chat.unknownUser);
             })

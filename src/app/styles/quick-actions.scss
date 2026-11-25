@@ -50,16 +50,20 @@ $qp-focus: #0063cc;
   }
 }
 
+// resets.css removes the outline of focused buttons with !important.
+.btn,
+.btn-link {
+  &:focus-visible {
+    outline: 2px solid $qp-focus !important;
+    outline-offset: 2px;
+  }
+}
+
+$qp-pay-gradient: linear-gradient(-180deg, #0a74dc, #0063cc);
+$qp-pay-hover-gradient: linear-gradient(-180deg, #0a6fd2, #005fc4);
+
 .qp-panel {
   @include mixins.clearfix;
-
-  .btn,
-  .btn-link {
-    &:focus-visible {
-      outline: 2px solid $qp-focus;
-      outline-offset: 2px;
-    }
-  }
 
   .qp-bubble-sub {
     margin-top: 2px;
@@ -212,10 +216,18 @@ $qp-focus: #0063cc;
     display: flex;
     gap: 8px;
 
-    margin-top: 10px;
+    margin: 10px 4px 0;
+
+    .btn + .btn {
+      margin: 0;
+    }
 
     &_single .qp-btn-xs {
       flex: 0 0 auto;
+
+      min-width: 136px;
+
+      padding: 0 16px;
     }
   }
 
@@ -223,6 +235,8 @@ $qp-focus: #0063cc;
     margin-top: 10px;
 
     p {
+      padding: 0 4px;
+
       font-size: 14px;
       line-height: 19px;
 
@@ -257,7 +271,11 @@ $qp-focus: #0063cc;
   &.btn_blue {
     border-bottom-color: #0057b3;
 
-    background: linear-gradient(-180deg, #0a74dc, #0063cc);
+    background: $qp-pay-gradient;
+
+    &:after {
+      background: $qp-pay-hover-gradient;
+    }
   }
 
   &.is-disabled {
@@ -312,18 +330,18 @@ $qp-focus: #0063cc;
 
     border-bottom-color: #0057b3;
 
-    background: linear-gradient(-180deg, #0a74dc, #0063cc);
+    background: $qp-pay-gradient;
 
     font-size: 19px;
     line-height: 24px;
 
-    // The hover layer of .btn_blue is lighter than the darker pay gradient.
+    // The hover layer of .btn_blue is too light for white text on the pay gradient.
     &:after {
-      background: linear-gradient(-180deg, #0b7fee, #006ad9);
+      background: $qp-pay-hover-gradient;
     }
 
-    &.is-busy:disabled {
-      opacity: 1;
+    &.is-busy {
+      cursor: progress;
     }
 
     .qp-btn__sub {
@@ -349,8 +367,18 @@ $qp-focus: #0063cc;
 
     text-align: left;
 
+    // Opened by a tap and focused at once: no delayed fade-in.
+    animation-delay: 0s;
+    animation-duration: 0.2s;
+
     .form-group {
+      width: 100%;
+
       margin-left: 0;
+    }
+
+    .form__control {
+      max-width: none;
     }
   }
 
@@ -360,6 +388,10 @@ $qp-focus: #0063cc;
     font-size: 14px;
     line-height: 18px;
     color: $qp-label;
+
+    &.qp-value_warning {
+      color: $qp-warning;
+    }
   }
 
   .qp-part__back {
@@ -372,12 +404,56 @@ $qp-focus: #0063cc;
   }
 }
 
-.status .btn-link {
-  display: block;
+// Result screens: the main action first on phones, readable colours, and a smaller bot on short screens.
+.status {
+  .status-wrap & > p {
+    color: #3f6e94;
+  }
 
-  margin: 22px auto 0;
+  .btn_blue {
+    border-bottom-color: #0057b3;
 
-  font-size: 16px;
+    background: $qp-pay-gradient;
+
+    &:after {
+      background: $qp-pay-hover-gradient;
+    }
+  }
+
+  .btn_white {
+    color: $qp-link;
+  }
+
+  .btn-container {
+    @include breakpoint.breakpoint(variables.$mobile-p) {
+      display: flex;
+      flex-direction: column-reverse;
+      gap: 12px;
+
+      .btn + .btn {
+        margin: 0;
+      }
+    }
+  }
+
+  .btn-link {
+    display: block;
+
+    margin: 10px auto 0;
+    padding: 12px 8px;
+
+    font-size: 16px;
+  }
+
+  @media (max-width: 47.938em) and (max-height: 760px) {
+    .animation-container {
+      zoom: 0.65;
+    }
+
+    h2 {
+      font-size: 28px;
+    }
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
