@@ -50,17 +50,17 @@ export const ErrorStatus: React.FC<{ payer?: Chat.Payer }> = React.memo(
                         </span>
                     </p>
                     <div className="btn-container">
-                        <button className="btn btn_white" onClick={handleClick}>
-                            <span>Спробувати ще</span>
-                        </button>
                         <a
                             href={url}
                             rel="noopener nofollow"
                             target="_blank"
-                            className="btn btn_blue"
+                            className="btn btn_white"
                         >
                             <span>Завантажити реквізити</span>
                         </a>
+                        <button className="btn btn_blue" onClick={handleClick}>
+                            <span>Спробувати ще</span>
+                        </button>
                     </div>
                 </div>
             </div>
